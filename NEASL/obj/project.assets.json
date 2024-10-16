@@ -1,0 +1,90 @@
+{
+  "version": 3,
+  "targets": {
+    "net8.0": {
+      "NEASL.Base/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "compile": {
+          "bin/placeholder/NEASL.Base.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/NEASL.Base.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "NEASL.Base/1.0.0": {
+      "type": "project",
+      "path": "../NEASL.Base/NEASL.Base.csproj",
+      "msbuildProject": "../NEASL.Base/NEASL.Base.csproj"
+    }
+  },
+  "projectFileDependencyGroups": {
+    "net8.0": [
+      "NEASL.Base >= 1.0.0"
+    ]
+  },
+  "packageFolders": {
+    "/Users/mdmm/.nuget/packages/": {}
+  },
+  "project": {
+    "version": "1.0.0",
+    "restore": {
+      "projectUniqueName": "/Users/mdmm/GitHub/TCBS/NEASL/NEASL.csproj",
+      "projectName": "NEASL",
+      "projectPath": "/Users/mdmm/GitHub/TCBS/NEASL/NEASL.csproj",
+      "packagesPath": "/Users/mdmm/.nuget/packages/",
+      "outputPath": "/Users/mdmm/GitHub/TCBS/NEASL/obj/",
+      "projectStyle": "PackageReference",
+      "configFilePaths": [
+        "/Users/mdmm/.nuget/NuGet/NuGet.Config"
+      ],
+      "originalTargetFrameworks": [
+        "net8.0"
+      ],
+      "sources": {
+        "/usr/local/share/dotnet/library-packs": {},
+        "https://api.nuget.org/v3/index.json": {}
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "projectReferences": {
+            "/Users/mdmm/GitHub/TCBS/NEASL.Base/NEASL.Base.csproj": {
+              "projectPath": "/Users/mdmm/GitHub/TCBS/NEASL.Base/NEASL.Base.csproj"
+            }
+          }
+        }
+      },
+      "warningProperties": {
+        "warnAsError": [
+          "NU1605"
+        ]
+      }
+    },
+    "frameworks": {
+      "net8.0": {
+        "targetAlias": "net8.0",
+        "imports": [
+          "net461",
+          "net462",
+          "net47",
+          "net471",
+          "net472",
+          "net48",
+          "net481"
+        ],
+        "assetTargetFallback": true,
+        "warn": true,
+        "frameworkReferences": {
+          "Microsoft.NETCore.App": {
+            "privateAssets": "all"
+          }
+        },
+        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/8.0.101/PortableRuntimeIdentifierGraph.json"
+      }
+    }
+  }
+}

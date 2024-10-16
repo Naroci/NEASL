@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NEASL", "NEASL\NEASL.csproj", "{27521EB2-1834-4D27-9E9D-3B37F11534CF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NEASL.Base", "NEASL.Base\NEASL.Base.csproj", "{AB98E96C-1A28-4C17-8871-E00FEEDB9689}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{27521EB2-1834-4D27-9E9D-3B37F11534CF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{27521EB2-1834-4D27-9E9D-3B37F11534CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{27521EB2-1834-4D27-9E9D-3B37F11534CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{27521EB2-1834-4D27-9E9D-3B37F11534CF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AB98E96C-1A28-4C17-8871-E00FEEDB9689}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AB98E96C-1A28-4C17-8871-E00FEEDB9689}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AB98E96C-1A28-4C17-8871-E00FEEDB9689}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AB98E96C-1A28-4C17-8871-E00FEEDB9689}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,18 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <OutputType>Exe</OutputType>
+        <TargetFramework>net8.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <AssemblyName>NEASL</AssemblyName>
+        <RootNamespace>NEASL</RootNamespace>
+        <Company>NEASL</Company>
+        <Product>NEASL</Product>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\NEASL.Base\NEASL.Base.csproj" />
+    </ItemGroup>
+
+</Project>

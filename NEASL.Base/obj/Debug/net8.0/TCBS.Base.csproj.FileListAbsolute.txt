@@ -1,0 +1,11 @@
+/Users/mdmm/GitHub/TCBS/TCBS.Base/bin/Debug/net8.0/TCBS.Base.deps.json
+/Users/mdmm/GitHub/TCBS/TCBS.Base/bin/Debug/net8.0/TCBS.Base.dll
+/Users/mdmm/GitHub/TCBS/TCBS.Base/bin/Debug/net8.0/TCBS.Base.pdb
+/Users/mdmm/GitHub/TCBS/TCBS.Base/obj/Debug/net8.0/TCBS.Base.GeneratedMSBuildEditorConfig.editorconfig
+/Users/mdmm/GitHub/TCBS/TCBS.Base/obj/Debug/net8.0/TCBS.Base.AssemblyInfoInputs.cache
+/Users/mdmm/GitHub/TCBS/TCBS.Base/obj/Debug/net8.0/TCBS.Base.AssemblyInfo.cs
+/Users/mdmm/GitHub/TCBS/TCBS.Base/obj/Debug/net8.0/TCBS.Base.csproj.CoreCompileInputs.cache
+/Users/mdmm/GitHub/TCBS/TCBS.Base/obj/Debug/net8.0/TCBS.Base.dll
+/Users/mdmm/GitHub/TCBS/TCBS.Base/obj/Debug/net8.0/refint/TCBS.Base.dll
+/Users/mdmm/GitHub/TCBS/TCBS.Base/obj/Debug/net8.0/TCBS.Base.pdb
+/Users/mdmm/GitHub/TCBS/TCBS.Base/obj/Debug/net8.0/ref/TCBS.Base.dll
