@@ -9,34 +9,12 @@
   <component name="ChangeListManager">
     <list default="true" id="8f849f27-c093-475d-989e-30706bc79388" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.TCBS/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.TCBS/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NEASL.Base/BaseReceiver.cs" beforeDir="false" afterPath="$PROJECT_DIR$/NEASL.Base/Event/BaseReceiver.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NEASL.Base/EventManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/NEASL.Base/Event/EventManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NEASL.Base/IBaseEventReceiver.cs" beforeDir="false" afterPath="$PROJECT_DIR$/NEASL.Base/Event/Interfaces/IBaseEventReceiver.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NEASL.Base/IInstructionReader.cs" beforeDir="false" afterPath="$PROJECT_DIR$/NEASL.Base/Instruction/Interfaces/IInstructionReader.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NEASL.Base/Instruction.cs" beforeDir="false" afterPath="$PROJECT_DIR$/NEASL.Base/Instruction/Instruction.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NEASL.Base/InstructionIdentifier.cs" beforeDir="false" afterPath="$PROJECT_DIR$/NEASL.Base/Instruction/InstructionIdentifier.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NEASL.Base/InstructionQueryManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/NEASL.Base/Instruction/InstructionQueryManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NEASL.Base/InstructionReader.cs" beforeDir="false" afterPath="$PROJECT_DIR$/NEASL.Base/Instruction/InstructionReader.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NEASL.Base/asd.cs" beforeDir="false" afterPath="$PROJECT_DIR$/NEASL.Base/asd.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NEASL.Base/bin/Debug/net8.0/NEASL.Base.dll" beforeDir="false" afterPath="$PROJECT_DIR$/NEASL.Base/bin/Debug/net8.0/NEASL.Base.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NEASL.Base/bin/Debug/net8.0/NEASL.Base.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/NEASL.Base/bin/Debug/net8.0/NEASL.Base.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NEASL.Base/obj/Debug/net8.0/NEASL.Base.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/NEASL.Base/obj/Debug/net8.0/NEASL.Base.AssemblyInfo.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NEASL.Base/obj/Debug/net8.0/NEASL.Base.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/NEASL.Base/obj/Debug/net8.0/NEASL.Base.AssemblyInfoInputs.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NEASL.Base/obj/Debug/net8.0/NEASL.Base.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/NEASL.Base/obj/Debug/net8.0/NEASL.Base.csproj.CoreCompileInputs.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NEASL.Base/obj/Debug/net8.0/NEASL.Base.csproj.FileListAbsolute.txt" beforeDir="false" afterPath="$PROJECT_DIR$/NEASL.Base/obj/Debug/net8.0/NEASL.Base.csproj.FileListAbsolute.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NEASL.Base/obj/Debug/net8.0/NEASL.Base.dll" beforeDir="false" afterPath="$PROJECT_DIR$/NEASL.Base/obj/Debug/net8.0/NEASL.Base.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NEASL.Base/obj/Debug/net8.0/NEASL.Base.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/NEASL.Base/obj/Debug/net8.0/NEASL.Base.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NEASL.Base/obj/Debug/net8.0/ref/NEASL.Base.dll" beforeDir="false" afterPath="$PROJECT_DIR$/NEASL.Base/obj/Debug/net8.0/ref/NEASL.Base.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NEASL.Base/obj/Debug/net8.0/refint/NEASL.Base.dll" beforeDir="false" afterPath="$PROJECT_DIR$/NEASL.Base/obj/Debug/net8.0/refint/NEASL.Base.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/NEASL/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/NEASL/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NEASL/bin/Debug/net8.0/NEASL.Base.dll" beforeDir="false" afterPath="$PROJECT_DIR$/NEASL/bin/Debug/net8.0/NEASL.Base.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NEASL/bin/Debug/net8.0/NEASL.Base.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/NEASL/bin/Debug/net8.0/NEASL.Base.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/NEASL/bin/Debug/net8.0/NEASL.dll" beforeDir="false" afterPath="$PROJECT_DIR$/NEASL/bin/Debug/net8.0/NEASL.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/NEASL/bin/Debug/net8.0/NEASL.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/NEASL/bin/Debug/net8.0/NEASL.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/NEASL/obj/Debug/net8.0/NEASL.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/NEASL/obj/Debug/net8.0/NEASL.AssemblyInfo.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/NEASL/obj/Debug/net8.0/NEASL.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/NEASL/obj/Debug/net8.0/NEASL.AssemblyInfoInputs.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/NEASL/obj/Debug/net8.0/NEASL.csproj.AssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/NEASL/obj/Debug/net8.0/NEASL.csproj.AssemblyReference.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NEASL/obj/Debug/net8.0/NEASL.csproj.FileListAbsolute.txt" beforeDir="false" afterPath="$PROJECT_DIR$/NEASL/obj/Debug/net8.0/NEASL.csproj.FileListAbsolute.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/NEASL/obj/Debug/net8.0/NEASL.dll" beforeDir="false" afterPath="$PROJECT_DIR$/NEASL/obj/Debug/net8.0/NEASL.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/NEASL/obj/Debug/net8.0/NEASL.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/NEASL/obj/Debug/net8.0/NEASL.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/NEASL/obj/Debug/net8.0/ref/NEASL.dll" beforeDir="false" afterPath="$PROJECT_DIR$/NEASL/obj/Debug/net8.0/ref/NEASL.dll" afterDir="false" />
@@ -116,7 +94,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1729040257703</updated>
-      <workItem from="1729040258899" duration="17808000" />
+      <workItem from="1729040258899" duration="19426000" />
     </task>
     <servers />
   </component>
