@@ -27,14 +27,11 @@ namespace NEASL.Base
             {
                 Context.GetInstance().GetQueryManager().AddToQuery(instructions);
             }
-            
             Context.GetInstance().GetQueryManager().Start();
-
-            
             return 0;
         }
         
         static string asdf = "asdf";
-        private static string sample = "Hello->TestCall(\"test\")\nHello->TestCall(\"Keine Ahnung irgendwas anderes...\")";
+        private static string sample = "asd->TestCall(\"test\")\nasd->KeineAhnung(\"Keine Ahnung irgendwas anderes...\")\nasd->KeineAhnung(\"Mh!\")\nasd->Test2(\"Hallo Welt\",\"Mh!\")";
     }
 }

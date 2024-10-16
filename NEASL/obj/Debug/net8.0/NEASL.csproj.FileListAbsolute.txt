@@ -16,3 +16,4 @@
 /Users/mdmm/GitHub/TCBS/NEASL/obj/Debug/net8.0/NEASL.pdb
 /Users/mdmm/GitHub/TCBS/NEASL/obj/Debug/net8.0/NEASL.genruntimeconfig.cache
 /Users/mdmm/GitHub/TCBS/NEASL/obj/Debug/net8.0/ref/NEASL.dll
+/Users/mdmm/GitHub/TCBS/NEASL/obj/Debug/net8.0/NEASL.sourcelink.json

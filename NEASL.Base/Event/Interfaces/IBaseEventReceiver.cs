@@ -10,5 +10,4 @@ public interface IBaseEventReceiver
     
     void EventCallFinished(string methodname, object[] args);
     
-
 }

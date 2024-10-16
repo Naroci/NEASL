@@ -7,7 +7,41 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8f849f27-c093-475d-989e-30706bc79388" name="Changes" comment="" />
+    <list default="true" id="8f849f27-c093-475d-989e-30706bc79388" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.TCBS/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.TCBS/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NEASL.Base/BaseReceiver.cs" beforeDir="false" afterPath="$PROJECT_DIR$/NEASL.Base/Event/BaseReceiver.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NEASL.Base/EventManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/NEASL.Base/Event/EventManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NEASL.Base/IBaseEventReceiver.cs" beforeDir="false" afterPath="$PROJECT_DIR$/NEASL.Base/Event/Interfaces/IBaseEventReceiver.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NEASL.Base/IInstructionReader.cs" beforeDir="false" afterPath="$PROJECT_DIR$/NEASL.Base/Instruction/Interfaces/IInstructionReader.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NEASL.Base/Instruction.cs" beforeDir="false" afterPath="$PROJECT_DIR$/NEASL.Base/Instruction/Instruction.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NEASL.Base/InstructionIdentifier.cs" beforeDir="false" afterPath="$PROJECT_DIR$/NEASL.Base/Instruction/InstructionIdentifier.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NEASL.Base/InstructionQueryManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/NEASL.Base/Instruction/InstructionQueryManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NEASL.Base/InstructionReader.cs" beforeDir="false" afterPath="$PROJECT_DIR$/NEASL.Base/Instruction/InstructionReader.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NEASL.Base/asd.cs" beforeDir="false" afterPath="$PROJECT_DIR$/NEASL.Base/asd.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NEASL.Base/bin/Debug/net8.0/NEASL.Base.dll" beforeDir="false" afterPath="$PROJECT_DIR$/NEASL.Base/bin/Debug/net8.0/NEASL.Base.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NEASL.Base/bin/Debug/net8.0/NEASL.Base.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/NEASL.Base/bin/Debug/net8.0/NEASL.Base.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NEASL.Base/obj/Debug/net8.0/NEASL.Base.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/NEASL.Base/obj/Debug/net8.0/NEASL.Base.AssemblyInfo.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NEASL.Base/obj/Debug/net8.0/NEASL.Base.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/NEASL.Base/obj/Debug/net8.0/NEASL.Base.AssemblyInfoInputs.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NEASL.Base/obj/Debug/net8.0/NEASL.Base.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/NEASL.Base/obj/Debug/net8.0/NEASL.Base.csproj.CoreCompileInputs.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NEASL.Base/obj/Debug/net8.0/NEASL.Base.csproj.FileListAbsolute.txt" beforeDir="false" afterPath="$PROJECT_DIR$/NEASL.Base/obj/Debug/net8.0/NEASL.Base.csproj.FileListAbsolute.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NEASL.Base/obj/Debug/net8.0/NEASL.Base.dll" beforeDir="false" afterPath="$PROJECT_DIR$/NEASL.Base/obj/Debug/net8.0/NEASL.Base.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NEASL.Base/obj/Debug/net8.0/NEASL.Base.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/NEASL.Base/obj/Debug/net8.0/NEASL.Base.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NEASL.Base/obj/Debug/net8.0/ref/NEASL.Base.dll" beforeDir="false" afterPath="$PROJECT_DIR$/NEASL.Base/obj/Debug/net8.0/ref/NEASL.Base.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NEASL.Base/obj/Debug/net8.0/refint/NEASL.Base.dll" beforeDir="false" afterPath="$PROJECT_DIR$/NEASL.Base/obj/Debug/net8.0/refint/NEASL.Base.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NEASL/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/NEASL/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NEASL/bin/Debug/net8.0/NEASL.Base.dll" beforeDir="false" afterPath="$PROJECT_DIR$/NEASL/bin/Debug/net8.0/NEASL.Base.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NEASL/bin/Debug/net8.0/NEASL.Base.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/NEASL/bin/Debug/net8.0/NEASL.Base.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NEASL/bin/Debug/net8.0/NEASL.dll" beforeDir="false" afterPath="$PROJECT_DIR$/NEASL/bin/Debug/net8.0/NEASL.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NEASL/bin/Debug/net8.0/NEASL.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/NEASL/bin/Debug/net8.0/NEASL.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NEASL/obj/Debug/net8.0/NEASL.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/NEASL/obj/Debug/net8.0/NEASL.AssemblyInfo.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NEASL/obj/Debug/net8.0/NEASL.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/NEASL/obj/Debug/net8.0/NEASL.AssemblyInfoInputs.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NEASL/obj/Debug/net8.0/NEASL.csproj.AssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/NEASL/obj/Debug/net8.0/NEASL.csproj.AssemblyReference.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NEASL/obj/Debug/net8.0/NEASL.csproj.FileListAbsolute.txt" beforeDir="false" afterPath="$PROJECT_DIR$/NEASL/obj/Debug/net8.0/NEASL.csproj.FileListAbsolute.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NEASL/obj/Debug/net8.0/NEASL.dll" beforeDir="false" afterPath="$PROJECT_DIR$/NEASL/obj/Debug/net8.0/NEASL.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NEASL/obj/Debug/net8.0/NEASL.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/NEASL/obj/Debug/net8.0/NEASL.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NEASL/obj/Debug/net8.0/ref/NEASL.dll" beforeDir="false" afterPath="$PROJECT_DIR$/NEASL/obj/Debug/net8.0/ref/NEASL.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NEASL/obj/Debug/net8.0/refint/NEASL.dll" beforeDir="false" afterPath="$PROJECT_DIR$/NEASL/obj/Debug/net8.0/refint/NEASL.dll" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -15,6 +49,9 @@
   </component>
   <component name="DpaMonitoringSettings">
     <option name="autoShow" value="false" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/NEASL.Base/BaseReceiver.cs" root0="FORCE_HIGHLIGHTING" />
@@ -41,6 +78,7 @@
   &quot;keyToString&quot;: {
     &quot;.NET Project.TCBS.executor&quot;: &quot;Debug&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -78,7 +116,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1729040257703</updated>
-      <workItem from="1729040258899" duration="15868000" />
+      <workItem from="1729040258899" duration="17808000" />
     </task>
     <servers />
   </component>
@@ -89,141 +127,5 @@
   <component name="VcsManagerConfiguration">
     <option name="LOCAL_CHANGES_DETAILS_PREVIEW_SHOWN" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/NEASL/Program.cs</url>
-          <line>26</line>
-          <properties documentPath="$PROJECT_DIR$/TCBS/Program.cs" containingFunctionPresentation="Method 'Main'">
-            <startOffsets>
-              <option value="826" />
-            </startOffsets>
-            <endOffsets>
-              <option value="827" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/NEASL.Base/EventManager.cs</url>
-          <line>31</line>
-          <properties documentPath="$PROJECT_DIR$/TCBS.Base/EventManager.cs" containingFunctionPresentation="Method 'ReceiverForInstructionRegistered'">
-            <startOffsets>
-              <option value="848" />
-            </startOffsets>
-            <endOffsets>
-              <option value="953" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="6" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/NEASL.Base/EventManager.cs</url>
-          <line>34</line>
-          <properties documentPath="$PROJECT_DIR$/TCBS.Base/EventManager.cs" containingFunctionPresentation="Method 'ReceiverForInstructionRegistered'">
-            <startOffsets>
-              <option value="997" />
-            </startOffsets>
-            <endOffsets>
-              <option value="1053" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="7" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/NEASL.Base/InstructionQueryManager.cs</url>
-          <line>26</line>
-          <properties documentPath="$PROJECT_DIR$/TCBS.Base/InstructionQueryManager.cs" containingFunctionPresentation="Method 'Start'">
-            <startOffsets>
-              <option value="569" />
-            </startOffsets>
-            <endOffsets>
-              <option value="588" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="8" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/NEASL.Base/InstructionQueryManager.cs</url>
-          <line>27</line>
-          <properties documentPath="$PROJECT_DIR$/TCBS.Base/InstructionQueryManager.cs" containingFunctionPresentation="Method 'Start'">
-            <startOffsets>
-              <option value="597" />
-            </startOffsets>
-            <endOffsets>
-              <option value="637" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="9" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/NEASL.Base/EventManager.cs</url>
-          <line>19</line>
-          <properties documentPath="$PROJECT_DIR$/TCBS.Base/EventManager.cs" containingFunctionPresentation="Method 'Register'">
-            <startOffsets>
-              <option value="435" />
-            </startOffsets>
-            <endOffsets>
-              <option value="509" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="14" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/NEASL.Base/BaseReceiver.cs</url>
-          <line>17</line>
-          <properties documentPath="$PROJECT_DIR$/TCBS.Base/BaseReceiver.cs" containingFunctionPresentation="Method 'SelfAssign'">
-            <startOffsets>
-              <option value="343" />
-            </startOffsets>
-            <endOffsets>
-              <option value="418" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="15" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/NEASL.Base/BaseReceiver.cs</url>
-          <line>20</line>
-          <properties documentPath="$PROJECT_DIR$/TCBS.Base/BaseReceiver.cs" containingFunctionPresentation="Method 'SelfAssign'">
-            <startOffsets>
-              <option value="502" />
-            </startOffsets>
-            <endOffsets>
-              <option value="524" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="16" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/NEASL.Base/BaseReceiver.cs</url>
-          <line>26</line>
-          <properties documentPath="$PROJECT_DIR$/TCBS.Base/BaseReceiver.cs" containingFunctionPresentation="Method 'SelfAssign'">
-            <startOffsets>
-              <option value="673" />
-            </startOffsets>
-            <endOffsets>
-              <option value="714" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="18" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/NEASL.Base/BaseReceiver.cs</url>
-          <line>29</line>
-          <properties documentPath="$PROJECT_DIR$/TCBS.Base/BaseReceiver.cs" containingFunctionPresentation="Method 'SelfAssign'">
-            <startOffsets>
-              <option value="780" />
-            </startOffsets>
-            <endOffsets>
-              <option value="821" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="19" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>

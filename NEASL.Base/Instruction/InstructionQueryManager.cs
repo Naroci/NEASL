@@ -32,10 +32,15 @@ public class InstructionQueryManager
         if (IsRunning() && m_currentInstruction != null)
         {
             if (Context.GetInstance().GetEventManager().ReceiverForInstructionRegistered(m_currentInstruction))
-            {
                 Context.GetInstance().GetEventManager().FireByInstruction(m_currentInstruction);
+            else
+            {
+                Console.WriteLine($"Current Instruction ({m_currentInstruction.BaseName}->{m_currentInstruction.MethodName}()) could not be reolved");
+                Console.WriteLine("Exiting...");
             }
         }
+        else 
+            Console.WriteLine("Nothing to do...!");
     }
 
     private void StartControlLoop()
@@ -124,7 +129,6 @@ public class InstructionQueryManager
     {
         try
         {
-            Type defaultType = typeof(Instruction);
             if (this.InstructionQuery != null && this.InstructionQuery.Count > 100)
             {
                 var temp = this.InstructionQuery.Where(x => x?.Completed == false);
