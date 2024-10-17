@@ -15,6 +15,7 @@
         <PackageReference Include="Avalonia.Fonts.Inter" Version="11.1.4"/>
         <!--Condition below is needed to remove Avalonia.Diagnostics package from build output in Release configuration.-->
         <PackageReference Condition="'$(Configuration)' == 'Debug'" Include="Avalonia.Diagnostics" Version="11.1.4"/>
+        <PackageReference Include="ReactiveUI" Version="20.1.63" />
     </ItemGroup>
 
     <ItemGroup>
@@ -25,5 +26,12 @@
       <None Update="BUTTON.neasl">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </None>
+    </ItemGroup>
+
+    <ItemGroup>
+      <Compile Update="NEASL_TextInput.axaml.cs">
+        <DependentUpon>NEASL_TextInput.axaml</DependentUpon>
+        <SubType>Code</SubType>
+      </Compile>
     </ItemGroup>
 </Project>

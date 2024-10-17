@@ -8,25 +8,30 @@
     "net8.0": []
   },
   "packageFolders": {
-    "/Users/mdmm/.nuget/packages/": {}
+    "/home/naroci/.nuget/packages/": {},
+    "/home/naroci/.local/share/godot/mono/GodotNuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/mdmm/GitHub/TCBS/NEASL.Base/NEASL.Base.csproj",
+      "projectUniqueName": "/home/naroci/GitHub/TCBS/NEASL.Base/NEASL.Base.csproj",
       "projectName": "NEASL.Base",
-      "projectPath": "/Users/mdmm/GitHub/TCBS/NEASL.Base/NEASL.Base.csproj",
-      "packagesPath": "/Users/mdmm/.nuget/packages/",
-      "outputPath": "/Users/mdmm/GitHub/TCBS/NEASL.Base/obj/",
+      "projectPath": "/home/naroci/GitHub/TCBS/NEASL.Base/NEASL.Base.csproj",
+      "packagesPath": "/home/naroci/.nuget/packages/",
+      "outputPath": "/home/naroci/GitHub/TCBS/NEASL.Base/obj/",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "/home/naroci/.local/share/godot/mono/GodotNuGetFallbackFolder"
+      ],
       "configFilePaths": [
-        "/Users/mdmm/.nuget/NuGet/NuGet.Config"
+        "/home/naroci/.nuget/NuGet/NuGet.Config",
+        "/home/naroci/.nuget/NuGet/config/Godot.Offline.Config"
       ],
       "originalTargetFrameworks": [
         "net8.0"
       ],
       "sources": {
-        "/usr/local/share/dotnet/library-packs": {},
+        "/home/naroci/.dotnet/library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -60,7 +65,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/8.0.101/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "/home/naroci/.dotnet/sdk/8.0.100/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

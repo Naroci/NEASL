@@ -1,18 +1,15 @@
 BUTTON:
     NAME="Button1"
-    PRESSED:
-        APP->WriteLine(TEST!!!!)
-        APP->WriteLine(TEST!!!!, asd)
-        APP->WriteLine(TEST!!!!)
-        APP->WriteLine(TEST!!!!)
-        APP->WriteLine(TEST!!!!)
-        APP->WriteLine(TEST!!!!)
-        APP->WriteLine(TEST!!!!)
-        APP->WriteLine(TEST!!!!)
-        APP->WriteLine(TEST!!!!)
-        APP->SHOW_WINDOW(TEST!!!!)
-    :PRESSED
-    HOVER:
     
+    PRESSED:
+        APP->SHOW_DIALOG(New Dialog,This is a Test!)
+    :PRESSED
+    
+    HOVER:
+        APP->SET_BACKGROUND_COLOR(#ff4a4d)
     :HOVER
+    
+    LEAVE:
+        APP->SET_BACKGROUND_COLOR(#57ffbf)
+    :LEAVE
 :BUTTON

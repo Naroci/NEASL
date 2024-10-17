@@ -15,7 +15,7 @@ public class NEASL_UserControl : UserControl, IBaseLinkedObject
     private object m_parent;
     private string m_uniqueIdentifier;
     private List<MethodInfo> m_methods;
-    public string Name { get; private set; }
+    public string NAME { get; private set; }
     Dictionary<string, string> scriptSections = new Dictionary<string, string>();
     private string scriptRawContent = string.Empty;
     private string filePath = string.Empty;
@@ -49,6 +49,19 @@ public class NEASL_UserControl : UserControl, IBaseLinkedObject
         LinkToScript();
     }
 
+    public void ReAssign(string scriptContent)
+    {
+        SelfAssign();
+        Context.GetInstance().GetEventManager().Register(this);
+        InitScript(scriptContent);
+    }
+
+    public void InitScript(string scriptContent)
+    {
+        scriptRawContent = scriptContent;
+        LinkToScript();
+    }
+    
     public void SelfAssign()
     {
         m_methods = new List<MethodInfo>();

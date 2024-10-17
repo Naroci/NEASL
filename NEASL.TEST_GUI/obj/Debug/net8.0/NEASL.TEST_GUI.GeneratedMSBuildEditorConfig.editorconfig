@@ -15,15 +15,18 @@ build_property.PlatformNeutralAssembly =
 build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = NEASL.TEST_GUI
-build_property.ProjectDir = /Users/mdmm/GitHub/TCBS/NEASL.TEST_GUI/
+build_property.ProjectDir = /home/naroci/GitHub/TCBS/NEASL.TEST_GUI/
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 
-[/Users/mdmm/GitHub/TCBS/NEASL.TEST_GUI/App.axaml]
+[/home/naroci/GitHub/TCBS/NEASL.TEST_GUI/App.axaml]
 build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
 
-[/Users/mdmm/GitHub/TCBS/NEASL.TEST_GUI/MainWindow.axaml]
+[/home/naroci/GitHub/TCBS/NEASL.TEST_GUI/MainWindow.axaml]
 build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
 
-[/Users/mdmm/GitHub/TCBS/NEASL.TEST_GUI/NEASL_Button.axaml]
+[/home/naroci/GitHub/TCBS/NEASL.TEST_GUI/NEASL_Button.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
+[/home/naroci/GitHub/TCBS/NEASL.TEST_GUI/NEASL_TextInput.axaml]
 build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml

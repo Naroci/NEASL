@@ -2,7 +2,7 @@ namespace NEASL.Base;
 
 public class BaseLinkedObject : BaseReceiver, IBaseLinkedObject
 {
-    public string Name { get; private set;  }
+    public string NAME { get; private set;  }
     Dictionary<string,string> scriptSections = new Dictionary<string,string>();
     private string scriptRawContent = string.Empty;
     private string filePath = string.Empty;

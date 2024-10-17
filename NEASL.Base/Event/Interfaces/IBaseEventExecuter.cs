@@ -3,7 +3,7 @@ namespace NEASL.Base;
 public interface IBaseEventExecuter
 {
     // The Unique Object Name. Used to Identify the Script to load.
-    string Name { get; }
+    string NAME { get; }
     
     // Fetches the content of the script by the given file path and returns it as a string.
     string FetchScript(string scriptFilePath);

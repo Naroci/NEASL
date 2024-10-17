@@ -6,6 +6,6 @@
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
              DataContext="{Binding RelativeSource={RelativeSource Self}}"
-             x:Class="NEASL.TEST_GUI.NEASL_Button">
-    <Button Background="Transparent" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" FontSize="{Binding TextSize}" x:Name="Btn" Content="{Binding Text}"/>
+             x:Class="NEASL.TEST_GUI.NEASL_TextInput">
+    <TextBox Background="Transparent" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" FontSize="{Binding TextSize}" x:Name="Btn" Text="{Binding Text}"/>
 </testGui:NEASL_UserControl>

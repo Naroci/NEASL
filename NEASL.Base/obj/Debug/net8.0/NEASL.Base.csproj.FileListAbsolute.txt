@@ -10,3 +10,15 @@
 /Users/mdmm/GitHub/TCBS/NEASL.Base/obj/Debug/net8.0/refint/NEASL.Base.dll
 /Users/mdmm/GitHub/TCBS/NEASL.Base/obj/Debug/net8.0/NEASL.Base.pdb
 /Users/mdmm/GitHub/TCBS/NEASL.Base/obj/Debug/net8.0/ref/NEASL.Base.dll
+/home/naroci/GitHub/TCBS/NEASL.Base/bin/Debug/net8.0/NEASL.Base.deps.json
+/home/naroci/GitHub/TCBS/NEASL.Base/bin/Debug/net8.0/NEASL.Base.dll
+/home/naroci/GitHub/TCBS/NEASL.Base/bin/Debug/net8.0/NEASL.Base.pdb
+/home/naroci/GitHub/TCBS/NEASL.Base/obj/Debug/net8.0/NEASL.Base.GeneratedMSBuildEditorConfig.editorconfig
+/home/naroci/GitHub/TCBS/NEASL.Base/obj/Debug/net8.0/NEASL.Base.AssemblyInfoInputs.cache
+/home/naroci/GitHub/TCBS/NEASL.Base/obj/Debug/net8.0/NEASL.Base.AssemblyInfo.cs
+/home/naroci/GitHub/TCBS/NEASL.Base/obj/Debug/net8.0/NEASL.Base.csproj.CoreCompileInputs.cache
+/home/naroci/GitHub/TCBS/NEASL.Base/obj/Debug/net8.0/NEASL.Base.sourcelink.json
+/home/naroci/GitHub/TCBS/NEASL.Base/obj/Debug/net8.0/NEASL.Base.dll
+/home/naroci/GitHub/TCBS/NEASL.Base/obj/Debug/net8.0/refint/NEASL.Base.dll
+/home/naroci/GitHub/TCBS/NEASL.Base/obj/Debug/net8.0/NEASL.Base.pdb
+/home/naroci/GitHub/TCBS/NEASL.Base/obj/Debug/net8.0/ref/NEASL.Base.dll

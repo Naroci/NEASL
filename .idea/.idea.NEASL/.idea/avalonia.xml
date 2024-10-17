@@ -3,7 +3,9 @@
   <component name="AvaloniaProject">
     <option name="projectPerEditor">
       <map>
+        <entry key="NEASL.TEST_GUI/MainWindow.axaml" value="NEASL.TEST_GUI/NEASL.TEST_GUI.csproj" />
         <entry key="NEASL.TEST_GUI/NEASL_Button.axaml" value="NEASL.TEST_GUI/NEASL.TEST_GUI.csproj" />
+        <entry key="NEASL.TEST_GUI/NEASL_TextInput.axaml" value="NEASL.TEST_GUI/NEASL.TEST_GUI.csproj" />
       </map>
     </option>
   </component>

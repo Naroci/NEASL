@@ -3,12 +3,25 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:testGui="clr-namespace:NEASL.TEST_GUI"
-        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        mc:Ignorable="d" d:DesignWidth="2000" d:DesignHeight="1280"
+        Width="2000" Height="1280" WindowStartupLocation="CenterScreen"
         x:Class="NEASL.TEST_GUI.MainWindow"
         Title="NEASL.TEST_GUI">
     
     <Grid>
-        <testGui:NEASL_Button Text="Execute" HorizontalAlignment="Center" VerticalAlignment="Center" />
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.3*"/>
+            <ColumnDefinition Width="0.7*"/>
+        </Grid.ColumnDefinitions>
+        <Grid Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Button CornerRadius="20" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Background="DarkGreen" Foreground="White" Margin="15" FontSize="32" Click="Button_OnClick" Grid.Row="1"  Content="Load Script" HorizontalAlignment="Stretch"/>
+            <TextBox Padding="10" CornerRadius="32" Background="White" Margin="30" FontSize="52" x:Name="TextInput" AcceptsReturn="True" TextWrapping="Wrap" Grid.Row="0" AcceptsTab="True"  />
+        </Grid>
+        <testGui:NEASL_Button BorderBrush="Black" BorderThickness="2" CornerRadius="30" Background="White" TextSize="32" x:Name="NeaslButton" Grid.Column="0" Width="200" Height="200" Text="Execute" HorizontalAlignment="Center" VerticalAlignment="Center" />
     </Grid>
    
 </Window>

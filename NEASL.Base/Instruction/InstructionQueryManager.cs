@@ -37,10 +37,16 @@ public class InstructionQueryManager
             {
                 Console.WriteLine($"Current Instruction ({m_currentInstruction.BaseName}->{m_currentInstruction.MethodName}()) could not be reolved");
                 Console.WriteLine("Exiting...");
+                Stop();
             }
         }
-        else 
+        else
+        {
             Console.WriteLine("Nothing to do...!");
+            Stop();
+        }
+
+      
     }
 
     private void StartControlLoop()

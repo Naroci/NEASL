@@ -7,8 +7,8 @@ using NEASL.Base.Linking;
 
 namespace NEASL.TEST_GUI;
 
-[Component("BUTTON")]
-public partial class NEASL_Button : NEASL_UserControl
+[Component("TEXTINPUT")]
+public partial class NEASL_TextInput : NEASL_UserControl
 {
     public static readonly StyledProperty<double> TextSizeProperty =
         AvaloniaProperty.Register<NEASL_Button, double>(nameof(TextSize), defaultValue: 12.0d);
@@ -27,32 +27,31 @@ public partial class NEASL_Button : NEASL_UserControl
         get => GetValue(TextProperty);
         set => SetValue(TextProperty, value);
     }
-    public NEASL_Button()
+    public NEASL_TextInput()
     {
         InitializeComponent();
         string path = Environment.CurrentDirectory;
         string fileName = @"BUTTON.neasl";
         InitScript(path, fileName);
         
-        Btn.Click += delegate { PRESSED(); };
         Btn.PointerEntered += delegate { HOVER(); };
         Btn.PointerExited += delegate { LEAVE(); };
     }
 
-    public NEASL_Button(string scriptContent)
+    public NEASL_TextInput(string scriptContent)
     {
         InitializeComponent();
         InitScript(scriptContent);
-        Btn.Click += delegate { PRESSED(); };
+        
         Btn.PointerEntered += delegate { HOVER(); };
         Btn.PointerExited += delegate { LEAVE(); };
     }
 
-    public NEASL_Button(string path,string fileName)
+    public NEASL_TextInput(string path,string fileName)
     {
         InitializeComponent();
         InitScript(path, fileName);
-        Btn.Click += delegate { PRESSED(); };
+        
         Btn.PointerEntered += delegate { HOVER(); };
         Btn.PointerExited += delegate { LEAVE(); };
     }
