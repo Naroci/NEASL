@@ -1,6 +1,6 @@
 namespace NEASL.Base;
 
-public class BaseLinkedObject : BaseReceiver, IBaseEventExecuter
+public class BaseLinkedObject : BaseReceiver, IBaseLinkedObject
 {
     public string Name { get; private set;  }
     Dictionary<string,string> scriptSections = new Dictionary<string,string>();

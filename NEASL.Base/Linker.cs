@@ -8,7 +8,7 @@ public class Linker
     const string EVENT_LINK_TYPE_KEY = ":";
     const string IDENTIFIER_LINK_TYPE_KEY = ":";
     
-    public static Dictionary<string, string> LoadSections(BaseLinkedObject linkObject, string scriptContent)
+    public static Dictionary<string, string> LoadSections(IBaseLinkedObject linkObject, string scriptContent)
     {
         Dictionary<string, string>  sectionsResult = new Dictionary<string, string>();
         if (linkObject == null)

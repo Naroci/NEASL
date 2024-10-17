@@ -9,5 +9,7 @@ public interface IBaseEventReceiver
     void Notify(string method, object[] args);
     
     void EventCallFinished(string methodname, object[] args);
-    
+
+    void SelfAssign();
+
 }

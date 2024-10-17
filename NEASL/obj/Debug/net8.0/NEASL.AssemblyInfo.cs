@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("NEASL")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+3dcd1013746fee25b2cb17f8ede72f1bc9f0bb37")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+1bb0d397394db89bc8709d1bbe70474059428833")]
 [assembly: System.Reflection.AssemblyProductAttribute("NEASL")]
 [assembly: System.Reflection.AssemblyTitleAttribute("NEASL")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
