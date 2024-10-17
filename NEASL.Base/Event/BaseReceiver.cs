@@ -1,5 +1,6 @@
 using System.Reflection;
 using System.Runtime.CompilerServices;
+using NEASL.Base.Linking;
 
 namespace NEASL.Base;
 
@@ -7,16 +8,19 @@ public class BaseReceiver : IBaseEventReceiver
 {
     private object m_parent;
     private string m_uniqueIdentifier;
+    private List<MethodInfo> m_methods;
     
     public BaseReceiver()
     {
         SelfAssign();
+        Context.GetInstance().GetEventManager().Register(this);
     }
     
     public void SelfAssign()
     {
+        m_methods = new List<MethodInfo>();
         m_parent = this;
-        var attribute = this.GetType().GetCustomAttribute<InstructionIdentifier>();
+        var attribute = this.GetType().GetCustomAttribute<Identifier>();
         
         // Needed Attribute was not assigned! => Throw exception.
         if (attribute == null)
@@ -29,6 +33,12 @@ public class BaseReceiver : IBaseEventReceiver
                 throw new NullReferenceException();
 
             this.m_uniqueIdentifier = attribute.Name;
+        }
+
+        if (m_parent.GetType().GetMethods().Any(m => m.GetCustomAttribute<Signature>() != null))
+        {
+            m_methods = m_parent.GetType().GetMethods().Where(m => m.GetCustomAttribute<Signature>() != null)
+                .Select(x => x).ToList();
         }
     }
     
@@ -45,6 +55,30 @@ public class BaseReceiver : IBaseEventReceiver
         return m_uniqueIdentifier;
     }
 
+    private MethodInfo FindMethod(string scriptMethodName, object[] args)
+    {
+        if (string.IsNullOrEmpty(scriptMethodName))
+            throw new NullReferenceException();
+        
+        if (this.m_methods == null || !this.m_methods.Any())
+            return null;
+
+        if (this.m_methods.Exists(x => x.GetCustomAttribute<Signature>()?.Name.Equals(scriptMethodName) == true))
+        {
+           var matchingNames = this.m_methods.Where(x => x.GetCustomAttribute<Signature>()?.Name.Equals(scriptMethodName) == true)
+                .ToList();
+           foreach (var method in matchingNames)
+           {
+               ParameterInfo[] parameters = method.GetParameters();
+               bool argsValid  = ParametersMatch(parameters, args);
+               if (argsValid)
+                   return method;
+           }
+        }
+
+        return null;
+    }
+
     public void Notify(string method, object[] args)
     {
         if (this.m_parent == null)
@@ -53,8 +87,8 @@ public class BaseReceiver : IBaseEventReceiver
             return;
         }
         
-        var _method = this.m_parent.GetType().GetMethod(method);
-        if (_method != null)
+        var _method = FindMethod(method, args);
+        if (_method != null && _method.GetCustomAttribute<Signature>() != null)
         {
             ParameterInfo[] parameters = _method.GetParameters();
             bool argsValid  = ParametersMatch(parameters, args);
@@ -66,6 +100,12 @@ public class BaseReceiver : IBaseEventReceiver
             {
                 Console.WriteLine(ex.Message);
             }
+        }
+        else
+        {
+            Console.WriteLine($"Method {method} not found!");
+            EventCallFinished(method, args);
+            return;
         }
     }
 

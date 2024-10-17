@@ -5,8 +5,8 @@
 /Users/mdmm/GitHub/TCBS/NEASL.Base/obj/Debug/net8.0/NEASL.Base.AssemblyInfoInputs.cache
 /Users/mdmm/GitHub/TCBS/NEASL.Base/obj/Debug/net8.0/NEASL.Base.AssemblyInfo.cs
 /Users/mdmm/GitHub/TCBS/NEASL.Base/obj/Debug/net8.0/NEASL.Base.csproj.CoreCompileInputs.cache
+/Users/mdmm/GitHub/TCBS/NEASL.Base/obj/Debug/net8.0/NEASL.Base.sourcelink.json
 /Users/mdmm/GitHub/TCBS/NEASL.Base/obj/Debug/net8.0/NEASL.Base.dll
 /Users/mdmm/GitHub/TCBS/NEASL.Base/obj/Debug/net8.0/refint/NEASL.Base.dll
 /Users/mdmm/GitHub/TCBS/NEASL.Base/obj/Debug/net8.0/NEASL.Base.pdb
 /Users/mdmm/GitHub/TCBS/NEASL.Base/obj/Debug/net8.0/ref/NEASL.Base.dll
-/Users/mdmm/GitHub/TCBS/NEASL.Base/obj/Debug/net8.0/NEASL.Base.sourcelink.json

@@ -1,0 +1,19 @@
+BUTTON:
+    NAME="Button1"
+    PRESSED:
+        APP->WriteLine(TEST!!!!)
+        APP->WriteLine(TEST!!!!, asd)
+        APP->WriteLine(TEST!!!!)
+        APP->WriteLine(TEST!!!!)
+        APP->WriteLine(TEST!!!!)
+        APP->WriteLine(TEST!!!!)
+        APP->WriteLine(TEST!!!!)
+        APP->WriteLine(TEST!!!!)
+        APP->WriteLine(TEST!!!!)
+        APP->WriteLine(TEST!!!!)
+    :PRESSED
+    
+    HOVER:
+    
+    :HOVER
+:BUTTON

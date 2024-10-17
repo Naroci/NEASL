@@ -1,0 +1,25 @@
+as a base structure, to differentiate between different objects given the same Name / Id
+its important to have some sort of folder / naming structure to prevent them from colliding.
+
+current thought is therefore to put "APP" as some sort of root folder and then for each Page 
+its own subfolder ->
+
+Either:
+------------------------------------ 
+    APP
+        |-> APP.neasl
+        |-> /PAGE                       //  ->  Whatever Type of a Section (as name).
+            |-> /PAGE1                  //  ->  Whatever given id-name of the Section
+                |-> PAGE1.neasl         //  ->  Script file itself.
+                |-> /BUTTON             //  ->  Whatever Type name of a component 
+                    |-> BUTTON1.neasl   //  ->  Script file itself.
+                    |-> BUTTON2.neasl   //  ->  Script file itself.
+            |-> /PAGE2
+                |-> PAGE2.neasl
+                |-> /BUTTON
+                    |-> BUTTON1.neasl
+                    |-> BUTTON2.neasl
+          
+still considering.....
+        
+        

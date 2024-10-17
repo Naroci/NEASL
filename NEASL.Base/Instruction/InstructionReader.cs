@@ -10,7 +10,6 @@ public class InstructionReader : IInstructionReader
             return null;
 
         Instruction returnValue = new Instruction();
-
         if (line.IndexOf("->") > -1)
         {
             var splittedParts = line.Split("->");
@@ -28,7 +27,6 @@ public class InstructionReader : IInstructionReader
                 }
             }
         }
-        
         return returnValue;
     }
 

@@ -7,7 +7,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <Folder Include="Context\" />
+      <ProjectReference Include="..\NEASL.Base\NEASL.Base.csproj" />
     </ItemGroup>
 
 </Project>
