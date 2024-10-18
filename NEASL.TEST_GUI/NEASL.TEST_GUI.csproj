@@ -27,11 +27,4 @@
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </None>
     </ItemGroup>
-
-    <ItemGroup>
-      <Compile Update="NEASL_TextInput.axaml.cs">
-        <DependentUpon>NEASL_TextInput.axaml</DependentUpon>
-        <SubType>Code</SubType>
-      </Compile>
-    </ItemGroup>
 </Project>
