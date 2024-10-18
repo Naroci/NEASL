@@ -16,7 +16,10 @@
     </ItemGroup>
 
     <ItemGroup>
-      <None Update="BUTTON.neasl">
+      <None Update="script\PAGE\BUTTON\BUTTON.neasl">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </None>
+      <None Update="script\app.neasl">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </None>
     </ItemGroup>

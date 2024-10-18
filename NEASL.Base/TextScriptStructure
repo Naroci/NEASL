@@ -7,7 +7,7 @@ its own subfolder ->
 Either:
 ------------------------------------ 
     APP
-        |-> APP.neasl
+        |-> MAIN.neasl                  //  ->  Main (App) Root / Index Info File.
         |-> /PAGE                       //  ->  Whatever Type of a Section (as name).
             |-> /PAGE1                  //  ->  Whatever given id-name of the Section
                 |-> PAGE1.neasl         //  ->  Script file itself.
@@ -19,7 +19,7 @@ Either:
                 |-> /BUTTON
                     |-> BUTTON1.neasl
                     |-> BUTTON2.neasl
-          
+        |-> /
 still considering.....
         
         

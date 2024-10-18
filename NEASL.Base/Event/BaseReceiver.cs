@@ -1,14 +1,14 @@
 using System.Reflection;
 using System.Runtime.CompilerServices;
 using NEASL.Base.Linking;
+using NEASL.Base.Object;
 
 namespace NEASL.Base;
 
-public class BaseReceiver : IBaseEventReceiver
+public class BaseReceiver : NEASL_Object, IBaseEventReceiver
 {
     private object m_parent;
-    private string m_uniqueIdentifier;
-    private List<MethodInfo> m_methods;
+    
     
     public BaseReceiver()
     {
@@ -18,7 +18,7 @@ public class BaseReceiver : IBaseEventReceiver
     
     public void SelfAssign()
     {
-        m_methods = new List<MethodInfo>();
+       
         m_parent = this;
         var attribute = this.GetType().GetCustomAttribute<Identifier>();
         
@@ -31,14 +31,6 @@ public class BaseReceiver : IBaseEventReceiver
         {
             if (string.IsNullOrEmpty(attribute.Name))
                 throw new NullReferenceException();
-
-            this.m_uniqueIdentifier = attribute.Name;
-        }
-
-        if (m_parent.GetType().GetMethods().Any(m => m.GetCustomAttribute<Signature>() != null))
-        {
-            m_methods = m_parent.GetType().GetMethods().Where(m => m.GetCustomAttribute<Signature>() != null)
-                .Select(x => x).ToList();
         }
     }
     
@@ -52,7 +44,7 @@ public class BaseReceiver : IBaseEventReceiver
 
     public string GetUniqueIdentifier()
     {
-        return m_uniqueIdentifier;
+        return base.GetObjectTypeName();
     }
 
     private MethodInfo FindMethod(string scriptMethodName, object[] args)
@@ -60,12 +52,12 @@ public class BaseReceiver : IBaseEventReceiver
         if (string.IsNullOrEmpty(scriptMethodName))
             throw new NullReferenceException();
         
-        if (this.m_methods == null || !this.m_methods.Any())
+        if (base.Methods == null || !base.Methods.Any())
             return null;
 
-        if (this.m_methods.Exists(x => x.GetCustomAttribute<Signature>()?.Name.Equals(scriptMethodName) == true))
+        if (base.Methods.Exists(x => x.GetCustomAttribute<Signature>()?.Name.Equals(scriptMethodName) == true))
         {
-           var matchingNames = this.m_methods.Where(x => x.GetCustomAttribute<Signature>()?.Name.Equals(scriptMethodName) == true)
+           var matchingNames = base.Methods.Where(x => x.GetCustomAttribute<Signature>()?.Name.Equals(scriptMethodName) == true)
                 .ToList();
            foreach (var method in matchingNames)
            {
@@ -130,8 +122,5 @@ public class BaseReceiver : IBaseEventReceiver
         return !misMatchFound;
     }
 
-    public void EventCallFinished(string methodname, params object[] args)
-    {
-        Context.GetInstance().GetQueryManager().SendCompleted(m_uniqueIdentifier, methodname,args);
-    }
+   
 }

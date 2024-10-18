@@ -35,10 +35,13 @@ public class Linker
             return new Dictionary<string, string>();
         }
 
-        
+   
         foreach (var signature in defiSignatures)
         {
             if (signature == null || signature != null && string.IsNullOrEmpty(signature.Name))
+                continue;
+
+            if (!SignatureExistsInScriptPart(rootContent, signature.Name))
                 continue;
             
             var signatureContent = fetchScriptPartByKeyword(signature.Name, rootContent);
@@ -47,6 +50,15 @@ public class Linker
         }
 
         return sectionsResult;
+    }
+
+    private static bool SignatureExistsInScriptPart(string scriptPart, string keywordName, string key = IDENTIFIER_LINK_TYPE_KEY)
+    {
+        string KeyWordSTART = $"{keywordName}{key}";
+        string KeyWordEND = $"{key}{keywordName}";
+        
+        return (scriptPart.IndexOf(KeyWordSTART, StringComparison.OrdinalIgnoreCase) >= -1
+                && scriptPart.IndexOf(KeyWordEND, StringComparison.OrdinalIgnoreCase) >= 1);
     }
 
     private static string fetchScriptPartByKeyword(string keywordName, string scriptContent, string key = IDENTIFIER_LINK_TYPE_KEY)
@@ -66,7 +78,7 @@ public class Linker
             }
         }
 
-        return null;
+        return scriptContent;
     }
 
     private static string trimByKeyword(string keywordName, string scriptContent, string key = IDENTIFIER_LINK_TYPE_KEY)

@@ -15,7 +15,10 @@ public class Instruction
     
     // Target name of the Method to call.
     public string MethodName;
-    
+
+    // If the current Instruction is Assigning a value to another.
+    public bool IsAssignment { get; set; }
+
     // Unique Identifier / Sorting value.
     public long Id { get; private set; }
     

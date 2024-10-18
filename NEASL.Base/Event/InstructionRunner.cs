@@ -1,3 +1,5 @@
+using NEASL.Base.Object;
+
 namespace NEASL.Base;
 
 public class InstructionRunner
@@ -14,12 +16,12 @@ public class InstructionRunner
         return m_instructionRunnerl;
     }
 
-    public async void Execute(string instructionSection)
+    public async void Execute(INEASL_Object sender, string instructionSection)
     {
         if (string.IsNullOrEmpty(instructionSection))
             return;
         
-       var instructions = GetInstructions(instructionSection);
+       var instructions = GetInstructions(sender,instructionSection);
        if (instructions.Count < 1)
        {
            Console.WriteLine("nothing to do.");
@@ -32,7 +34,7 @@ public class InstructionRunner
            Context.GetInstance().GetQueryManager().Start();
     }
 
-    private List<Instruction> GetInstructions(string instructionSection)
+    private List<Instruction> GetInstructions(INEASL_Object sender,string instructionSection)
     {
         List<Instruction> instructions = new List<Instruction>();
         string line = string.Empty;
@@ -42,15 +44,12 @@ public class InstructionRunner
             if (string.IsNullOrEmpty(line))
                 continue;
             
-            string trimmedLine = line.TrimStart();
-            
-            Instruction instruction = reader.getInstruction(trimmedLine);
+            Instruction instruction = reader.getInstruction(sender,line);
             if (instruction != null)
             {
                 instructions.Add(instruction);
             }
         }
-
         return instructions;
     }
 }

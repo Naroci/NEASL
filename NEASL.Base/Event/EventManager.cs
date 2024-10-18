@@ -5,14 +5,16 @@ using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Timers;
+using NEASL.Base.Object;
 
 namespace NEASL.Base;
 
 public class EventManager
 {
+
     Dictionary<string,IBaseEventReceiver> m_ReceiverList = new Dictionary<string,IBaseEventReceiver>();
     public EventManager()
-    {
+    { 
     }
 
     public void Register(IBaseEventReceiver Event)
@@ -49,7 +51,8 @@ public class EventManager
             throw new ArgumentNullException(nameof(theEvent));
         try
         {
-            theEvent.Notify(instruction.MethodName, instruction.Arguments);
+            var args = InstructionReader.ResolveReferencedVariables((INEASL_Object)theEvent, instruction.Arguments);
+            theEvent.Notify(instruction.MethodName.Trim(), args);
         }
         catch (Exception ex)
         {

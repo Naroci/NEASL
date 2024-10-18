@@ -2,6 +2,7 @@
 
 using System.Diagnostics;
 using System.Reflection;
+using NEASL.Base.Package;
 
 namespace NEASL.Base
 {
@@ -10,11 +11,19 @@ namespace NEASL.Base
     {
         public static int Main(string[] args)
         {
-            APP main = new APP();
+          
             string path = Environment.CurrentDirectory;
-            string fileName = @"BUTTON.neasl";
-            Button btnTest = new Button(path,fileName);
+            NEASL_App main = new NEASL_App();
+            main.AssignScript(path, "script/app.neasl");
+            main.START();
+            /*
+            var result = PackageManager.SearchPackageFiles(path);
+            string fileName = @"script/PAGE/BUTTON/BUTTON.neasl";
+            
+            Button btnTest = new Button();
+            btnTest.AssignScript(path, fileName);
             btnTest.ButtonPress();
+            */
             return 0;
         }
         

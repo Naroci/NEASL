@@ -4,16 +4,17 @@ namespace NEASL.Base;
 
 public static class AttributeHandler
 {
-    public static T GetAttributeByObject<T>(Object obj) where T : Attribute
+    public static T GetAttributeByObject<T>(System.Object obj) where T : Attribute
     {
         if (obj == null)
             throw new ArgumentNullException(nameof(obj));
         
+      
         var attribute = obj.GetType().GetCustomAttribute<T>();
         return attribute;
     }
 
-    public static List<MethodInfo> GetMethodsByAttributeType<T>(Object obj) where T : Attribute
+    public static List<MethodInfo> GetMethodsByAttributeType<T>(System.Object obj) where T : Attribute
     {
         if (obj == null) 
             throw new ArgumentNullException(nameof(obj));
@@ -39,8 +40,7 @@ public static class AttributeHandler
          Method,
          Event
      */
-
-    public static List<T> GetAttributesByAttributeTypeFromObjectsFields<T>(Object obj) where T : Attribute
+    public static List<T> GetAttributesByAttributeTypeFromObjectsFields<T>(System.Object obj) where T : Attribute
     {
         List<T> attributes = new List<T>();
         

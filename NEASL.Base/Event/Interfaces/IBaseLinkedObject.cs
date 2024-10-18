@@ -1,6 +1,8 @@
+using NEASL.Base.Object;
+
 namespace NEASL.Base;
 
-public interface IBaseLinkedObject : IBaseEventExecuter, IBaseEventReceiver
+public interface IBaseLinkedObject : IBaseEventExecuter, IBaseEventReceiver, INEASL_Object
 {
     public string FetchScript(string scriptFilePath);
 

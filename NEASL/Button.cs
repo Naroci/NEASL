@@ -5,11 +5,6 @@ namespace NEASL.Base;
 [Component("BUTTON")]
 public class Button : BaseLinkedObject
 {
-    public Button(string FilePath, string FileName) : base( FilePath,  FileName)
-    {
-       
-    }
-
     [Signature("PRESSED", LinkType.Event)]
     public void ButtonPress()
     {

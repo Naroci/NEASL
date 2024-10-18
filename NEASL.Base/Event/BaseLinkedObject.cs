@@ -3,13 +3,17 @@ namespace NEASL.Base;
 public class BaseLinkedObject : BaseReceiver, IBaseLinkedObject
 {
     public string NAME { get; private set;  }
+    
     Dictionary<string,string> scriptSections = new Dictionary<string,string>();
     private string scriptRawContent = string.Empty;
     private string filePath = string.Empty;
     private string fileName = string.Empty;
-    
-    private string scriptContent = string.Empty;
-    
+
+    public BaseLinkedObject() : base()
+    {
+    }
+
+    /*
     // Name is needed to create a context based on the folder structure to identify
     // the script of this object. 
     // For example /Page1/$scriptname1 or /Page1/$scriptname2 etc.
@@ -30,6 +34,24 @@ public class BaseLinkedObject : BaseReceiver, IBaseLinkedObject
         }
 
         scriptRawContent = content;
+        LinkToScript();
+    }*/
+
+    public void AssignScript(string scriptContent)
+    {
+        scriptRawContent = scriptContent;
+        LinkToScript();
+    }
+    
+    public void AssignScript(string FilePath,string FileName)
+    {
+        scriptRawContent = FetchScript(System.IO.Path.Combine(FilePath, FileName));
+        LinkToScript();
+    }
+    
+    public BaseLinkedObject(string scriptContent)
+    {
+        scriptRawContent = scriptContent;
         LinkToScript();
     }
     
@@ -69,7 +91,7 @@ public class BaseLinkedObject : BaseReceiver, IBaseLinkedObject
             return;
         }
         if (scriptSections.ContainsKey(EventIdentifierName))
-            InstructionRunner.GetInstance().Execute(scriptSections[EventIdentifierName]);
+            InstructionRunner.GetInstance().Execute(this,scriptSections[EventIdentifierName]);
     }
     
 

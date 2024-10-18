@@ -193,12 +193,18 @@ public class InstructionQueryManager
 
     public void SendCompleted(string sourceName, string MethodName, object[] args)
     {
+        if (string.IsNullOrEmpty(sourceName) || string.IsNullOrEmpty(MethodName))
+            return;
+        
         if (m_currentInstruction == null)
-            Console.WriteLine("SendCompleted -> [INVALID INSTRUCTION REQUEST! -> NO INSTRUCTION FOUND TO COMPLETE!]");
+        {
+            return;
+        }
+        
         lock (m_currentInstruction)
         {
-            if (m_currentInstruction != null && m_currentInstruction.BaseName == sourceName &&
-                m_currentInstruction.MethodName == MethodName)
+            if (m_currentInstruction != null && m_currentInstruction.BaseName.Trim() == sourceName.Trim() &&
+                m_currentInstruction.MethodName.Trim() == MethodName.Trim())
             {
                 if (m_currentInstruction.Arguments != null && args == null 
                     || args != null && m_currentInstruction.Arguments == null

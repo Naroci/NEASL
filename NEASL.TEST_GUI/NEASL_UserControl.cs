@@ -124,7 +124,7 @@ public class NEASL_UserControl : UserControl, IBaseLinkedObject
             return;
         }
         if (scriptSections.ContainsKey(EventIdentifierName))
-            InstructionRunner.GetInstance().Execute(scriptSections[EventIdentifierName]);
+            InstructionRunner.GetInstance().Execute(this,scriptSections[EventIdentifierName]);
     }
     
     public Type GetParentType()
@@ -218,5 +218,25 @@ public class NEASL_UserControl : UserControl, IBaseLinkedObject
     public void EventCallFinished(string methodname, params object[] args)
     {
         Context.GetInstance().GetQueryManager().SendCompleted(m_uniqueIdentifier, methodname,args);
+    }
+
+    public string GetNamespace()
+    {
+        throw new NotImplementedException();
+    }
+
+    public void SetNamespace(string value)
+    {
+        throw new NotImplementedException();
+    }
+
+    public void SetObjectTypeName(string value)
+    {
+        throw new NotImplementedException();
+    }
+
+    public string GetObjectTypeName()
+    {
+        throw new NotImplementedException();
     }
 }

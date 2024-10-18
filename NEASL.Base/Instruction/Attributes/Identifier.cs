@@ -21,8 +21,13 @@ public class Component(string identifierName) : Identifier(identifierName, Ident
 [AttributeUsage(AttributeTargets.Class, Inherited = true, AllowMultiple = false)]
 public class Section(string identifierName) : Identifier(identifierName, IdentifierType.Section);
 
+[AttributeUsage(AttributeTargets.Class, Inherited = true, AllowMultiple = false)]
+public class Main(string identifierName) : Identifier(identifierName, IdentifierType.Root);
+
+
 public enum IdentifierType
 {
+    Root,
     Component,
     Section
 }
