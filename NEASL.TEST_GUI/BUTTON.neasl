@@ -1,6 +1,5 @@
 BUTTON:
-    NAME="Button1"
-    
+    NAME="Button1" 
     PRESSED:
         APP->SHOW_DIALOG(New Dialog,This is a Test!)
     :PRESSED

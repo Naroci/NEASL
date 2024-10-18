@@ -144,3 +144,7 @@
 /home/naroci/GitHub/TCBS/NEASL.TEST_GUI/bin/Debug/net8.0/ReactiveUI.dll
 /home/naroci/GitHub/TCBS/NEASL.TEST_GUI/bin/Debug/net8.0/Splat.dll
 /home/naroci/GitHub/TCBS/NEASL.TEST_GUI/bin/Debug/net8.0/System.Reactive.dll
+/Users/mdmm/GitHub/TCBS/NEASL.TEST_GUI/bin/Debug/net8.0/DynamicData.dll
+/Users/mdmm/GitHub/TCBS/NEASL.TEST_GUI/bin/Debug/net8.0/ReactiveUI.dll
+/Users/mdmm/GitHub/TCBS/NEASL.TEST_GUI/bin/Debug/net8.0/Splat.dll
+/Users/mdmm/GitHub/TCBS/NEASL.TEST_GUI/bin/Debug/net8.0/System.Reactive.dll
