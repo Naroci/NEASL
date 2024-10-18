@@ -10,16 +10,22 @@ public class BaseReceiver : NEASL_Object, IBaseEventReceiver
 {
     private object m_parent;
     
-    
     public BaseReceiver()
     {
         SelfAssign();
         Context.GetInstance().GetEventManager().Register(this);
     }
     
+    public Type GetParentType()
+    {
+        if (m_parent == null)
+            return null;
+        
+        return m_parent.GetType();
+    }
+    
     public void SelfAssign()
     {
-       
         m_parent = this;
         var attribute = this.GetType().GetCustomAttribute<Identifier>();
         
@@ -35,14 +41,6 @@ public class BaseReceiver : NEASL_Object, IBaseEventReceiver
         }
     }
     
-    public Type GetParentType()
-    {
-        if (m_parent == null)
-            return null;
-        
-        return m_parent.GetType();
-    }
-
     public string GetUniqueIdentifier()
     {
         return base.GetObjectTypeName();

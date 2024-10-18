@@ -12,7 +12,6 @@ namespace NEASL.Base
     {
         public static int Main(string[] args)
         {
-          
             string path = Environment.CurrentDirectory;
             NEASL_App main = new NEASL_App();
             main.AssignScript(path, "script/app.neasl");

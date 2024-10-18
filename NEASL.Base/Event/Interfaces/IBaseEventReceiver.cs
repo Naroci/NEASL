@@ -1,8 +1,9 @@
 using System;
+using NEASL.Base.Object;
 
 namespace NEASL.Base;
 
-public interface IBaseEventReceiver
+public interface IBaseEventReceiver: INEASL_Object
 {
     Type GetParentType();
     
@@ -10,8 +11,6 @@ public interface IBaseEventReceiver
     
     void Notify(string method, object[] args);
     
-    void EventCallFinished(string methodname, object[] args);
-
     void SelfAssign();
 
 }

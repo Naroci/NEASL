@@ -2,10 +2,10 @@ APP:
     NAME="Sample Script!"
     START:
         TEST = 123
-        ANDEREVAL = TEST
+        ANDEREVAL = was anderes
         was = text
         WRITE_LINE(TEST)
         WRITE_LINE(ANDEREVAL)
-        WRITE_LINE(was)
+        WRITE_LINE(TEST, ANDEREVAL)
     :START
 :APP

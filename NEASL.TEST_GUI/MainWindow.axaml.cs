@@ -27,6 +27,8 @@ public partial class MainWindow : Window
         string path = System.IO.Path.Combine(Environment.CurrentDirectory, "BUTTON.neasl");
         string script = FetchScript(path);
         this.TextInput.Text = script;
+        var btn = this.FindControl<NEASL_Button>("NeaslButton");
+        btn.AssignScript(script);
     }
 
 
@@ -35,7 +37,7 @@ public partial class MainWindow : Window
         var btn = this.FindControl<NEASL_Button>("NeaslButton");
         if (btn != null)
         {
-            btn.ReAssign(this.TextInput.Text);
+            btn.AssignScript(this.TextInput.Text);
         }
 
    

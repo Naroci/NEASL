@@ -5,6 +5,11 @@ namespace NEASL.Base.Object;
 
 public interface INEASL_Object
 {
+    public int UniquePtrHash { get; }
+    public IdentifierType ObjectType { get; }
+    
+    List<MethodInfo> Methods { get;}
+    
     public string GetNamespace();
     public void SetNamespace(string value);
 
@@ -14,5 +19,5 @@ public interface INEASL_Object
     object GetVariableValue(string variableName, bool fireFinish = false);
     void SetVariableValue(string variableName, string value);
 
-    List<MethodInfo> Methods { get;}
+    void EventCallFinished(string methodname, params object[] args);
 }

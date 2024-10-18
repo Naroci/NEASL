@@ -32,7 +32,7 @@ public partial class NEASL_Button : NEASL_UserControl
         InitializeComponent();
         string path = Environment.CurrentDirectory;
         string fileName = @"BUTTON.neasl";
-        InitScript(path, fileName);
+        //InitScript(path, fileName);
         
         Btn.Click += delegate { PRESSED(); };
         Btn.PointerEntered += delegate { HOVER(); };
@@ -42,12 +42,13 @@ public partial class NEASL_Button : NEASL_UserControl
     public NEASL_Button(string scriptContent)
     {
         InitializeComponent();
-        InitScript(scriptContent);
+        AssignScript(scriptContent);
         Btn.Click += delegate { PRESSED(); };
         Btn.PointerEntered += delegate { HOVER(); };
         Btn.PointerExited += delegate { LEAVE(); };
     }
 
+    /*
     public NEASL_Button(string path,string fileName)
     {
         InitializeComponent();
@@ -55,7 +56,7 @@ public partial class NEASL_Button : NEASL_UserControl
         Btn.Click += delegate { PRESSED(); };
         Btn.PointerEntered += delegate { HOVER(); };
         Btn.PointerExited += delegate { LEAVE(); };
-    }
+    }*/
     
     [Signature(nameof(PRESSED), LinkType.Event)]
     public void PRESSED()

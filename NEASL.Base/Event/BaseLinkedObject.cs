@@ -16,31 +16,13 @@ public class BaseLinkedObject : BaseReceiver, IBaseLinkedObject
     public BaseLinkedObject() : base()
     {
     }
-
-    /*
-    // Name is needed to create a context based on the folder structure to identify
-    // the script of this object. 
-    // For example /Page1/$scriptname1 or /Page1/$scriptname2 etc.
-    public BaseLinkedObject(string Path, string FileName) : base()
+    
+    public BaseLinkedObject(string scriptContent)
     {
-        this.fileName = FileName;
-        this.filePath = Path;
-        
-        var fullPath = System.IO.Path.Combine(this.filePath, this.fileName);
-        if (!File.Exists(fullPath))
-            throw new FileLoadException();
-
-        var content = FetchScript(fullPath);
-        if (string.IsNullOrEmpty(content))
-        {
-            Console.WriteLine("[WARN] Script was empty.");
-            return;
-        }
-
-        scriptRawContent = content;
+        scriptRawContent = scriptContent;
         LinkToScript();
-    }*/
-
+    }
+    
     public void AssignScript(string scriptContent)
     {
         scriptRawContent = scriptContent;
@@ -52,13 +34,7 @@ public class BaseLinkedObject : BaseReceiver, IBaseLinkedObject
         scriptRawContent = FetchScript(System.IO.Path.Combine(FilePath, FileName));
         LinkToScript();
     }
-    
-    public BaseLinkedObject(string scriptContent)
-    {
-        scriptRawContent = scriptContent;
-        LinkToScript();
-    }
-    
+   
     public string FetchScript(string scriptFilePath)
     {
         if (!File.Exists(scriptFilePath))
