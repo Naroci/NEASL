@@ -1,3 +1,5 @@
+using System;
+
 namespace NEASL.Base;
 
 [AttributeUsage(AttributeTargets.Class, Inherited = true, AllowMultiple = false)]

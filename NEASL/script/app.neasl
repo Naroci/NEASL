@@ -3,7 +3,9 @@ APP:
     START:
         TEST = 123
         ANDEREVAL = TEST
+        was = text
         WRITE_LINE(TEST)
         WRITE_LINE(ANDEREVAL)
+        WRITE_LINE(was)
     :START
 :APP

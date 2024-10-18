@@ -1,3 +1,5 @@
+using System;
+
 namespace NEASL.Base.Linking;
 
 [AttributeUsage(AttributeTargets.All, Inherited = true, AllowMultiple = false)]
