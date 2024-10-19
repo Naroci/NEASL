@@ -3,18 +3,25 @@ using NEASL.Base.Linking;
 
 namespace NEASL.Base;
 
-[Component("BUTTON")]
-public class Button : BaseLinkedObject
+[Component(nameof(BUTTON))]
+public class BUTTON : BaseLinkedObject
 {
-    [Signature("PRESSED", LinkType.Event)]
-    public void ButtonPress()
+    [Signature(nameof(PRESSED), LinkType.Event)]
+    public void PRESSED()
     {
-        this.PerformScriptEvent("PRESSED");
+        this.PerformScriptEvent(nameof(PRESSED));
     }
-
-    public void TestCall(string asdf)
+    
+    [Signature(nameof(HOVER), LinkType.Event)]
+    public void HOVER()
     {
-        Console.WriteLine(asdf);
-        EventCallFinished(nameof(TestCall), asdf);
+        this.PerformScriptEvent(nameof(HOVER));
     }
+    
+    [Signature(nameof(LEAVE), LinkType.Event)]
+    public void LEAVE()
+    {
+        this.PerformScriptEvent(nameof(LEAVE));
+    }
+    
 }
