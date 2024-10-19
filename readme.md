@@ -69,8 +69,8 @@ its own subfolder:
 ### Structure (still considering.....):
 
     APP
-        |-> APP.neasl                  //  ->  Main (App) Root / Index Info File.
-        |-> /PAGE                       //  ->  Whatever Type of a Section (as name).
+        |-> APP.neasl                   //  ->  Main (App) Root / Index Info File.
+        |-> /PAGE (Section)             //  ->  Whatever Type of a Section (as name).
             |-> /PAGE1                  //  ->  Whatever given id-name of the Section
                 |-> PAGE1.neasl         //  ->  Script file itself.
                 |-> /BUTTON             //  ->  Whatever Type name of a component 
@@ -81,9 +81,6 @@ its own subfolder:
                 |-> /BUTTON
                     |-> BUTTON1.neasl
                     |-> BUTTON2.neasl
-        |-> /
-
-
 ---
 ### Note
 
