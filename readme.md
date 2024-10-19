@@ -36,7 +36,7 @@ public class BUTTON : BaseLinkedObject
     [Signature(nameof(PRESSED), LinkType.Event)]
     public void PRESSED()
     {
-    this.PerformScriptEvent(nameof(PRESSED));
+        this.PerformScriptEvent(nameof(PRESSED));
     }
 
     [Signature(nameof(HOVER), LinkType.Event)]
