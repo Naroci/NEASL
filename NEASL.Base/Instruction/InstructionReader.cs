@@ -18,6 +18,7 @@ public class InstructionReader : IInstructionReader
         
         Instruction returnValue = new Instruction();
         returnValue.IsAssignment = IsAssignment(line);
+        returnValue.Sender = source;
         if (returnValue.IsAssignment)
         {
             var avalues = GetAssignmentValues(line);

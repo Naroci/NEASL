@@ -1,4 +1,5 @@
 using System;
+using NEASL.Base.Object;
 
 namespace NEASL.Base;
 
@@ -8,6 +9,9 @@ public class Instruction
     {
         Id = (long)DateTime.UtcNow.TimeOfDay.TotalNanoseconds;
     }
+    
+    // From which context the instruction has been calle.
+    public INEASL_Object Sender { get; set; }
 
     // Identifier / Name of the Target Class name (prob. Identifying via a class attribute might be the best)
     public string BaseName;

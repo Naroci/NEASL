@@ -42,8 +42,11 @@ public class NEASL_App : BaseReceiver
         window.Title = Title;
         window.HorizontalContentAlignment = HorizontalAlignment.Center;
         window.VerticalContentAlignment = VerticalAlignment.Center;
+        window.FontSize = 32;
         window.Content = Message;
         window.WindowStartupLocation = WindowStartupLocation.CenterOwner;
+        window.Height = 200;
+        window.Width = 300;
         window.ShowDialog(App.GetMainWindow());
         EventCallFinished(nameof(SHOW_DIALOG),Title,Message);
     }
