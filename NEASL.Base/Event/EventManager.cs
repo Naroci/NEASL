@@ -51,10 +51,7 @@ public class EventManager
             throw new ArgumentNullException(nameof(theEvent));
         try
         {
-            var args = instruction.Arguments;
-            if (!instruction.IsAssignment)
-                args = InstructionReader.ResolveReferencedVariables(instruction.Sender, args);
-            
+            var args = InstructionReader.ResolveReferencedVariables(instruction.Sender, instruction.Arguments,instruction.IsAssignment);
             theEvent.Notify(instruction.MethodName.Trim(), args);
         }
         catch (Exception ex)

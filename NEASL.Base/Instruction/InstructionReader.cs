@@ -57,15 +57,18 @@ public class InstructionReader : IInstructionReader
         return returnValue;
     }
 
-    public static object[] ResolveReferencedVariables(INEASL_Object source, object[] args)
+    public static object[] ResolveReferencedVariables(INEASL_Object source, object[] args,bool isAssigment = false)
     {
         if (source == null)
             throw new ArgumentException(nameof(source));
         if (args == null || args.Length == 0)
             return args;
-
+        
         for (int i = 0; i < args.Length; i++)
         {
+            if (isAssigment && i == 0)
+                    continue;
+            
             var value = source.GetVariableValue((string)args[i], false);
             if (value != null)
             {
