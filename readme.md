@@ -1,6 +1,6 @@
 # NEASL - Not Even A Scripting Language
 
-Welcome to **NEASL** (Not Even A Scripting Language)! This is just a small side project I started for fun. The idea is to create a very basic DSL (Domain Specific Language) that lets you control your C# code with simple scripts.
+**NEASL** (Not Even A Scripting Language)! This is just a small side project I started for fun. The idea is to create a very basic toy language that lets you control your C# code with simple scripts.
 
 
 --- 
