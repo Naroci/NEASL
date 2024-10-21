@@ -1,7 +1,8 @@
 BUTTON:
-    NAME="Button1"
+    NAME=Button1
     PRESSED:
-        APP->WriteLine(Hello World!)
+        APP->WRITE_LINE(Hello World!)
+        APP->NAVIGATE(Page1)
     :PRESSED
     HOVER:
         BACKGROUND_COLOR(Green)

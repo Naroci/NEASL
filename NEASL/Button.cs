@@ -6,6 +6,14 @@ namespace NEASL.Base;
 [Component(nameof(BUTTON))]
 public class BUTTON : BaseLinkedObject
 {
+    public BUTTON(string scriptContent) : base(scriptContent)
+    {
+    }
+    
+    public BUTTON() : base()
+    {
+    }
+
     [Signature(nameof(PRESSED), LinkType.Event)]
     public void PRESSED()
     {
@@ -23,5 +31,4 @@ public class BUTTON : BaseLinkedObject
     {
         this.PerformScriptEvent(nameof(LEAVE));
     }
-    
 }

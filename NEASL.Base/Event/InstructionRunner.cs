@@ -42,6 +42,10 @@ public class InstructionRunner
         List<Instruction> instructions = new List<Instruction>();
         string line = string.Empty;
         StringReader rs = new StringReader(instructionSection);
+        
+        Instruction subEntryPoint = null;
+        Instruction subLeavePoint = null;
+        
         while ((line = rs.ReadLine()) != null)
         {
             if (string.IsNullOrEmpty(line))

@@ -1,7 +1,11 @@
 using System;
+using System.IO;
+using System.Threading.Tasks;
 using Avalonia.Controls;
 using Avalonia.Layout;
+using Avalonia.Markup.Xaml;
 using Avalonia.Media;
+using Avalonia.Threading;
 using NEASL.Base.Linking;
 using NEASL.TEST_GUI;
 
@@ -57,5 +61,28 @@ public class NEASL_App : BaseReceiver
         var brush = new SolidColorBrush(Color.Parse(colorValue));
         App.GetMainWindow().Background = brush;
         EventCallFinished(nameof(SET_BACKGROUND_COLOR),colorValue);
+    }
+    
+    
+    [Signature(nameof(NAVIGATE), LinkType.Method)]
+    public async void NAVIGATE(string pageName)
+    {
+        string path = Environment.CurrentDirectory;
+        string filePath = System.IO.Path.Combine(path,pageName);
+        await Dispatcher.UIThread.InvokeAsync(() =>
+        {
+            NEASL_Page returnCtrl = new NEASL_Page();
+          
+            if (File.Exists(filePath))
+            {
+                string xaml = File.ReadAllText(filePath);
+                object asd = AvaloniaRuntimeXamlLoader.Parse<ContentControl>(xaml);
+                returnCtrl = (NEASL_Page)asd;
+            }
+            App.GetMainWindow().Content = returnCtrl;
+        });
+        // Load the .axaml file
+        
+        EventCallFinished(nameof(NAVIGATE),pageName);
     }
 }

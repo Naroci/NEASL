@@ -31,7 +31,8 @@ public class EventManager
 
     public bool ReceiverForInstructionRegistered(Instruction instruction)
     {
-        if (instruction == null || m_ReceiverList == null || m_ReceiverList != null && m_ReceiverList.Count == 0)
+        if (instruction == null || m_ReceiverList == null || m_ReceiverList != null && m_ReceiverList.Count == 0
+            || instruction != null && string.IsNullOrEmpty(instruction.BaseName))
             return false;
         
         return m_ReceiverList.ContainsKey(instruction.BaseName);

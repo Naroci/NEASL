@@ -13,6 +13,10 @@ public class Instruction
     // From which context the instruction has been calle.
     public INEASL_Object Sender { get; set; }
 
+    // Defines the point of where the other part of the SubSection Ends or Starts 
+    // depending on what the current role of the curren Instruction is.
+    public Instruction EntryLeavePoint { get; set; }
+
     // Identifier / Name of the Target Class name (prob. Identifying via a class attribute might be the best)
     public string BaseName;
     
@@ -24,6 +28,14 @@ public class Instruction
 
     // If the current Instruction is Assigning a value to another.
     public bool IsAssignment { get; set; }
+
+    public bool IsCondition { get; set; }
+    
+    public bool IsLoop { get; set; }
+
+    public bool IsSubSectionEntry { get; set; }
+    
+    public bool IsSubSectionLeave { get; set; }
 
     // Unique Identifier / Sorting value.
     public long Id { get; private set; }

@@ -61,13 +61,13 @@ public class BaseLinkedObject : BaseReceiver, IBaseLinkedObject
     {
         if (scriptSections == null || scriptSections != null && scriptSections.Count == 0)
         {
-            Console.WriteLine($"[WARN] Requested Event / Method \"{EventIdentifierName}\" not found, Script was empty.");
+            //Console.WriteLine($"[WARN] Requested Event / Method \"{EventIdentifierName}\" not found, Script was empty.");
             return;
         }
 
         if (!scriptSections.ContainsKey(EventIdentifierName))
         {
-            Console.WriteLine($"[WARN] Requested Event / Method \"{EventIdentifierName}\" not found!");
+            //Console.WriteLine($"[WARN] Requested Event / Method \"{EventIdentifierName}\" not found!");
             return;
         }
         if (scriptSections.ContainsKey(EventIdentifierName))

@@ -1,13 +1,10 @@
 BUTTON:
-    NAME="Button1"
+    NAME=Button1
     PRESSED:
-        APP->WriteLine(Hello World!)
+        APP->WRITE_LINE(Hello World!)
+        value = Test
+        IF(value = Test):
+        
+        :IF
     :PRESSED
-    HOVER:
-        BACKGROUND_COLOR(Green)
-    :HOVER
-    LEAVE:
-        BACKGROUND_COLOR(White)
-        APP->SHOW_DIALOG(Title,Content)
-    :LEAVE
 :BUTTON

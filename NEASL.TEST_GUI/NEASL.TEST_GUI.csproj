@@ -5,12 +5,13 @@
         <Nullable>enable</Nullable>
         <BuiltInComInteropSupport>true</BuiltInComInteropSupport>
         <ApplicationManifest>app.manifest</ApplicationManifest>
-        <AvaloniaUseCompiledBindingsByDefault>true</AvaloniaUseCompiledBindingsByDefault>
+        <AvaloniaUseCompiledBindingsByDefault>false</AvaloniaUseCompiledBindingsByDefault>
     </PropertyGroup>
 
     <ItemGroup>
         <PackageReference Include="Avalonia" Version="11.1.4"/>
         <PackageReference Include="Avalonia.Desktop" Version="11.1.4"/>
+        <PackageReference Include="Avalonia.Markup.Xaml.Loader" Version="11.1.4" />
         <PackageReference Include="Avalonia.Themes.Fluent" Version="11.1.4"/>
         <PackageReference Include="Avalonia.Fonts.Inter" Version="11.1.4"/>
         <!--Condition below is needed to remove Avalonia.Diagnostics package from build output in Release configuration.-->
@@ -26,5 +27,13 @@
       <None Update="BUTTON.neasl">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </None>
+     
+    </ItemGroup>
+
+    <ItemGroup>
+      <AvaloniaXaml Remove="test.axaml" />
+      <Content Include="test.axaml">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Content>
     </ItemGroup>
 </Project>

@@ -44,7 +44,7 @@ public class InstructionQueryManager
         }
         else
         {
-            Console.WriteLine("Nothing to do...!");
+            //Console.WriteLine("Finished!");
             Stop();
         }
 
@@ -193,7 +193,9 @@ public class InstructionQueryManager
         return this.InstructionQuery.ToList().Contains(theEvent);
     }
 
-    public void SendCompleted(string sourceName, string MethodName, object[] args)
+    // Make sure to take the result in account to either return / set values or to
+    // behave on conditions.
+    public void SendCompleted(string sourceName, string MethodName, object[] args, object result = null)
     {
         if (string.IsNullOrEmpty(sourceName) || string.IsNullOrEmpty(MethodName))
             return;
@@ -217,12 +219,30 @@ public class InstructionQueryManager
                          || args != null && m_currentInstruction.Arguments != null &&
                          args.Length == m_currentInstruction.Arguments.Length)
                 {
+                    // Check if the current returned result was part of a condition
+                    // (ex. IF(): ELSE etc. to make sure to consider to go into the SubEntry or to ignore it)
+                    if (m_currentInstruction.IsCondition 
+                        || m_currentInstruction.IsLoop
+                        || m_currentInstruction.IsSubSectionEntry
+                        || result != null)
+                    {
+                        if (m_currentInstruction.IsCondition && result is bool conditionResult == true)
+                        {
+                            
+                        }
+                        else if (m_currentInstruction.IsCondition && result is bool res == false)
+                        {
+                            
+                        }
+                    }
+
                     RemoveItemFromList(m_currentInstruction);
                     Start();
                 }
             }
         }
     }
+    
 
     public bool RemoveItemFromList(Instruction theEvent)
     {

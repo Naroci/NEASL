@@ -2,13 +2,14 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using NEASL.Base.Linking;
+using NEASL.Base.Global.Definitions;
 
 namespace NEASL.Base;
 
 public class Linker
 {
-    const string EVENT_LINK_TYPE_KEY = ":";
-    const string IDENTIFIER_LINK_TYPE_KEY = ":";
+    private const string EVENT_LINK_TYPE_KEY = Values.Keywords.Identifier.SECTION_START_IDENTIFIER;
+    const string IDENTIFIER_LINK_TYPE_KEY = Values.Keywords.Identifier.SECTION_START_IDENTIFIER;
     
     public static Dictionary<string, string> LoadSections(IBaseLinkedObject linkObject, string scriptContent)
     {

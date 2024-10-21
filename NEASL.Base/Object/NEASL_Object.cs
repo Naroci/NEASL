@@ -34,19 +34,22 @@ public class NEASL_Object : INEASL_Object
 
     public NEASL_Object()
     {
-        
         Identifier ident = AttributeHandler.GetAttributeByObject<Identifier>(this);
         if (ident == null)
             throw new CustomAttributeFormatException();
+        
         m_methods = new List<MethodInfo>();
         scriptVariables = new Dictionary<string, object>();
+        
         this.m_typeName = ident.Name;
         this.ObjectType = ident.IdentifierType;
+        
         if (this.GetType().GetMethods().Any(m => m.GetCustomAttribute<Signature>() != null))
         {
             m_methods = this.GetType().GetMethods().Where(m => m.GetCustomAttribute<Signature>() != null)
                 .Select(x => x).ToList();
         }
+        
         int uniqueId = RuntimeHelpers.GetHashCode(this);
         this.UniquePtrHash = uniqueId;
     }
@@ -95,9 +98,23 @@ public class NEASL_Object : INEASL_Object
         }
         EventCallFinished(nameof(SetVariableValue),variableName, value);
     }
-    
+
+    [Signature(nameof(SetVariableValue), LinkType.Method)]
+    public void CompareValues(object valueL, object valueR, string comparisonIdentifier)
+    {
+        // Compare and then send the result to the manager to ensure to either
+        // Skip or run through all remaining instructions.
+        //throw new NotImplementedException();
+        ReturnEventResult(nameof(CompareValues), new[] { valueL, valueR }, false);
+    }
+
     public void EventCallFinished(string methodname, params object[] args)
     {
         Context.GetInstance().GetQueryManager().SendCompleted(m_typeName, methodname,args);
+    }
+
+    public void ReturnEventResult(string methodname, object[] args, object result)
+    {
+        Context.GetInstance().GetQueryManager().SendCompleted(m_typeName, methodname,args,result);
     }
 }
