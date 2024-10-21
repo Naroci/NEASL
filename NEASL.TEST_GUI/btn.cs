@@ -1,11 +1,15 @@
 using System;
+using Avalonia.Controls;
+using Avalonia.Media;
 using NEASL.Base.Linking;
+using NEASL.TEST_GUI;
 
 namespace NEASL.Base;
 
 [Component("BUTTON")]
 public class btn : BaseLinkedObject
 {
+    private NEASL_Button controlBtn;
     public btn() : base()
     {
         
@@ -14,6 +18,25 @@ public class btn : BaseLinkedObject
     public btn(string content) : base(content)
     {
         
+    }
+
+    public void SetControl(NEASL_Button control)
+    {
+        if (control == null)
+            throw new ArgumentNullException(nameof(control));
+        
+        this.controlBtn = control;
+    }
+
+    [Signature(nameof(BACKGROUND_COLOR), LinkType.Method)]
+    public void BACKGROUND_COLOR(string ColorStringValue)
+    {
+        if (this.controlBtn == null)
+            return;
+        
+        var brush = new SolidColorBrush(Color.Parse(ColorStringValue));
+        this.controlBtn.Background = brush;
+        EventCallFinished(nameof(BACKGROUND_COLOR),ColorStringValue);
     }
 
     [Signature(nameof(PRESSED), LinkType.Event)]

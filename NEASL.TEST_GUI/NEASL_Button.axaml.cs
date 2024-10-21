@@ -31,7 +31,8 @@ public partial class NEASL_Button : NEASL_UserControl
     
     public NEASL_Button()
     {
-        InitializeComponent();
+        InitializeComponent(); 
+        btn.SetControl(this);
         if (!eventsAssigned)
         {
             Btn.Click += delegate { btn.PRESSED(); };
@@ -44,6 +45,7 @@ public partial class NEASL_Button : NEASL_UserControl
     public NEASL_Button(string scriptContent)
     {
         InitializeComponent();
+        btn.SetControl(this);
         btn.AssignScript(scriptContent);
         if (!eventsAssigned)
         {
@@ -58,6 +60,7 @@ public partial class NEASL_Button : NEASL_UserControl
     {
         btn = new btn(content);
         btn.AssignScript(content);
+        btn.SetControl(this);
         if (!eventsAssigned)
         {
             Btn.Click += delegate { btn.PRESSED(); };

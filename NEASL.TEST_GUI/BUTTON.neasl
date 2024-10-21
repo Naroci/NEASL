@@ -1,7 +1,12 @@
 BUTTON:
-    NAME="Button1" 
+    NAME="Button1"
     PRESSED:
-        testVar = Moin!
-        APP->SHOW_DIALOG(testVar,This is a Test!)
+        APP->WriteLine(Hello World!)
     :PRESSED
+    HOVER:
+        BACKGROUND_COLOR(Green)
+    :HOVER
+    LEAVE:
+        APP->SHOW_DIALOG(Title,Content)
+    :LEAVE
 :BUTTON
