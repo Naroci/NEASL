@@ -65,17 +65,12 @@ public struct Values
             // ex. UNTIL( ....
             public const string LOOP_CONDITION_START_IDENTIFIER = "(";
             
-            // Identifier to identify the condition end of a loop.
-            // ex. ....):
-            public const string LOOP_CONDITION_END_IDENTIFIER = "):";
             
             // Identifier to identify the condition start of a condition.
             // ex. IF( ....
             public const string CONDITION_CONDITION_START_IDENTIFIER = "(";
             
-            // Identifier to identify the condition end of a condition.
-            // ex. ....):
-            public const string CONDITION_CONDITION_END_IDENTIFIER =  "):";
+
             
             public const string ARGUMENT_SEPARATOR_IDENTIFIER = ",";
         }
@@ -99,6 +94,17 @@ public struct Values
             
             // And keyword for when either one or the other should be true.
             public const string OR_KEYWORD = "OR";
+            
+            public enum Comparison
+            {
+                UNDEFINED,
+                EQUAL,
+                NOT_EQUAL,
+                SMALLER_THAN,
+                BIGGER_THAN,
+                AND,
+                OR
+            }
         }
 
         public struct MathematicalOperators

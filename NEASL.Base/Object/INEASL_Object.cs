@@ -19,7 +19,7 @@ public interface INEASL_Object
     object GetVariableValue(string variableName, bool fireFinish = false);
     void SetVariableValue(string variableName, string value);
     
-    void CompareValues(object valueL, object valueR, string comparisonIdentifier);
+    void CompareValues(string valueL, string comparisonIdentifier, string valueR);
 
     void EventCallFinished(string methodname, params object[] args);
     

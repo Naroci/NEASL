@@ -119,23 +119,25 @@ Therfore its not planned out and structured quite well...
 |  🔴  | 🟡          |    🟢   |
 ---
 | Feature                 | Description                                                                              | Implemented |
-|-------------------------|------------------------------------------------------------------------------------------|---------|
-| **Variables**           | Allow storing and manipulating data (Types still missing, everything is just string)     |   🟢     |
-| **Control Structures**  | Basic conditional and looping structures.                                                |    🔴  |
-| If/Else                 | Branching logic based on conditions.                                                     |   🔴    |
-| Loops                   | UNTIL and WHILE for repeated execution.                                                  |   🔴    |
-| Switch/Case             | Alternate form of branching based on value matching.                                     |   🔴    |
-| **Functions**           | Reusable blocks of code that can take inputs (parameters).                               |   🟢   |
-| **Return Variables**    | Methods that can return variables as a value.                                            |   🔴   |
-| **Input/Output (I/O)**  | Handling of standard input and output.                                                   |   🔴    |
-| Standard input          | Reading user input                                                                       |   🔴    |
-| Standard output         | Writing output to the console                                                            |   🟢    |
-| **Operators**           | Support for arithmetic, comparison, and logical operators.                               |   🔴    |
-| Arithmetic Operators    | `+`, `-`, `*`, `/` for mathematical operations.                                          |  🔴     |
-| Comparison Operators    | `==`, `!=`, `<`, `>` for comparisons.                                                    |  🔴    |
-| Logical Operators       | `AND`, `OR` for logical expressions.                                                     |  🔴   |
-| (Optional) **Comments** | Lines of code ignored by the interpreter, used to add explanations (`#`, `//`, `/* */`). |  🔴    |
-| **File Handling**       | Reading from and writing to files.                                                       |   🔴    |
+|-------------------------|------------------------------------------------------------------------------------------|-------------|
+| **Variables**           | Allow storing and manipulating data (NO TYPE SYSTEM YET! Everything is STRING)           | 🟡          |
+| **Base Types**          | String, Bool, Int, Arrays                                                                | 🔴          |
+| **Control Structures**  | Basic conditional and looping structures.                                                | 🔴          |
+| If/Else                 | Branching logic based on conditions.                                                     | 🟡          |
+| Loops                   | UNTIL and WHILE for repeated execution.                                                  | 🔴          |
+| **Functions**           | Reusable blocks of code that can take inputs (parameters).                               | 🟢          |
+| **Return Variables**    | Methods that can return variables as a value.                                            | 🔴          |
+| **Input/Output (I/O)**  | Handling of standard input and output.                                                   | 🔴          |
+| Read                    | Reading user input                                                                       | 🔴          |
+| Write                   | Writing output to the console                                                            | 🟢          |
+| **Operators**           | Support for arithmetic, comparison, and logical operators.                               | 🔴          |
+| Arithmetic              | `+`, `-`, `*`, `/` for mathematical operations.                                          | 🔴          |
+| Comparison              | `=`, `!=`, `<`, `>` for comparisons.                                                     | 🟡          |
+| Logical Operators       | `AND`, `OR` for logical expressions.                                                     | 🔴          |
+| **(Optional)** Comments | Lines of code ignored by the interpreter, used to add explanations (`#`, `//`, `/* */`). | 🔴          |
+| **File (I/O) Handling** | Reading from and writing to files.                                                       | 🔴          |
+| Read                    | Reading from files.                                                                      | 🔴          |
+| Write                   | Writing to files.                                                                        | 🔴          |
 
 
 

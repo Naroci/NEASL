@@ -3,8 +3,17 @@ BUTTON:
     PRESSED:
         APP->WRITE_LINE(Hello World!)
         value = Test
-        IF(value = Test):
-        
+        IF ( value=Test ) :
+            APP->WRITE_LINE(If 1)
+            IF( value =asd):
+                 APP->WRITE_LINE(If 2)
+                     IF( value= Test ) :
+                        APP->WRITE_LINE(If 3)
+                     :IF
+                 APP->WRITE_LINE(If 2-1)
+            :IF
+            APP->WRITE_LINE(If 1-1)
         :IF
+        APP->WRITE_LINE(asdf)
     :PRESSED
 :BUTTON

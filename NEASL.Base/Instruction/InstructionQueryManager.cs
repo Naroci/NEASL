@@ -14,16 +14,27 @@ public class InstructionQueryManager
     private Instruction m_currentInstruction;
     private int m_TimeOutTime;
 
+    
+    /// <summary>
+    /// TOOD: SET A TIMEOUT WHICH CHECKS IF A INSTRUCTION HAS FAILED!
+    /// </summary>
+    /// <param name="timeOutTime"></param>
     public void SetTimeOutTime(int timeOutTime)
     {
         this.m_TimeOutTime = timeOutTime;
     }
 
+    /// <summary>
+    /// Stops the execution.
+    /// </summary>
     public void Stop()
     {
         m_isRunning = false;
     }
-
+    
+    /// <summary>
+    /// Starts the Instruction of the next Instruction in the Query.
+    /// </summary>
     public void Start()
     {
         m_isRunning = true;
@@ -33,11 +44,21 @@ public class InstructionQueryManager
         
         if (IsRunning() && m_currentInstruction != null)
         {
+            if (m_currentInstruction.IsSubSectionLeave)
+            {
+                lock (m_currentInstruction)
+                {
+                    RemoveItemFromList(m_currentInstruction);
+                    Start();
+                }
+            }
+
             if (Context.GetInstance().GetEventManager().ReceiverForInstructionRegistered(m_currentInstruction))
                 Context.GetInstance().GetEventManager().FireByInstruction(m_currentInstruction);
             else
             {
-                Console.WriteLine($"Current Instruction ({m_currentInstruction.BaseName}->{m_currentInstruction.MethodName}()) could not be reolved");
+
+               // Console.WriteLine($"Current Instruction ({m_currentInstruction.BaseName}->{m_currentInstruction.MethodName}()) could not be reolved");
                 Console.WriteLine("Exiting...");
                 Stop();
             }
@@ -50,17 +71,7 @@ public class InstructionQueryManager
 
       
     }
-
-    private void StartControlLoop()
-    {
-
-    }
-
-    private void TimerOnElapsed(object? sender, ElapsedEventArgs e)
-    {
-      
-    }
-
+    
     public bool IsRunning()
     {
         return this.m_isRunning;
@@ -86,6 +97,10 @@ public class InstructionQueryManager
         }
     }
 
+    /// <summary>
+    /// Returns the current Instruction.
+    /// </summary>
+    /// <returns>NULL || Instruction</returns>
     public Instruction GetCurrentItem()
     {
         return this.currentItem;
@@ -96,6 +111,10 @@ public class InstructionQueryManager
         return this.InstructionQuery.ToList();
     }
 
+    /// <summary>
+    /// Adds a IEnumerable collection of Instructions to the Query
+    /// </summary>
+    /// <param name="instructions">The IEnumerable to add</param>
     public void AddToQuery(IEnumerable<Instruction> instructions)
     {
         try
@@ -133,40 +152,16 @@ public class InstructionQueryManager
         }
     }
 
+    
+    /// <summary>
+    /// Adds a single Instruction to the Instruction Query.
+    /// </summary>
+    /// <param name="instruction">The Instruciton to add.</param>
     public void AddToQuery(Instruction instruction)
     {
-        try
-        {
-            if (this.InstructionQuery != null && this.InstructionQuery.Count > 100)
-            {
-                var temp = this.InstructionQuery.Where(x => x?.Completed == false);
-                lock (this.InstructionQuery)
-                {
-                    this.InstructionQuery = new BlockingCollection<Instruction>();
-                    foreach (var item in temp)
-                    {
-                        this.InstructionQuery.Add(item);
-                    }
-                }
-            }
-            if (instruction != null)
-            {
-                lock (this.InstructionQuery)
-                {
-                    lock (instruction)
-                    {
-                        var type = instruction.GetType();
-                        this.InstructionQuery.Add(instruction);
-                    }
-                }
-            }
-        }
-        catch (Exception e)
-        {
-            Console.WriteLine(string.Format("ERROR WHILE ADDTOQUERY REQUEST!\n: {0}", e.Message));
-        }
+        AddToQuery(new List<Instruction>() { instruction } );
     }
-
+    
     private List<Instruction> Sort(List<Instruction> eventQueue)
     {
         try
@@ -185,6 +180,11 @@ public class InstructionQueryManager
         }
     }
 
+    /// <summary>
+    /// Returns if the given Instruction exists in the Query.
+    /// </summary>
+    /// <param name="theEvent">The Instruction to search for.</param>
+    /// <returns>FALSE || TRUE</returns>
     public bool ItemExists(Instruction theEvent)
     {
         if (this.InstructionQuery == null)
@@ -219,6 +219,7 @@ public class InstructionQueryManager
                          || args != null && m_currentInstruction.Arguments != null &&
                          args.Length == m_currentInstruction.Arguments.Length)
                 {
+                    // TODO: create seperate method! Also include an "ELSE" check which is being executed once the last checked condition was false and a ELSE exists.
                     // Check if the current returned result was part of a condition
                     // (ex. IF(): ELSE etc. to make sure to consider to go into the SubEntry or to ignore it)
                     if (m_currentInstruction.IsCondition 
@@ -226,14 +227,28 @@ public class InstructionQueryManager
                         || m_currentInstruction.IsSubSectionEntry
                         || result != null)
                     {
-                        if (m_currentInstruction.IsCondition && result is bool conditionResult == true)
+                        if (m_currentInstruction.IsCondition && result != null && result.GetType() == typeof(bool))
                         {
-                            
+                            if (((bool)result))
+                            {
+                                
+                            }
+                            else
+                            {
+                                var exitPoint = m_currentInstruction.EntryLeavePoint;
+                                var itemsToSkip = this.InstructionQuery.ToList().Where(x=>x.Id > m_currentInstruction.Id && x.Id < exitPoint.Id).ToList();
+                                int ExitPointIndex = this.InstructionQuery.ToList().IndexOf(exitPoint);
+                                if (ExitPointIndex > -1)
+                                {
+                                    for (int i = 0; i < itemsToSkip.Count; i++)
+                                    {
+                                        RemoveItemFromList(itemsToSkip[i]);
+                                    }
+                                    RemoveItemFromList(exitPoint);
+                                }
+                            }
                         }
-                        else if (m_currentInstruction.IsCondition && result is bool res == false)
-                        {
-                            
-                        }
+                      
                     }
 
                     RemoveItemFromList(m_currentInstruction);
@@ -243,7 +258,13 @@ public class InstructionQueryManager
         }
     }
     
-
+    
+    
+    /// <summary>
+    /// Removes a current Instruction from the list by setting its state to Completed.
+    /// </summary>
+    /// <param name="theEvent">The Instruction inside the Query that should be "removed"</param>
+    /// <returns>FALSE || TRUE</returns>
     public bool RemoveItemFromList(Instruction theEvent)
     {
         try

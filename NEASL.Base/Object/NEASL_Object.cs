@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Runtime.CompilerServices;
+using NEASL.Base.Global.Definitions;
 using NEASL.Base.Linking;
 
 namespace NEASL.Base.Object;
@@ -9,6 +10,7 @@ namespace NEASL.Base.Object;
 public class NEASL_Object : INEASL_Object
 {
     /*
+     * TODO: Namespacing / Creation of seperation between the value and sections -> all variables are public even if created inside a section.
      * Creating a Dictionary which holds the variables defined in
      * the script and inside each section of the script.
      * use a seperator ':' in between to define each lifescope
@@ -99,13 +101,16 @@ public class NEASL_Object : INEASL_Object
         EventCallFinished(nameof(SetVariableValue),variableName, value);
     }
 
-    [Signature(nameof(SetVariableValue), LinkType.Method)]
-    public void CompareValues(object valueL, object valueR, string comparisonIdentifier)
+    [Signature(nameof(CompareValues), LinkType.Method)]
+    public void CompareValues(string valueL, string comparisonIdentifier, string valueR)
     {
         // Compare and then send the result to the manager to ensure to either
         // Skip or run through all remaining instructions.
         //throw new NotImplementedException();
-        ReturnEventResult(nameof(CompareValues), new[] { valueL, valueR }, false);
+        Values.Keywords.Comparisons.Comparison comparison = Comparer.GetComparison(comparisonIdentifier);
+        bool comparisonResult = Comparer.Compare(valueL, valueR, comparison);
+        
+        ReturnEventResult(nameof(CompareValues), new[] { valueL,comparisonIdentifier, valueR }, comparisonResult);
     }
 
     public void EventCallFinished(string methodname, params object[] args)

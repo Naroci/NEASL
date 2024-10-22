@@ -1,4 +1,5 @@
 using System;
+using System.Text.RegularExpressions;
 using NEASL.Base.Object;
 using NEASL.Base.Global.Definitions;
 using ArithmeticException = System.ArithmeticException;
@@ -26,13 +27,24 @@ public class InstructionReader : IInstructionReader
             return null;
         
         Instruction returnValue = new Instruction();
-        returnValue.IsCondition = IsCondition(line);
-        if (returnValue.IsCondition)
+        bool isConditionEntry = IsConditionEntryPoint(line);
+        if (isConditionEntry)
         {
+            returnValue.IsSubSectionEntry = isConditionEntry;
+            returnValue.IsCondition = isConditionEntry; 
             returnValue.Arguments = GetConditionValues(line);
+            line = GetComparisonCommand(source, returnValue.Arguments[0], (string)returnValue.Arguments[1],
+                returnValue.Arguments[2]);
         }
-
-        returnValue.IsAssignment = IsAssignment(line);
+        
+        bool isConditionLeaveEntry = IsConditionLeavePoint(line);
+        if (isConditionLeaveEntry)
+        {
+            returnValue.IsCondition = isConditionLeaveEntry; 
+            returnValue.IsSubSectionLeave = isConditionLeaveEntry;
+        }
+        
+        returnValue.IsAssignment = IsAssignment(line) && !returnValue.IsCondition;
         returnValue.Sender = source;
         if (returnValue.IsAssignment)
         {
@@ -46,7 +58,6 @@ public class InstructionReader : IInstructionReader
             line = GetAssignmentCommand(source,avalues[0],avalues[1]);
         }
         
-       
         if (IsLocalMethod(line)) {
             line = ResolveSelfRefencedMethod(source, line);
         }
@@ -112,8 +123,8 @@ public class InstructionReader : IInstructionReader
     public bool IsAssignment(string line)
     {
         return line.IndexOf(Values.Keywords.Comparisons.EQUALS_KEYWORD) > -1 
-               && line.IndexOf(Values.Keywords.Identifier.CONDITION_CONDITION_END_IDENTIFIER) == -1
-               && line.IndexOf(Values.Keywords.Identifier.LOOP_CONDITION_END_IDENTIFIER) == -1;
+               && line.IndexOf(Values.Keywords.Identifier.METHOD_END_IDENTIFIER) == -1
+               && line.IndexOf(Values.Keywords.Identifier.SECTION_END_IDENTIFIER) == -1;
     }
 
     /// <summary>
@@ -132,6 +143,10 @@ public class InstructionReader : IInstructionReader
     }
     
     
+    /*
+     * TODO: Change the method later to take in the arguments for what it should parse loop OR condition
+     */
+    
     /// <summary>
     /// Gets the value from the right side of a "="
     /// </summary>
@@ -139,17 +154,44 @@ public class InstructionReader : IInstructionReader
     /// <returns>string[] (ex. {"a" , "2"})</returns>
     public string[] GetConditionValues(string line)
     {
-        string[] vals = line.Split();
-        for (int i = 0; i < vals.Length - 1; i++)
+        // TODO:
+        // Super ugly... but honestly too lazy to loop through it and for what it does it should be fine
+        // at least for first.... 
+        line = line.TrimStart();
+        int IFKeywordIndex = line.IndexOf(Values.Keywords.Conditions.IF_KEYWORD);
+        if (IFKeywordIndex == 0)
         {
-            vals[i] = vals[i].Trim();
+            line = line.Remove(0, IFKeywordIndex + Values.Keywords.Conditions.IF_KEYWORD.Length);
+            line = line.TrimStart();
+            
+            int condStartIndex = line.IndexOf(Values.Keywords.Identifier.CONDITION_CONDITION_START_IDENTIFIER);
+            if (condStartIndex == 0)
+            {
+                line = line.Remove(0, condStartIndex + Values.Keywords.Identifier.CONDITION_CONDITION_START_IDENTIFIER.Length);
+                line = line.TrimStart();
+                
+                int closingIndex = line.LastIndexOf(Values.Keywords.Identifier.METHOD_END_IDENTIFIER);
+                if (closingIndex > 0)
+                {
+                    line = line.Substring(0, closingIndex);
+                }
+            }
         }
-        return vals;
+
+        string comparisonValue = Comparer.FindComparisonKeyword(line);
+        string[] result = Regex.Split(line, $"({comparisonValue})");
+        for (int i = 0; i < result.Length - 1; i++)
+        {
+            result[i] = result[i].Trim();
+        }
+        return result;
     }
     
-    public string GetComparisonCommand(INEASL_Object sender,string varName, object value)
+    
+    // Creates a comparison method that can be executed.
+    public string GetComparisonCommand(INEASL_Object sender,object valueL, string comparisonString, object valueR)
     {
-        string line = $"{sender.GetObjectTypeName()}{Values.Keywords.Identifier.CLASS_SUBMETHOD_IDENTIFIER}{nameof(sender.SetVariableValue)} ({varName},{value})";
+        string line = $"{sender.GetObjectTypeName()}{Values.Keywords.Identifier.CLASS_SUBMETHOD_IDENTIFIER}{nameof(sender.CompareValues)} ({valueL},{comparisonString},{valueR})";
         return line.Trim();
     }
 
@@ -187,17 +229,26 @@ public class InstructionReader : IInstructionReader
     {
         bool isMethod = line.IndexOf(Values.Keywords.Identifier.METHOD_START_IDENTIFIER) > 0 
                         && line.IndexOf(Values.Keywords.Identifier.METHOD_END_IDENTIFIER) > 0 
-                        && line.IndexOf(Values.Keywords.Identifier.CONDITION_CONDITION_END_IDENTIFIER) == -1
-                        && line.IndexOf(Values.Keywords.Identifier.LOOP_CONDITION_END_IDENTIFIER) == -1;
+                        && line.IndexOf(Values.Keywords.Identifier.METHOD_END_IDENTIFIER) == -1
+                        && line.IndexOf(Values.Keywords.Identifier.SECTION_END_IDENTIFIER) == -1;
         return isMethod;
     }
 
-    public bool IsCondition(string line)
+    public bool IsConditionEntryPoint(string line)
     {
         line = line.Trim();
         bool isCondition = line.IndexOf(Values.Keywords.Identifier.CONDITION_CONDITION_START_IDENTIFIER) > 0 
-                        && line.IndexOf(Values.Keywords.Identifier.CONDITION_CONDITION_END_IDENTIFIER) > 1
+                        && line.IndexOf(Values.Keywords.Identifier.METHOD_END_IDENTIFIER) > 1
+                        && line.IndexOf(Values.Keywords.Identifier.SECTION_END_IDENTIFIER) >  1
                         && line.IndexOf(Values.Keywords.Conditions.IF_KEYWORD) > -1 ||line.IndexOf(Values.Keywords.Conditions.ELSE_KEYWORD) > -1 ;
+        return isCondition;
+    }
+    
+    public bool IsConditionLeavePoint(string line)
+    {
+        line = line.Trim();
+        bool isCondition = line.IndexOf(Values.Keywords.Identifier.SECTION_END_IDENTIFIER) == 0 
+            && line.IndexOf(Values.Keywords.Conditions.IF_KEYWORD) > 0 ||line.IndexOf(Values.Keywords.Conditions.ELSE_KEYWORD) > 0 ;
         return isCondition;
     }
 
