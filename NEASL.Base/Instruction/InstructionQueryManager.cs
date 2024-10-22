@@ -140,7 +140,8 @@ public class InstructionQueryManager
                     {
                         foreach (var instruction in instructions)
                         {
-                            this.InstructionQuery.Add(instruction);
+                            if (instruction != null && instruction.BaseName != null)
+                                this.InstructionQuery.Add(instruction);
                         }
                     }
                 }

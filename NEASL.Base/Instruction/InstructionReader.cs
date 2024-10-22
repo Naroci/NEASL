@@ -72,10 +72,14 @@ public class InstructionReader : IInstructionReader
                 if (splittedParts.Length > 1)
                 {
                     var methodResult = tryParseMethod(splittedParts[1]);
-                    if (methodResult != null)
+                    if (methodResult != null && methodResult.Item1 != null)
                     {
                         returnValue.MethodName = methodResult.Item1.Trim();
                         returnValue.Arguments = methodResult.Item2;
+                    }
+                    else
+                    {
+                        return null;
                     }
                 }
             }
@@ -233,7 +237,6 @@ public class InstructionReader : IInstructionReader
     {
         bool isMethod = line.IndexOf(Values.Keywords.Identifier.METHOD_START_IDENTIFIER) > 0 
                         && line.IndexOf(Values.Keywords.Identifier.METHOD_END_IDENTIFIER) > 0 
-                        && line.IndexOf(Values.Keywords.Identifier.METHOD_END_IDENTIFIER) == -1
                         && line.IndexOf(Values.Keywords.Identifier.SECTION_END_IDENTIFIER) == -1;
         return isMethod;
     }
@@ -252,7 +255,7 @@ public class InstructionReader : IInstructionReader
     {
         line = line.Trim();
         bool isCondition = line.IndexOf(Values.Keywords.Identifier.SECTION_END_IDENTIFIER) == 0 
-            && line.IndexOf(Values.Keywords.Conditions.IF_KEYWORD) > 0 ||line.IndexOf(Values.Keywords.Conditions.ELSE_KEYWORD) > 0 ;
+            && (line.IndexOf(Values.Keywords.Conditions.IF_KEYWORD) > 0 ||line.IndexOf(Values.Keywords.Conditions.ELSE_KEYWORD) > 0) ;
         return isCondition;
     }
 

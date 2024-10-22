@@ -7,8 +7,12 @@
     NAME="test"
     mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
     x:Class="NEASL.TEST_GUI.NEASL_Page">
-    <Grid>
+    <StackPanel>
         <testGui:NEASL_Button NAME="backBtn" Text="BACK!" Height="100" Width="200" CornerRadius="20" BorderThickness="1" 
                               BorderBrush="Gray" />
-    </Grid>
+        <testGui:NEASL_Button NAME="backBtn" Text="BACK!" Height="100" Width="200" CornerRadius="20" BorderThickness="1" 
+                              BorderBrush="Gray" Background="Green" />
+        
+        <Rectangle Fill="Blue" Height="200"/>
+    </StackPanel>
 </testGui:NEASL_UserControl>
