@@ -124,6 +124,10 @@ public class InstructionReader : IInstructionReader
     {
         return line.IndexOf(Values.Keywords.Comparisons.EQUALS_KEYWORD) > -1 
                && line.IndexOf(Values.Keywords.Identifier.METHOD_END_IDENTIFIER) == -1
+               && line.IndexOf(Values.Keywords.Identifier.SECTION_END_IDENTIFIER) == -1
+               || line.IndexOf(Values.Keywords.Comparisons.EQUALS_KEYWORD) > -1 
+               && line.IndexOf(Values.Keywords.Identifier.METHOD_END_IDENTIFIER) > -1
+               && line.IndexOf(Values.Keywords.Comparisons.EQUALS_KEYWORD) < line.IndexOf(Values.Keywords.Identifier.METHOD_END_IDENTIFIER)
                && line.IndexOf(Values.Keywords.Identifier.SECTION_END_IDENTIFIER) == -1;
     }
 

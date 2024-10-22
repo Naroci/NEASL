@@ -1,7 +1,7 @@
 namespace NEASL.Base.Global.Definitions;
 
 
-// Defining the basic keywords used insde the scripts to identify
+// Defining the basic keywords used inside the scripts to identify
 // each parts.
 public struct Values
 {

@@ -3,6 +3,7 @@ BUTTON:
     PRESSED:
         APP->WRITE_LINE(Hello World!)
         value = Test
+        value2 = APP->READ_LINE()
         IF ( value=Test ) :
             APP->WRITE_LINE(If 1)
             IF( value =asd):

@@ -32,11 +32,10 @@ public class NEASL_App : BaseLinkedObject
     }
     
     [Signature(nameof(READ_LINE), LinkType.Method)]
-    public string READ_LINE(string text)
+    public void READ_LINE()
     {
         string result = Console.ReadLine();
-        EventCallFinished(nameof(READ_LINE), text);
-        return result;
+        ReturnEventResult (nameof(READ_LINE),null, result);
     }
     
     public void ShowPopup(string text)
