@@ -2,6 +2,9 @@ using System;
 
 namespace NEASL.Base.Linking;
 
+/// <summary>
+/// Identifier Attribute to decorate a class to define its name and type within the scripting language.
+/// </summary>
 [AttributeUsage(AttributeTargets.All, Inherited = true, AllowMultiple = false)]
 public class Signature : Attribute
 {

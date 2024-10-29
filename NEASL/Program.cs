@@ -19,6 +19,8 @@ namespace NEASL.Base
             BUTTON btn = new BUTTON();
             btn.AssignScript(path, fileName);
             btn.PRESSED();
+            
+            BUTTON btn2 = new BUTTON();
            
            
             //main.AssignScript(path, "script/app.neasl");

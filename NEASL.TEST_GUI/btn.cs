@@ -38,6 +38,16 @@ public class btn : BaseLinkedObject
         this.controlBtn.Background = brush;
         EventCallFinished(nameof(BACKGROUND_COLOR),ColorStringValue);
     }
+    
+    [Signature(nameof(SET_TEXT), LinkType.Method)]
+    public void SET_TEXT(string textValue)
+    {
+        if (this.controlBtn == null)
+            return;
+        
+        this.controlBtn.Text = textValue;
+        EventCallFinished(nameof(SET_TEXT),textValue);
+    }
 
     [Signature(nameof(PRESSED), LinkType.Event)]
     public void PRESSED()

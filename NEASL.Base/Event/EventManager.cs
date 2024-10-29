@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Data;
 using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
@@ -14,6 +15,7 @@ public class EventManager
     // Dictionary of curren subscribed eventlisteners.
     Dictionary<string,IBaseEventReceiver> m_ReceiverList = new Dictionary<string,IBaseEventReceiver>();
     
+    
     public EventManager()
     { 
     }
@@ -24,14 +26,31 @@ public class EventManager
     /// <param name="Event">The Listener.</param>
     public void Register(IBaseEventReceiver Event)
     {
-        if (Event == null || Event != null && Event.GetUniqueIdentifier() == null)
-            return;
+        // Fetch the pointer like identifier. if null the Receiver is not valid.
+        if (Event == null || Event != null && (string.IsNullOrEmpty(Event.GetFullName())) )
+            return; // otherwise nullpointer exception.
 
-        string identifier = Event.GetUniqueIdentifier();
+        string identifier = Event.GetFullName();
+        
+        // Make sure that each Identifier (Type/Name combination) only exists once!
         if (m_ReceiverList.ContainsKey(identifier))
-            m_ReceiverList[identifier] = Event;
-        else 
+            m_ReceiverList[identifier] = Event; 
+            // additionally : throw new DuplicateNameException();
+        else
             m_ReceiverList.Add(identifier, Event);
+    }
+    
+    public string FindFullReceiverNameByNameReference(string Name)
+    {
+        if (string.IsNullOrEmpty(Name))
+            throw new ArgumentNullException();
+
+        if (m_ReceiverList.Keys.ToList().Contains($"$${Name.ToLower()}"))
+        {
+            return m_ReceiverList.Keys.ToList().First(x => x.Contains($"$${Name.ToLower()}"));
+        }
+
+        return null;
     }
 
     /// <summary>
@@ -42,22 +61,22 @@ public class EventManager
     public bool ReceiverForInstructionRegistered(Instruction instruction)
     {
         if (instruction == null || m_ReceiverList == null || m_ReceiverList != null && m_ReceiverList.Count == 0
-            || instruction != null && string.IsNullOrEmpty(instruction.BaseName))
-            return false;
-        
-        return m_ReceiverList.ContainsKey(instruction.BaseName);
+            || instruction != null && string.IsNullOrEmpty(instruction.ObjectName))
+                return false;
+        return m_ReceiverList.ContainsKey(instruction.ObjectName);
     }
-
+    
     /// <summary>
     /// Fires an event by the given Instruction.
     /// </summary>
     /// <param name="instruction">The Event to fire.</param>
     public void FireByInstruction(Instruction instruction)
     {
-        if (instruction == null || m_ReceiverList == null || m_ReceiverList != null && m_ReceiverList.Count == 0)
+        if (instruction == null || m_ReceiverList == null || m_ReceiverList != null && m_ReceiverList.Count == 0
+            || instruction != null && string.IsNullOrEmpty(instruction.ObjectName))
             return;
-
-        Notify(m_ReceiverList[instruction.BaseName], instruction);
+    
+        Notify(m_ReceiverList[instruction.ObjectName], instruction);
     }
     
     /// <summary>

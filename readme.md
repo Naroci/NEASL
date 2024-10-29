@@ -7,8 +7,7 @@
 ### Example
 Here is a sample script for a button that changes its color when hovering over it with a mouse cursor, writes something out to the terminal when pressed and displays a dialog message when the mouse cursor leaves it: 
 ```plaintext
-BUTTON:
-    NAME=Button1
+BUTTON(Button1):
     PRESSED:
         APP->WriteLine(Hello World!)
     :PRESSED

@@ -15,24 +15,29 @@ public class BaseLinkedObject : BaseReceiver, IBaseLinkedObject
 
     public BaseLinkedObject() : base()
     {
+        
+        //Context.GetInstance().GetEventManager().Register(this);
     }
     
     public BaseLinkedObject(string scriptContent)
     {
         scriptRawContent = scriptContent;
         LinkToScript();
+        base.SelfAssign();
     }
     
     public void AssignScript(string scriptContent)
     {
         scriptRawContent = scriptContent;
         LinkToScript();
+        base.SelfAssign();
     }
     
     public void AssignScript(string FilePath,string FileName)
     {
         scriptRawContent = FetchScript(System.IO.Path.Combine(FilePath, FileName));
         LinkToScript();
+        base.SelfAssign();
     }
    
     public string FetchScript(string scriptFilePath)
@@ -48,7 +53,13 @@ public class BaseLinkedObject : BaseReceiver, IBaseLinkedObject
         if (string.IsNullOrEmpty(scriptRawContent))
             throw new MissingFieldException(this.scriptRawContent);
 
-        var _scriptSections =Linker.LoadSections(this, this.scriptRawContent);
+        var name = Linker.GetObjectsName(this, this.scriptRawContent);
+        if (string.IsNullOrEmpty(name))
+            Console.WriteLine("No Object name given! Skipping...");
+        
+        base.SetName(name);
+
+        var _scriptSections = Linker.LoadSections(this, this.scriptRawContent);
         if (_scriptSections!= null &&_scriptSections.Count > 0)
         {
             this.scriptSections = _scriptSections;

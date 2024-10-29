@@ -1,5 +1,7 @@
 using System;
+using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Threading.Tasks;
 using Avalonia.Controls;
 using Avalonia.Layout;
@@ -11,12 +13,12 @@ using NEASL.TEST_GUI;
 
 namespace NEASL.Base;
 
-[Section("APP")]
+[Main("APP")]
 public class NEASL_App : BaseReceiver
 {
     public NEASL_App() : base()
     {
-       
+       base.SelfAssign();
     }
 
     [Signature(nameof(WRITE_LINE), LinkType.Method)]
@@ -67,8 +69,12 @@ public class NEASL_App : BaseReceiver
     [Signature(nameof(NAVIGATE), LinkType.Method)]
     public async void NAVIGATE(string pageName)
     {
+        if (!pageName.Contains(".axaml"))
+            pageName = pageName + ".axaml";
+        
         string path = Environment.CurrentDirectory;
         string filePath = System.IO.Path.Combine(path,pageName);
+        
         await Dispatcher.UIThread.InvokeAsync(() =>
         {
             NEASL_Page returnCtrl = new NEASL_Page();
@@ -79,10 +85,38 @@ public class NEASL_App : BaseReceiver
                 object asd = AvaloniaRuntimeXamlLoader.Parse<ContentControl>(xaml);
                 returnCtrl = (NEASL_Page)asd;
             }
+            
+            if(App.GetMainWindow().Content != null)
+                NavigationHistory.Add((object)App.GetMainWindow().Content);
+            
             App.GetMainWindow().Content = returnCtrl;
         });
         // Load the .axaml file
         
         EventCallFinished(nameof(NAVIGATE),pageName);
     }
+    
+    [Signature(nameof(NAVIGATE_BACK), LinkType.Method)]
+    public async void NAVIGATE_BACK()
+    {
+        string path = Environment.CurrentDirectory;
+        await Dispatcher.UIThread.InvokeAsync(() =>
+        {
+            if (NavigationHistory != null && NavigationHistory.Count > 0)
+            {
+               var itm = (NEASL_Page)NavigationHistory.Last();
+               NavigationHistory.Remove(itm);
+               
+               if(App.GetMainWindow().Content != null)
+                   NavigationHistory.Add((ContentControl)App.GetMainWindow().Content);
+            
+               App.GetMainWindow().Content = itm;
+            }
+        });
+        
+        // Load the .axaml file
+        EventCallFinished(nameof(NAVIGATE_BACK));
+    }
+    
+    List<object> NavigationHistory = new List<object>();
 }

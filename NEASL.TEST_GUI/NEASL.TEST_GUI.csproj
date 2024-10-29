@@ -27,6 +27,9 @@
       <None Update="BUTTON.neasl">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </None>
+      <None Update="BUTTON2.neasl">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </None>
      
     </ItemGroup>
 

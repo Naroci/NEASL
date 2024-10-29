@@ -22,6 +22,12 @@ public class InstructionRunner
         return m_instructionRunnerl;
     }
     
+    /// <summary>
+    /// Reads the whole InstructionSection (EX SECTION: .... :SECTION)
+    /// Creates a List of Instrcutions and adds them to the QueryManager.
+    /// </summary>
+    /// <param name="sender">Context of the current Sender / Requesting INEASL_Object.</param>
+    /// <param name="instructionSection">clear text String of the section text.</param>
     public async void Execute(INEASL_Object sender, string instructionSection)
     {
         if (string.IsNullOrEmpty(instructionSection))

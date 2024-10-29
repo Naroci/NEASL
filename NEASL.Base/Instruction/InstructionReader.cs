@@ -65,13 +65,19 @@ public class InstructionReader : IInstructionReader
         // check if the identifier "->" Exists.
         if (line.IndexOf(Values.Keywords.Identifier.CLASS_SUBMETHOD_IDENTIFIER) > -1)
         {
-            var splittedParts = line.Split(Values.Keywords.Identifier.CLASS_SUBMETHOD_IDENTIFIER);
-            if (splittedParts.Length > 0)
+            var assignPos = line.IndexOf(Values.Keywords.Identifier.CLASS_SUBMETHOD_IDENTIFIER);
+            var splittedParts = line.Substring(assignPos + Values.Keywords.Identifier.CLASS_SUBMETHOD_IDENTIFIER.Length,line.Length - (assignPos + Values.Keywords.Identifier.CLASS_SUBMETHOD_IDENTIFIER.Length)); 
+           
+            // Value / Object that is refered to.
+            // Make sure to differ between Type and references.
+            var refName = line.Substring(0,assignPos) ;
+            if (splittedParts.Length > 0 && !string.IsNullOrEmpty(refName))
             {
-                returnValue.BaseName = splittedParts[0].Trim();
+                returnValue.ObjectName = refName;
+                
                 if (splittedParts.Length > 1)
                 {
-                    var methodResult = tryParseMethod(splittedParts[1]);
+                    var methodResult = tryParseMethod(splittedParts);
                     if (methodResult != null && methodResult.Item1 != null)
                     {
                         returnValue.MethodName = methodResult.Item1.Trim();
@@ -199,7 +205,7 @@ public class InstructionReader : IInstructionReader
     // Creates a comparison method that can be executed.
     public string GetComparisonCommand(INEASL_Object sender,object valueL, string comparisonString, object valueR)
     {
-        string line = $"{sender.GetObjectTypeName()}{Values.Keywords.Identifier.CLASS_SUBMETHOD_IDENTIFIER}{nameof(sender.CompareValues)} ({valueL},{comparisonString},{valueR})";
+        string line = $"{sender.GetFullName()}{Values.Keywords.Identifier.CLASS_SUBMETHOD_IDENTIFIER}{nameof(sender.CompareValues)} ({valueL},{comparisonString},{valueR})";
         return line.Trim();
     }
 
@@ -213,7 +219,7 @@ public class InstructionReader : IInstructionReader
     /// <returns></returns>
     public string GetAssignmentCommand(INEASL_Object sender,string varName, object value)
     {
-        string line = $"{sender.GetObjectTypeName()}{Values.Keywords.Identifier.CLASS_SUBMETHOD_IDENTIFIER}{nameof(sender.SetVariableValue)} ({varName},{value})";
+        string line = $"{sender.GetFullName()}{Values.Keywords.Identifier.CLASS_SUBMETHOD_IDENTIFIER}{nameof(sender.SetVariableValue)} ({varName},{value})";
         return line.Trim();
     }
     
@@ -241,7 +247,7 @@ public class InstructionReader : IInstructionReader
         return isMethod;
     }
 
-    public bool IsConditionEntryPoint(string line)
+    public static bool IsConditionEntryPoint(string line)
     {
         line = line.Trim();
         bool isCondition = line.IndexOf(Values.Keywords.Identifier.CONDITION_CONDITION_START_IDENTIFIER) > 0 
@@ -282,8 +288,8 @@ public class InstructionReader : IInstructionReader
     {
         if (sender is null || string.IsNullOrEmpty(line))
             throw new ArgumentNullException(nameof(line));
-        
-        return $"{sender.GetObjectTypeName()}{Values.Keywords.Identifier.CLASS_SUBMETHOD_IDENTIFIER}{line}";
+        string refMethod = $"{sender.GetFullName()}{Values.Keywords.Identifier.CLASS_SUBMETHOD_IDENTIFIER}{line}";
+        return refMethod;
     }
 
     /// <summary>
@@ -298,7 +304,7 @@ public class InstructionReader : IInstructionReader
         object[] args = null;
         string MethodName = null;
         int argsStart = methodPart.IndexOf(Values.Keywords.Identifier.METHOD_START_IDENTIFIER);
-        int argsEnd = methodPart.IndexOf(Values.Keywords.Identifier.METHOD_END_IDENTIFIER);
+        int argsEnd = methodPart.LastIndexOf(Values.Keywords.Identifier.METHOD_END_IDENTIFIER);
         if (argsStart > -1 && argsEnd > 0)
         {
             MethodName = methodPart.Substring(0, argsStart);

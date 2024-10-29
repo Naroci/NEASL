@@ -29,10 +29,19 @@ public class NEASL_Object : INEASL_Object
     private List<MethodInfo> m_methods;
     
     public IdentifierType ObjectType { get; private set; }
-    private string m_namespaceString;
+    private string m_NameValueString;
     private string m_typeName;
     
     public List<MethodInfo> Methods => m_methods;
+
+    public string GetFullName()
+    {
+        if (this.ObjectType == IdentifierType.Root)
+            return m_typeName;
+                
+        return $"{m_typeName}({this.GetName()})";
+    }
+    
 
     public NEASL_Object()
     {
@@ -56,14 +65,14 @@ public class NEASL_Object : INEASL_Object
         this.UniquePtrHash = uniqueId;
     }
 
-    public string GetNamespace()
+    public string GetName()
     {
-        return m_namespaceString;
+        return m_NameValueString;
     }
 
-    public void SetNamespace(string value)
+    public void SetName(string value)
     {
-        m_namespaceString = value;
+        m_NameValueString = value;
     }
 
     public void SetObjectTypeName(string value)
@@ -75,7 +84,7 @@ public class NEASL_Object : INEASL_Object
     {
         return m_typeName;
     }
-    
+
     [Signature(nameof(GetVariableValue), LinkType.Method)]
     public object GetVariableValue(string variableName, bool fire = false)
     {
@@ -115,11 +124,11 @@ public class NEASL_Object : INEASL_Object
 
     public void EventCallFinished(string methodname, params object[] args)
     {
-        Context.GetInstance().GetQueryManager().SendCompleted(m_typeName, methodname,args);
+        Context.GetInstance().GetQueryManager().SendCompleted(GetFullName(), methodname,args);
     }
 
     public void ReturnEventResult(string methodname, object[] args, object result)
     {
-        Context.GetInstance().GetQueryManager().SendCompleted(m_typeName, methodname,args,result);
+        Context.GetInstance().GetQueryManager().SendCompleted(GetFullName(), methodname,args,result);
     }
 }

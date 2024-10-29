@@ -10,7 +10,31 @@ public class Linker
 {
     private const string EVENT_LINK_TYPE_KEY = Values.Keywords.Identifier.SECTION_START_IDENTIFIER;
     const string IDENTIFIER_LINK_TYPE_KEY = Values.Keywords.Identifier.SECTION_START_IDENTIFIER;
-    
+
+
+    public static string GetObjectsName(IBaseLinkedObject linkObject, string scriptContent)
+    {
+        Dictionary<string, string>  sectionsResult = new Dictionary<string, string>();
+        if (linkObject == null || string.IsNullOrEmpty(scriptContent))
+            throw new ArgumentNullException(nameof(linkObject));
+        
+        Identifier rootIdentifier = AttributeHandler.GetAttributeByObject<Identifier>(linkObject);
+        scriptContent.Trim();
+        string startSearch = $"{rootIdentifier.Name}(";
+        string endSearch = $"):";
+        
+        if (scriptContent.IndexOf(startSearch, StringComparison.OrdinalIgnoreCase) >= -1
+            && scriptContent.IndexOf(endSearch, StringComparison.OrdinalIgnoreCase) >= 1)
+        {
+            string part = scriptContent.Substring(scriptContent.IndexOf(startSearch) + startSearch.Length, scriptContent.Length - (scriptContent.IndexOf(startSearch) + startSearch.Length));
+            string className = part.Substring(0, part.IndexOf(endSearch));
+            if (!string.IsNullOrEmpty(className))
+                return className;
+        }
+   
+        return null;
+    }
+
     public static Dictionary<string, string> LoadSections(IBaseLinkedObject linkObject, string scriptContent)
     {
         Dictionary<string, string>  sectionsResult = new Dictionary<string, string>();
@@ -37,8 +61,7 @@ public class Linker
         {
             return new Dictionary<string, string>();
         }
-
-   
+        
         foreach (var signature in defiSignatures)
         {
             if (signature == null || signature != null && string.IsNullOrEmpty(signature.Name))

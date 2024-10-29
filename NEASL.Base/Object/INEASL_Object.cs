@@ -9,9 +9,11 @@ public interface INEASL_Object
     public IdentifierType ObjectType { get; }
     
     List<MethodInfo> Methods { get;}
+
+    public string GetFullName();
     
-    public string GetNamespace();
-    public void SetNamespace(string value);
+    public string GetName();
+    public void SetName(string value);
 
     public void SetObjectTypeName(string value);
     public string GetObjectTypeName();

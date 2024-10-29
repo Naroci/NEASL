@@ -6,6 +6,9 @@ using System.Timers;
 
 namespace NEASL.Base;
 
+/// <summary>
+/// Basic Manager / Helper Class to order and execute Instructions in order.
+/// </summary>
 public class InstructionQueryManager
 {
     private bool m_isRunning;
@@ -13,6 +16,14 @@ public class InstructionQueryManager
     private DateTime m_lastStartTime;
     private Instruction m_currentInstruction;
     private int m_TimeOutTime;
+    
+    /// <summary>
+    /// Constructor.
+    /// </summary>
+    public InstructionQueryManager()
+    {
+        this.InstructionQuery = new BlockingCollection<Instruction>();
+    }
 
     
     /// <summary>
@@ -61,6 +72,7 @@ public class InstructionQueryManager
                // Console.WriteLine($"Current Instruction ({m_currentInstruction.BaseName}->{m_currentInstruction.MethodName}()) could not be reolved");
                 Console.WriteLine("Exiting...");
                 Stop();
+                this.InstructionQuery = new BlockingCollection<Instruction>();
             }
         }
         else
@@ -72,16 +84,17 @@ public class InstructionQueryManager
       
     }
     
+    /// <summary>
+    /// Is the Manager currently Executing? 
+    /// </summary>
+    /// <returns></returns>
     public bool IsRunning()
     {
         return this.m_isRunning;
     }
 
-    public InstructionQueryManager()
-    {
-        this.InstructionQuery = new BlockingCollection<Instruction>();
-    }
-    
+
+    // Returns the current item in order.
     private Instruction currentItem
     {
         get
@@ -140,7 +153,7 @@ public class InstructionQueryManager
                     {
                         foreach (var instruction in instructions)
                         {
-                            if (instruction != null && instruction.BaseName != null)
+                            if (instruction != null && !string.IsNullOrEmpty(instruction.ObjectName))
                                 this.InstructionQuery.Add(instruction);
                         }
                     }
@@ -208,7 +221,7 @@ public class InstructionQueryManager
         
         lock (m_currentInstruction)
         {
-            if (m_currentInstruction != null && m_currentInstruction.BaseName.Trim() == sourceName.Trim() &&
+            if (m_currentInstruction != null && m_currentInstruction.ObjectName.Trim() == sourceName.Trim() &&
                 m_currentInstruction.MethodName.Trim() == MethodName.Trim())
             {
                 if (m_currentInstruction.Arguments != null && args == null 

@@ -6,14 +6,17 @@ using NEASL.Base.Object;
 
 namespace NEASL.Base;
 
+/// <summary>
+/// In theory nothing else than an Eventlistener which listens to Notifications from the event Manager.
+/// Needed to figure when its supposed to execute Instructions given by the QueryManager.
+/// </summary>
 public class BaseReceiver : NEASL_Object, IBaseEventReceiver
 {
     private object m_parent;
     
     public BaseReceiver()
     {
-        SelfAssign();
-        Context.GetInstance().GetEventManager().Register(this);
+       // SelfAssign();
     }
     
     public Type GetParentType()
@@ -39,11 +42,12 @@ public class BaseReceiver : NEASL_Object, IBaseEventReceiver
             if (string.IsNullOrEmpty(attribute.Name))
                 throw new NullReferenceException();
         }
+        Context.GetInstance().GetEventManager().Register(this);
     }
     
     public string GetUniqueIdentifier()
     {
-        return base.GetObjectTypeName();
+        return base.UniquePtrHash.ToString();
     }
 
     private MethodInfo FindMethod(string scriptMethodName, object[] args)

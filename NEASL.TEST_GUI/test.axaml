@@ -1,18 +1,17 @@
-<testGui:NEASL_UserControl
-    xmlns="https://github.com/avaloniaui"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:testGui="clr-namespace:NEASL.TEST_GUI"
-    NAME="test"
-    mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
-    x:Class="NEASL.TEST_GUI.NEASL_Page">
-    <StackPanel>
-        <testGui:NEASL_Button NAME="backBtn" Text="BACK!" Height="100" Width="200" CornerRadius="20" BorderThickness="1" 
-                              BorderBrush="Gray" />
-        <testGui:NEASL_Button NAME="backBtn" Text="BACK!" Height="100" Width="200" CornerRadius="20" BorderThickness="1" 
-                              BorderBrush="Gray" Background="Green" />
-        
-        <Rectangle Fill="Blue" Height="200"/>
-    </StackPanel>
+<testGui:NEASL_UserControl xmlns="https://github.com/avaloniaui"
+                           xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                           xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                           xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                           xmlns:testGui="clr-namespace:NEASL.TEST_GUI"
+                           mc:Ignorable="d" d:DesignWidth="400" d:DesignHeight="750"
+                           x:Class="NEASL.TEST_GUI.NEASL_Page">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="56" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <Border  BoxShadow="2 2 10 0 DarkGray" Margin="-1,-1,-1,0" Height="">
+            <Label Margin="10,0,0,0" Content="New Page!" FontSize="18" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+        </Border>
+    </Grid>
 </testGui:NEASL_UserControl>

@@ -3,6 +3,15 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:testGui="clr-namespace:NEASL.TEST_GUI"
-             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             mc:Ignorable="d" d:DesignWidth="450" d:DesignHeight="800"
              x:Class="NEASL.TEST_GUI.NEASL_Page">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.1*" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+            <Border Margin="-1,-1,-1,0" BorderThickness="1" BorderBrush="Gray" Height="">
+                <Label Margin="10,0,0,0" Content="Page" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+            </Border>
+    </Grid>
 </testGui:NEASL_UserControl>

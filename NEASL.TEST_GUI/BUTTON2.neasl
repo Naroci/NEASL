@@ -1,12 +1,16 @@
-BUTTON(Button1):
+BUTTON(Button2):
+
     PRESSED:
-        APP->WRITE_LINE(Hello World!)
-        APP->NAVIGATE(test)
+       	APP->SHOW_DIALOG(Hallo,Das ist ein Test!)
     :PRESSED
+    
     HOVER:
         BACKGROUND_COLOR(Green)
+		BUTTON(Button1)->BACKGROUND_COLOR(Pink)
     :HOVER
+    
     LEAVE:
         BACKGROUND_COLOR(Transparent)
     :LEAVE
+    
 :BUTTON

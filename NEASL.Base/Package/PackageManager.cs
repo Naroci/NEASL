@@ -2,6 +2,9 @@ using System.IO;
 
 namespace NEASL.Base.Package;
 
+/// <summary>
+/// TODO: Load and interpret contents of a package.
+/// </summary>
 public static class PackageManager
 {
     public static bool CreatePackage(string packageName, string packageRootFolder, string outputName, string outputFolder)
