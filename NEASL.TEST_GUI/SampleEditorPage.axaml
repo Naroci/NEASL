@@ -1,0 +1,91 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:testGui="clr-namespace:NEASL.TEST_GUI"
+        mc:Ignorable="d" d:DesignWidth="1920" d:DesignHeight="1080"
+        x:Class="NEASL.TEST_GUI.SampleEditorPage"
+        Title="SampleEditorPage">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.45*" />
+            <ColumnDefinition Width="1" />
+            <ColumnDefinition Width="0.30*" />
+            <ColumnDefinition Width="1" />
+            <ColumnDefinition Width="0.25*" />
+        </Grid.ColumnDefinitions>
+        
+        <!-- Left Content (Design) -->
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Label Content="Layout" Margin= "15,15,0,0" />
+            <Grid Grid.Row="1" Margin="15,10,15,15"  >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <Label Content="File" VerticalContentAlignment="Center" Margin="0,0,15,0"  />
+                <TextBox x:Name="LayoutPathText" Grid.Column="1" />
+                <Button Click="LoadLayoutClick" Content="From File" Grid.Column="2" Margin="15,0,0,0"/>
+
+            </Grid>
+            <TextBox AcceptsTab="True" AcceptsReturn="True" TextWrapping="Wrap"  x:Name="LayoutContent" Grid.Row="2" Margin="15,0,15,15"/>
+            <Button Click="LoadLayoutFromText" Grid.Row="3" Margin="15,0,15,15" HorizontalContentAlignment="Center" HorizontalAlignment="Stretch" Content="Load"/>
+        </Grid>
+        
+        <!-- Splitter Start -->
+        <GridSplitter ResizeDirection="Columns" Grid.Column="1" Background="Green" MinWidth="2" >
+        </GridSplitter>
+        <!-- Splitter End -->
+        
+        <!-- Center Content (Preview) -->
+        <Grid Grid.Column="2" >
+             <testGui:PreviewView x:Name="pagePreview" />
+        </Grid>
+        
+        <!-- Splitter Start -->
+        <GridSplitter ResizeDirection="Columns" Grid.Column="3"  Background="Green" MinWidth="2" >
+        </GridSplitter>
+        <!-- Splitter End -->
+        
+        <!-- Right Content (Added Control-List) -->
+        <Grid Grid.Column="4" >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            
+            <Label Content="Controls" Margin= "15,15,0,0" />
+
+            <ComboBox SelectionChanged="ControlCombo_OnSelectionChanged" x:Name="ControlCombo" Grid.Row="1" HorizontalAlignment="Stretch" Margin="15,10,15,15" />
+     
+            <Grid Grid.Row="2" Margin="15,0,15,15"  >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                  <Label VerticalContentAlignment="Center" Margin="0,0,15,0" Content="Script" />
+                  <TextBox x:Name="scriptPath" Grid.Column="1" />
+                  <Button Content="From File" Grid.Column="2" Margin="15,0,0,0"/>
+                  <Button Content="Save" Click="SaveScript" Grid.Column="3" Margin="15,0,0,0"/>
+            </Grid>
+            <Label Content="Content" Grid.Row="3" VerticalContentAlignment="Center" Margin="15,0,15,5"  />
+            <TextBox x:Name="ScriptContent" AcceptsTab="True" AcceptsReturn="True" TextWrapping="Wrap"   Grid.Row="4" Margin="15,0,15,15"/>
+         
+            <Button Click="LoadNewScript" Grid.Row="5" Margin="15,0,15,15" HorizontalContentAlignment="Center" HorizontalAlignment="Stretch" Content="Load"/>
+        </Grid>
+                
+    </Grid>
+</Window>

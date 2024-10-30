@@ -8,10 +8,14 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="56" />
-            <RowDefinition />
+            <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
         <Border  BoxShadow="2 2 10 0 DarkGray" Margin="-1,-1,-1,0" Height="">
             <Label Margin="10,0,0,0" Content="New Page!" FontSize="18" HorizontalAlignment="Left" VerticalAlignment="Center"/>
         </Border>
+        <StackPanel Grid.Row="1">
+            <testGui:NEASL_Button  Script="/Users/mdmm/GitHub/TCBS/NEASL.TEST_GUI/BUTTON2.neasl" />
+            <testGui:NEASL_Button Text="1123" Script="/Users/mdmm/GitHub/TCBS/NEASL.TEST_GUI/BUTTON.neasl" />
+        </StackPanel>
     </Grid>
 </testGui:NEASL_UserControl>

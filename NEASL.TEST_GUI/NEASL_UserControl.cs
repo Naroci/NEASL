@@ -12,18 +12,22 @@ using NEASL.Base.Linking;
 
 namespace NEASL.TEST_GUI;
 
-public class NEASL_UserControl : UserControl
+public class NEASL_UserControl : UserControl, INEASL_UserControl
 {
-    public static readonly StyledProperty<string> NAMEProperty =
-        AvaloniaProperty.Register<NEASL_Button, string>(nameof(NAME), defaultValue: "newCtrl");
+    public static readonly StyledProperty<string> scriptPathProperty =
+        AvaloniaProperty.Register<NEASL_UserControl, string>(nameof(Script), defaultValue: String.Empty);
 
-    public string NAME
+    public string Script
     {
-        get => GetValue(NAMEProperty);
-        set => SetValue(NAMEProperty, value);
+        get => GetValue(scriptPathProperty);
+        set => SetValue(scriptPathProperty, value);
     }
-    
-    
+
+    public virtual void AssignScript(string content)
+    {
+        
+    }
+
     Dictionary<string,string> scriptSections = new Dictionary<string,string>();
     private string scriptRawContent = string.Empty;
     private string filePath = string.Empty;
@@ -32,9 +36,8 @@ public class NEASL_UserControl : UserControl
     
     public NEASL_UserControl() : base() 
     {
-        
     }
-    
+
     public void LoadFromFile(string fileName)
     {
         if (File.Exists(fileName))

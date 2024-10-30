@@ -56,7 +56,7 @@ public partial class NEASL_Button : NEASL_UserControl
         }
     }
 
-    public void AssignScript(string content)
+    public override void AssignScript(string content)
     {
         btn = new btn(content);
         btn.AssignScript(content);

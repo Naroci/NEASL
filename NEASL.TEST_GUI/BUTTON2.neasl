@@ -6,11 +6,12 @@ BUTTON(Button2):
     
     HOVER:
         BACKGROUND_COLOR(Green)
-		BUTTON(Button1)->BACKGROUND_COLOR(Pink)
+		BUTTON(Button1)->SET_TEXT(HEHE)
     :HOVER
     
     LEAVE:
         BACKGROUND_COLOR(Transparent)
+		BUTTON(Button1)->SET_TEXT(LEL)
     :LEAVE
     
 :BUTTON
