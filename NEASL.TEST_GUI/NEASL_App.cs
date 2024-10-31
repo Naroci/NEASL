@@ -86,10 +86,10 @@ public class NEASL_App : BaseReceiver
                 returnCtrl = (NEASL_Page)asd;
             }
             
-            if(App.GetMainWindow().Content != null)
-                NavigationHistory.Add((object)App.GetMainWindow().Content);
-            
-            App.GetMainWindow().Content = returnCtrl;
+            if(App.NavigationControl != null && App.NavigationControl.GetCurrentPage() != null)
+                NavigationHistory.Add((object)App.NavigationControl.GetCurrentPage());
+
+            App.NavigationControl.SetCurrentPage(returnCtrl);
         });
         // Load the .axaml file
         

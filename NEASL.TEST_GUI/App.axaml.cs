@@ -8,6 +8,8 @@ namespace NEASL.TEST_GUI;
 
 public partial class App : Application
 {
+    public static INavigationControl NavigationControl { get; set; }
+
     private static Window _mainWindow;
     public static Window GetMainWindow()
     {

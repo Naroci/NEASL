@@ -34,6 +34,10 @@
     </ItemGroup>
 
     <ItemGroup>
+      <AvaloniaXaml Remove="page2.axaml" />
+      <Content Include="page2.axaml">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Content>
       <AvaloniaXaml Remove="test.axaml" />
       <Content Include="test.axaml">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
