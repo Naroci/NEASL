@@ -1,0 +1,11 @@
+BUTTON(Button1):
+    PRESSED:
+        APP->WRITE_LINE(Hello World!)
+    :PRESSED
+    HOVER:
+        BACKGROUND_COLOR(Green)
+    :HOVER
+    LEAVE:
+        BACKGROUND_COLOR(Transparent)
+    :LEAVE
+:BUTTON

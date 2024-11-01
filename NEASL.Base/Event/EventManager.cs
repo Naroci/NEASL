@@ -39,7 +39,18 @@ public class EventManager
         else
             m_ReceiverList.Add(identifier, Event);
     }
-    
+
+    public IBaseEventReceiver FindReceiver(string FullName)
+    {
+        if (string.IsNullOrEmpty(FullName) )
+            return null; // otherwise nullpointer exception.
+
+        if (m_ReceiverList.ContainsKey(FullName))
+            return m_ReceiverList[FullName];
+        
+        return null;
+    }
+
     public string FindFullReceiverNameByNameReference(string Name)
     {
         if (string.IsNullOrEmpty(Name))
@@ -85,13 +96,13 @@ public class EventManager
     /// <param name="theEvent">The subscribed element / Eventlistener</param>
     /// <param name="instruction">the Instruction to execute.</param>
     /// <exception cref="ArgumentNullException">Is thrown once one of the arguments are NULL</exception>
-    private void Notify(IBaseEventReceiver theEvent, Instruction instruction)
+    private async void Notify(IBaseEventReceiver theEvent, Instruction instruction)
     {
         if (theEvent == null || instruction == null || instruction != null && string.IsNullOrEmpty(instruction.MethodName))
             throw new ArgumentNullException(nameof(theEvent));
         try
         {
-            var args = InstructionReader.ResolveReferencedVariables(instruction.Sender, instruction.Arguments,instruction.IsAssignment);
+            var args = await ReferenceResolver.GetInstance().ResolveReferencedVariables(instruction.Sender, instruction.Arguments,instruction.IsAssignment);
             theEvent.Notify(instruction.MethodName.Trim(), args);
         }
         catch (Exception ex)

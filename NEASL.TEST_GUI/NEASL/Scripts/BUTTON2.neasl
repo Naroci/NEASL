@@ -1,0 +1,17 @@
+BUTTON(Button2):
+
+    PRESSED:
+       	APP->SHOW_DIALOG(Hallo,Das ist ein Test!)
+    :PRESSED
+    
+    HOVER:
+        BACKGROUND_COLOR(Green)
+		BUTTON(Button1)->SET_TEXT(HEHE)
+    :HOVER
+    
+    LEAVE:
+        BACKGROUND_COLOR(Transparent)
+		BUTTON(Button1)->SET_TEXT(LEL)
+    :LEAVE
+    
+:BUTTON

@@ -24,7 +24,7 @@ public class NEASL_Object : INEASL_Object
      *
      * then the first key = $var1, the second key = scope:$var1
      */
-    private Dictionary<string,object> scriptVariables = null;
+    public Dictionary<string,object> scriptVariables = null;
     public int UniquePtrHash { get; private set; }
     private List<MethodInfo> m_methods;
     
@@ -40,6 +40,73 @@ public class NEASL_Object : INEASL_Object
             return m_typeName;
                 
         return $"{m_typeName}({this.GetName()})";
+    }
+    
+    public bool IsMember(string method, object[] args)
+    {
+        var _method = FindMethod(method, args);
+        if (_method != null && _method.GetCustomAttribute<Signature>() != null)
+        {
+            ParameterInfo[] parameters = _method.GetParameters();
+            bool argsValid  = ParametersMatch(parameters, args);
+            try
+            {
+                var isProp = _method.GetCustomAttribute<Signature>().Type == LinkType.Property;
+                return isProp;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+        }
+        else
+        {
+        }
+        return false;
+    }
+    
+    public MethodInfo FindMethod(string scriptMethodName, object[] args)
+    {
+        if (string.IsNullOrEmpty(scriptMethodName))
+            throw new NullReferenceException();
+        
+        if (Methods == null || !Methods.Any())
+            return null;
+
+        if (Methods.Exists(x => x.GetCustomAttribute<Signature>()?.Name.Equals(scriptMethodName) == true))
+        {
+            var matchingNames = Methods.Where(x => x.GetCustomAttribute<Signature>()?.Name.Equals(scriptMethodName) == true)
+                .ToList();
+            foreach (var method in matchingNames)
+            {
+                ParameterInfo[] parameters = method.GetParameters();
+                bool argsValid  = ParametersMatch(parameters, args);
+                if (argsValid)
+                    return method;
+            }
+        }
+        return null;
+    }
+    
+    public bool ParametersMatch(ParameterInfo[] parameters, object[] args)
+    {
+        if (parameters != null && args == null || args != null && parameters == null) 
+            return false;
+        
+        if (parameters != null && args != null && args.Length  != parameters.Length) 
+            return false;
+        
+        if (parameters == null && args == null 
+            || parameters != null && args != null &&parameters.Length == 0 && args.Length == 0)
+            return true;
+
+        bool misMatchFound = false;
+        for (int i = 0; i < parameters.Length; i++)
+        {
+            if (parameters[i].ParameterType != args[i].GetType())
+                misMatchFound = true;
+        }
+        return !misMatchFound;
     }
     
 
@@ -86,14 +153,14 @@ public class NEASL_Object : INEASL_Object
     }
 
     [Signature(nameof(GetVariableValue), LinkType.Method)]
-    public object GetVariableValue(string variableName, bool fire = false)
+    public object GetVariableValue(string variableName)
     {
         object result = null;
         if (scriptVariables.ContainsKey(variableName))
             result = scriptVariables[variableName];
      
-        if (fire)
-            EventCallFinished(nameof(GetVariableValue), variableName);
+        //if (fire)
+        //    EventCallFinished(nameof(GetVariableValue), variableName);
         
         return result;
     }

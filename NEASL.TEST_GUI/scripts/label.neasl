@@ -1,6 +1,6 @@
 TEXTLABEL(label):
 	PRESSED:
-		APP->NAVIGATE(page2)
+		APP->NAVIGATE(pages/page2)
 		APP->SHOW_DIALOG(Title,Hallo)
 	:PRESSED
 

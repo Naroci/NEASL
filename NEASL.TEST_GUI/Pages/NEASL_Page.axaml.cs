@@ -35,14 +35,16 @@ public partial class NEASL_Page : NEASL_UserControl
         {     
             await Dispatcher.UIThread.InvokeAsync(() =>
             {
+                string path = Environment.CurrentDirectory;
+                
                 var controls = GetNEASL_UserControls<INEASL_UserControl>();
                 if (controls != null)
                 {
                     foreach (var ctrl in controls)
                     {
-                        if (ctrl != null && !string.IsNullOrEmpty(ctrl.Script) && File.Exists(ctrl.Script))
+                        if (ctrl != null && !string.IsNullOrEmpty(ctrl.Script) && File.Exists(System.IO.Path.Combine(path,ctrl.Script)))
                         {
-                            string fileContent = File.ReadAllText(ctrl.Script);
+                            string fileContent = File.ReadAllText(System.IO.Path.Combine(path,ctrl.Script));
                             ctrl.AssignScript(fileContent);
                             scripts.Add(ctrl.GetType().Name);
                         }

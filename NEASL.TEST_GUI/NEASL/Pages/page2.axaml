@@ -15,7 +15,7 @@
                 <ColumnDefinition Width="Auto" />
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
-                <testGui:NEASL_Button Script="/Users/mdmm/GitHub/TCBS/NEASL.TEST_GUI/backButton.neasl" Margin="10,0,0,0" CornerRadius="50" Background="Transparent" Padding="5" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" >
+                <testGui:NEASL_Button Script="NEASL/Scripts/backButton.neasl" Margin="10,0,0,0" CornerRadius="50" Background="Transparent" Padding="5" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" >
                     <testGui:NEASL_Button.Content >
                       <Image VerticalAlignment="Center" Height="24" Source="avares://NEASL.TEST_GUI/Assets/Backwards.png"/>
                     </testGui:NEASL_Button.Content>

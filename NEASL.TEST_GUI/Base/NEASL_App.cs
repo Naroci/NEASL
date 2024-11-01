@@ -20,6 +20,7 @@ public class NEASL_App : BaseReceiver
     public NEASL_App() : base()
     {
        base.SelfAssign();
+       new NEASL_Downloader();
     }
 
     [Signature(nameof(WRITE_LINE), LinkType.Method)]
@@ -34,6 +35,14 @@ public class NEASL_App : BaseReceiver
     {
         Console.WriteLine(text + " " +keineAhnung);
         EventCallFinished(nameof(WRITE_LINE), text,keineAhnung);
+    }
+    
+    
+    [Signature(nameof(READ_LINE), LinkType.Property)]
+    public string READ_LINE()
+    {
+        string result = Console.ReadLine();
+        return result;
     }
 
     public void ShowPopup(string text)

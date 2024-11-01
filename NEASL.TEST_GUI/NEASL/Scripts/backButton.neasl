@@ -1,0 +1,5 @@
+BUTTON(Backbutton):
+    PRESSED:
+        APP->NAVIGATE_BACK()
+    :PRESSED
+:BUTTON

@@ -1,4 +1,5 @@
 using System;
+using System.Reflection;
 using System.Text.RegularExpressions;
 using NEASL.Base.Object;
 using NEASL.Base.Global.Definitions;
@@ -94,34 +95,35 @@ public class InstructionReader : IInstructionReader
         return returnValue;
     }
 
-    /// <summary>
-    /// Resolves the referenced variable values and sets the according values.
-    /// </summary>
-    /// <param name="source">The source of the Value.</param>
-    /// <param name="args">The name of the variables to resolve.</param>
-    /// <param name="isAssigment">is the current request an assignment of a value?, important so that the left side does not get written (ex. "a=2")</param>
-    /// <returns>object[]</returns>
-    /// <exception cref="ArgumentException"></exception>
-    public static object[] ResolveReferencedVariables(INEASL_Object source, object[] args,bool isAssigment = false)
+
+
+    public async Task<object> ResolveReference(string line)
     {
-        if (source == null)
-            throw new ArgumentException(nameof(source));
-        
-        if (args == null || args.Length == 0)
-            return args;
-        
-        for (int i = 0; i < args.Length; i++)
+        INEASL_Object source = null;
+        string[] sorted = line.Split(Values.Keywords.Identifier.CLASS_SUBMETHOD_IDENTIFIER);
+        if (sorted != null && sorted.Length > 0)
         {
-            if (isAssigment && i == 0)
-                continue;
-            
-            var value = source.GetVariableValue((string)args[i], false);
-            if (value != null)
+            var eventReceiver = Context.GetInstance().GetEventManager().FindReceiver(sorted[0]);
+            source = eventReceiver;
+        }
+
+        if (source != null)
+        {
+            Instruction returnValue = getInstruction(source, line);
+            var member = source.IsMember(returnValue.MethodName, returnValue.Arguments);
+            MethodInfo methodInfo = source.FindMethod(returnValue.MethodName, returnValue.Arguments);
+            if (methodInfo != null)
             {
-                args[i] = value;
+                object result = await Task.Run(() =>
+                {
+                    return methodInfo.Invoke(source,returnValue.Arguments);
+                });
+
+                return result;
             }
         }
-        return args;
+
+        return null;
     }
 
     /// <summary>
@@ -247,7 +249,7 @@ public class InstructionReader : IInstructionReader
         return isMethod;
     }
 
-    public static bool IsConditionEntryPoint(string line)
+    public bool IsConditionEntryPoint(string line)
     {
         line = line.Trim();
         bool isCondition = line.IndexOf(Values.Keywords.Identifier.CONDITION_CONDITION_START_IDENTIFIER) > 0 

@@ -24,30 +24,28 @@
     </ItemGroup>
 
     <ItemGroup>
-      <None Update="BUTTON.neasl">
+      <None Update="NEASL\Scripts\BUTTON.neasl">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </None>
-      <None Update="BUTTON2.neasl">
+      <None Update="NEASL\Scripts\BUTTON2.neasl">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </None>
+        <None Update="NEASL\Scripts\label.neasl">
+            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        </None>
+        <None Update="NEASL\Scripts\backButton.neasl">
+            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        </None>
      
     </ItemGroup>
 
     <ItemGroup>
       <AvaloniaXaml Remove="page2.axaml" />
-      <Content Include="page2.axaml">
-        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      </Content>
       <AvaloniaXaml Remove="test.axaml" />
-      <Content Include="test.axaml">
+      <Content Include="NEASL\Pages\page2.axaml">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </Content>
-      <None Remove="label.neasl" />
-      <Content Include="label.neasl">
-        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      </Content>
-      <None Remove="backButton.neasl" />
-      <Content Include="backButton.neasl">
+      <Content Include="NEASL\Pages\test.axaml">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </Content>
     </ItemGroup>

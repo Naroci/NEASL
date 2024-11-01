@@ -7,10 +7,14 @@ public interface INEASL_Object
 {
     public int UniquePtrHash { get; }
     public IdentifierType ObjectType { get; }
+
+    MethodInfo FindMethod(string scriptMethodName, object[] args);
     
     List<MethodInfo> Methods { get;}
 
     public string GetFullName();
+
+    bool IsMember(string method, object[] args);
     
     public string GetName();
     public void SetName(string value);
@@ -18,7 +22,7 @@ public interface INEASL_Object
     public void SetObjectTypeName(string value);
     public string GetObjectTypeName();
     
-    object GetVariableValue(string variableName, bool fireFinish = false);
+    object GetVariableValue(string variableName);
     void SetVariableValue(string variableName, string value);
     
     void CompareValues(string valueL, string comparisonIdentifier, string valueR);
