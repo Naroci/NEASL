@@ -2,8 +2,9 @@ using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Markup.Xaml;
 using NEASL.Base;
+using NEASL.CONTROLS;
 
-namespace NEASL.TEST_GUI.Controls.NEASL.TextLabel;
+namespace NEASL.CONTROLS;
 
 public partial class NEASL_TextLabel : NEASL_UserControl
 {

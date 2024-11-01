@@ -9,8 +9,9 @@ using System.Runtime.CompilerServices;
 using Avalonia;
 using Avalonia.Markup.Xaml;
 using NEASL.Base.Linking;
+using NEASL.TEST_GUI;
 
-namespace NEASL.TEST_GUI;
+namespace NEASL.CONTROLS;
 
 public class NEASL_UserControl : UserControl, INEASL_UserControl
 {

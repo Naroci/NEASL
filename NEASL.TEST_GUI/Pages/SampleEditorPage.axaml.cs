@@ -8,6 +8,8 @@ using Avalonia.Controls;
 using Avalonia.Interactivity;
 using Avalonia.Markup.Xaml;
 using Avalonia.Threading;
+using NEASL.CONTROLS;
+using NEASL.PAGES;
 
 namespace NEASL.TEST_GUI;
 

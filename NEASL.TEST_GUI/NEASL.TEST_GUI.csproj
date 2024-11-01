@@ -48,6 +48,10 @@
       <Content Include="NEASL\Pages\test.axaml">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </Content>
+      <None Remove="NEASL\Scripts\TEXTINPUT.neasl" />
+      <Content Include="NEASL\Scripts\TEXTINPUT.neasl">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </Content>
     </ItemGroup>
 
     <ItemGroup>

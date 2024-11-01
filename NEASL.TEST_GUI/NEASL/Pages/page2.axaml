@@ -1,8 +1,9 @@
-<testGui:NEASL_Page xmlns="https://github.com/avaloniaui"
+<pages:NEASL_Page xmlns="https://github.com/avaloniaui"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
                     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-                    xmlns:testGui="clr-namespace:NEASL.TEST_GUI"
+                    xmlns:controls="clr-namespace:NEASL.CONTROLS"
+                    xmlns:pages="clr-namespace:NEASL.PAGES"
                     mc:Ignorable="d" d:DesignWidth="400" d:DesignHeight="750">
     <Grid>
         <Grid.RowDefinitions>
@@ -15,11 +16,11 @@
                 <ColumnDefinition Width="Auto" />
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
-                <testGui:NEASL_Button Script="NEASL/Scripts/backButton.neasl" Margin="10,0,0,0" CornerRadius="50" Background="Transparent" Padding="5" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" >
-                    <testGui:NEASL_Button.Content >
+                <controls:NEASL_Button Script="NEASL/Scripts/backButton.neasl" Margin="10,0,0,0" CornerRadius="50" Background="Transparent" Padding="5" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" >
+                    <controls:NEASL_Button.Content >
                       <Image VerticalAlignment="Center" Height="24" Source="avares://NEASL.TEST_GUI/Assets/Backwards.png"/>
-                    </testGui:NEASL_Button.Content>
-                    </testGui:NEASL_Button>
+                    </controls:NEASL_Button.Content>
+                    </controls:NEASL_Button>
                 <Label VerticalContentAlignment="Center" Grid.Column="1" Margin="5,0,0,0" Content="Page 2!" FontSize="18" HorizontalAlignment="Left" VerticalAlignment="Center"/>
             </Grid>
         </Border>
@@ -27,4 +28,4 @@
             <Label Margin="10,0,0,0" Content="Hi I am Page 2!" FontSize="18" HorizontalAlignment="Left" VerticalAlignment="Center"/>
         </StackPanel>
     </Grid>
-</testGui:NEASL_Page>
+</pages:NEASL_Page>

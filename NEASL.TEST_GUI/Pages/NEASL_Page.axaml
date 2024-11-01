@@ -1,18 +1,19 @@
-<testGui:NEASL_UserControl xmlns="https://github.com/avaloniaui"
+<controls:NEASL_UserControl xmlns="https://github.com/avaloniaui"
                            xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                            xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
                            xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-                           xmlns:testGui="clr-namespace:NEASL.TEST_GUI"
-                           xmlns:textLabel="clr-namespace:NEASL.TEST_GUI.Controls.NEASL.TextLabel"
+                           xmlns:controls="clr-namespace:NEASL.CONTROLS"
                            mc:Ignorable="d" d:DesignWidth="400" d:DesignHeight="750"
-                           x:Class="NEASL.TEST_GUI.NEASL_Page">
+                           x:Class="NEASL.PAGES.NEASL_Page">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="56" />
             <RowDefinition />
         </Grid.RowDefinitions>
         <Border  BoxShadow="2 2 10 0 DarkGray" Margin="-1,-1,-1,0" Height="">
-            <textLabel:NEASL_TextLabel Margin="10,0,0,0" Content="New Page!" FontSize="18" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+            <controls:NEASL_TextLabel Margin="10,0,0,0" Content="New Page!" FontSize="18" HorizontalAlignment="Left" VerticalAlignment="Center"/>
         </Border>
+        
+     
     </Grid>
-</testGui:NEASL_UserControl>
+</controls:NEASL_UserControl>

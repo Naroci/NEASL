@@ -1,51 +1,53 @@
 using System;
 using Avalonia.Controls;
 using Avalonia.Media;
-using NEASL.Base;
+using Avalonia.Threading;
 using NEASL.Base.Linking;
+using NEASL.TEST_GUI;
+using NEASL.CONTROLS;
 
-namespace NEASL.CONTROLS;
+namespace NEASL.Base;
 
-[Component(nameof(TEXTLABEL))]
-public class TEXTLABEL : BaseLinkedObject
+[Component(nameof(TEXTINPUT))]
+public class TEXTINPUT : BaseLinkedObject
 {
-    private NEASL_TextLabel controlBtn;
-    public TEXTLABEL() : base()
+    private NEASL_TextInput _control;
+    public TEXTINPUT() : base()
     {
         
     }
     
-    public TEXTLABEL(string content) : base(content)
+    public TEXTINPUT(string content) : base(content)
     {
         
     }
 
-    public void SetControl(NEASL_TextLabel control)
+    public void SetControl(NEASL_TextInput control)
     {
         if (control == null)
             throw new ArgumentNullException(nameof(control));
         
-        this.controlBtn = control;
+        this._control = control;
     }
 
     [Signature(nameof(BACKGROUND_COLOR), LinkType.Method)]
     public void BACKGROUND_COLOR(string ColorStringValue)
     {
-        if (this.controlBtn == null)
+        if (this._control == null)
             return;
         
         var brush = new SolidColorBrush(Color.Parse(ColorStringValue));
-        this.controlBtn.Background = brush;
+        this._control.Background = brush;
         EventCallFinished(nameof(BACKGROUND_COLOR),ColorStringValue);
     }
     
     [Signature(nameof(SET_TEXT), LinkType.Method)]
     public void SET_TEXT(string textValue)
     {
-        if (this.controlBtn == null)
+        if (this._control == null)
             return;
         
-        this.controlBtn.Content = textValue;
+        this._control.Text = textValue;
         EventCallFinished(nameof(SET_TEXT),textValue);
     }
 
@@ -67,6 +69,22 @@ public class TEXTLABEL : BaseLinkedObject
     {
         this.PerformScriptEvent(nameof(LEAVE));
     }
+    
+    
+    [Signature(nameof(GET_TEXT), LinkType.Event)]
+    public string GET_TEXT()
+    {
+        string result = Dispatcher.UIThread.InvokeAsync(() =>
+        {
+            if (this._control == null)
+                return null;
+
+            return this._control.Text;
+        }).Result;
+
+        return result;
+    }
+
 
     public void TestCall(string asdf)
     {

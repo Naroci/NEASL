@@ -3,6 +3,7 @@ using System.IO;
 using System.Net;
 using Avalonia.Controls;
 using Avalonia.Interactivity;
+using NEASL.CONTROLS;
 
 namespace NEASL.TEST_GUI;
 

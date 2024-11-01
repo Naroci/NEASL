@@ -10,6 +10,7 @@ using Avalonia.Markup.Xaml;
 using Avalonia.Media;
 using Avalonia.Threading;
 using NEASL.Base.Linking;
+using NEASL.PAGES;
 using NEASL.TEST_GUI;
 
 namespace NEASL.Base;

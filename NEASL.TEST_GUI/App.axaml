@@ -1,6 +1,6 @@
 <Application xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:textLabel="clr-namespace:NEASL.TEST_GUI.Controls.NEASL.TextLabel"
+             xmlns:controls="clr-namespace:NEASL.CONTROLS"
              x:Class="NEASL.TEST_GUI.App"
              RequestedThemeVariant="Default">
              <!-- "Default" ThemeVariant follows system theme variant. "Dark" or "Light" are other available options. -->
@@ -11,7 +11,7 @@
                 <Setter Property="Template">
                     <Setter.Value>
                         <ControlTemplate>
-                            <textLabel:NEASL_TextLabel Content="{TemplateBinding Content}" />
+                            <controls:NEASL_TextLabel Content="{TemplateBinding Content}" />
                         </ControlTemplate>
                     </Setter.Value>
                 </Setter>

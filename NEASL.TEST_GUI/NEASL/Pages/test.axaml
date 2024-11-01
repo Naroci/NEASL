@@ -1,9 +1,9 @@
-<testGui:NEASL_Page xmlns="https://github.com/avaloniaui"
+<pages:NEASL_Page xmlns="https://github.com/avaloniaui"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
                     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-                    xmlns:testGui="clr-namespace:NEASL.TEST_GUI"
-                    xmlns:textLabel="clr-namespace:NEASL.TEST_GUI.Controls.NEASL.TextLabel"
+                    xmlns:pages="clr-namespace:NEASL.PAGES"
+                    xmlns:controls="clr-namespace:NEASL.CONTROLS"
                     mc:Ignorable="d" d:DesignWidth="400" d:DesignHeight="750"
                     >
     <Grid>
@@ -15,9 +15,9 @@
             <Label Margin="10,0,0,0" Content="New Page!" FontSize="18" HorizontalAlignment="Left" VerticalAlignment="Center"/>
         </Border>
         <StackPanel Grid.Row="1">
-            <testGui:NEASL_Button  Script="NEASL/Scripts/BUTTON2.neasl" />
-            <testGui:NEASL_Button Text="1123" Script="NEASL/Scripts/BUTTON.neasl" />
-            <textLabel:NEASL_TextLabel Content="asd" Script="NEASL/Scripts/label.neasl" />
+            <controls:NEASL_Button  Script="NEASL/Scripts/BUTTON2.neasl" />
+            <controls:NEASL_Button Text="1123" Script="NEASL/Scripts/BUTTON.neasl" />
+            <controls:NEASL_TextInput Script="NEASL/Scripts/TEXTINPUT.neasl" />
         </StackPanel>
     </Grid>
-</testGui:NEASL_Page>
+</pages:NEASL_Page>

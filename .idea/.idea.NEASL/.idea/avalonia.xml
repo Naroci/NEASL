@@ -5,12 +5,15 @@
       <map>
         <entry key="NEASL.TEST_GUI/App.axaml" value="NEASL.TEST_GUI/NEASL.TEST_GUI.csproj" />
         <entry key="NEASL.TEST_GUI/Controls/NEASL/Button/NEASL_Button.axaml" value="NEASL.TEST_GUI/NEASL.TEST_GUI.csproj" />
+        <entry key="NEASL.TEST_GUI/Controls/NEASL/TextInput/NEASL_TextInput.axaml" value="NEASL.TEST_GUI/NEASL.TEST_GUI.csproj" />
         <entry key="NEASL.TEST_GUI/Controls/NEASL/TextLabel/NEASL_TextLabel.axaml" value="NEASL.TEST_GUI/NEASL.TEST_GUI.csproj" />
+        <entry key="NEASL.TEST_GUI/Controls/PreviewView.axaml" value="NEASL.TEST_GUI/NEASL.TEST_GUI.csproj" />
         <entry key="NEASL.TEST_GUI/MainWindow.axaml" value="NEASL.TEST_GUI/NEASL.TEST_GUI.csproj" />
         <entry key="NEASL.TEST_GUI/NEASL_Button.axaml" value="NEASL.TEST_GUI/NEASL.TEST_GUI.csproj" />
         <entry key="NEASL.TEST_GUI/NEASL_Page.axaml" value="NEASL.TEST_GUI/NEASL.TEST_GUI.csproj" />
         <entry key="NEASL.TEST_GUI/NEASL_TextInput.axaml" value="NEASL.TEST_GUI/NEASL.TEST_GUI.csproj" />
         <entry key="NEASL.TEST_GUI/Pages/NEASL_Page.axaml" value="NEASL.TEST_GUI/NEASL.TEST_GUI.csproj" />
+        <entry key="NEASL.TEST_GUI/Pages/SampleEditorPage.axaml" value="NEASL.TEST_GUI/NEASL.TEST_GUI.csproj" />
         <entry key="NEASL.TEST_GUI/PreviewView.axaml" value="NEASL.TEST_GUI/NEASL.TEST_GUI.csproj" />
         <entry key="NEASL.TEST_GUI/SampleEditorPage.axaml" value="NEASL.TEST_GUI/NEASL.TEST_GUI.csproj" />
         <entry key="NEASL.TEST_GUI/page2.axaml" value="NEASL.TEST_GUI/NEASL.TEST_GUI.csproj" />

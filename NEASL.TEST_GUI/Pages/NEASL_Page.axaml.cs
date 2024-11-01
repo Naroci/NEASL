@@ -9,8 +9,10 @@ using Avalonia.LogicalTree;
 using Avalonia.Markup.Xaml;
 using Avalonia.Threading;
 using Avalonia.VisualTree;
+using NEASL.CONTROLS;
+using NEASL.TEST_GUI;
 
-namespace NEASL.TEST_GUI;
+namespace NEASL.PAGES;
 
 public partial class NEASL_Page : NEASL_UserControl
 {

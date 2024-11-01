@@ -2,6 +2,7 @@ using System;
 using Avalonia.Controls;
 using Avalonia.Media;
 using NEASL.Base.Linking;
+using NEASL.CONTROLS;
 using NEASL.TEST_GUI;
 
 namespace NEASL.Base;
