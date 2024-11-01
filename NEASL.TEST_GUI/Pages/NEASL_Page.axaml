@@ -3,6 +3,7 @@
                            xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
                            xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
                            xmlns:testGui="clr-namespace:NEASL.TEST_GUI"
+                           xmlns:textLabel="clr-namespace:NEASL.TEST_GUI.Controls.NEASL.TextLabel"
                            mc:Ignorable="d" d:DesignWidth="400" d:DesignHeight="750"
                            x:Class="NEASL.TEST_GUI.NEASL_Page">
     <Grid>
@@ -11,7 +12,7 @@
             <RowDefinition />
         </Grid.RowDefinitions>
         <Border  BoxShadow="2 2 10 0 DarkGray" Margin="-1,-1,-1,0" Height="">
-            <Label Margin="10,0,0,0" Content="New Page!" FontSize="18" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+            <textLabel:NEASL_TextLabel Margin="10,0,0,0" Content="New Page!" FontSize="18" HorizontalAlignment="Left" VerticalAlignment="Center"/>
         </Border>
     </Grid>
 </testGui:NEASL_UserControl>

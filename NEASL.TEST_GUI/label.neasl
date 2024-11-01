@@ -1,0 +1,16 @@
+TEXTLABEL(label):
+	PRESSED:
+		APP->NAVIGATE(page2)
+		APP->SHOW_DIALOG(Title,Hallo)
+	:PRESSED
+
+	HOVER:
+		SET_TEXT(Navigate?)
+		BACKGROUND_COLOR(LightGray)
+	:HOVER
+
+	LEAVE:
+		SET_TEXT(Navigate Test)
+		BACKGROUND_COLOR(Transparent)
+	:LEAVE
+:TEXTLABEL

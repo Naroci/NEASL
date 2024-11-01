@@ -32,9 +32,9 @@ public partial class SampleEditorPage : Window
                 await Dispatcher.UIThread.InvokeAsync(() =>
                 {
                     this.pagePreview.SetCurrentPage(page);
-                    LoadScripts(page);
-                    ControlCombo.ItemsSource = scripts;
                 });
+                this.scripts = await page.LoadScripts();
+                ControlCombo.ItemsSource = scripts;
                 this.LayoutContent.Text = File.ReadAllText(result);
                 this.LayoutPathText.Text = result;
                 
@@ -42,27 +42,7 @@ public partial class SampleEditorPage : Window
         }
     }
 
-    private async void LoadScripts(NEASL_Page page)
-    {
-        scripts = new List<string>();
-        if (page != null)
-        {
-            var controls = page.GetNEASL_UserControls<INEASL_UserControl>();
-            if (controls != null)
-            {
-                foreach (var ctrl in controls)
-                {
-                    if (ctrl != null && !string.IsNullOrEmpty(ctrl.Script) && File.Exists(ctrl.Script))
-                    {
-                        string fileContent = File.ReadAllText(ctrl.Script);
-                        ctrl.AssignScript(fileContent);
-                        scripts.Add(ctrl.GetType().Name);
-                    }
-                }
-            }
-        }
-    }
-
+   
     private async Task<NEASL_UserControl> LoadControl(string ctrlPath)
     {
         try
@@ -140,9 +120,9 @@ public partial class SampleEditorPage : Window
                 await Dispatcher.UIThread.InvokeAsync(() =>
                 {
                     this.pagePreview.SetCurrentPage(page);
-                    LoadScripts(page);
-                    ControlCombo.ItemsSource = scripts;
                 });
+                this.scripts = await page.LoadScripts();
+                ControlCombo.ItemsSource = scripts;
             }
             else
             {

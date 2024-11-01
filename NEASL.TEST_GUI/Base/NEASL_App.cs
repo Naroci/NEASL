@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 using Avalonia.Controls;
 using Avalonia.Layout;
@@ -84,6 +85,8 @@ public class NEASL_App : BaseReceiver
                 string xaml = File.ReadAllText(filePath);
                 object asd = AvaloniaRuntimeXamlLoader.Parse<ContentControl>(xaml);
                 returnCtrl = (NEASL_Page)asd;
+                if (!returnCtrl.SciptsLoaded)
+                    returnCtrl.LoadScripts();
             }
             
             if(App.NavigationControl != null && App.NavigationControl.GetCurrentPage() != null)
@@ -105,17 +108,43 @@ public class NEASL_App : BaseReceiver
             if (NavigationHistory != null && NavigationHistory.Count > 0)
             {
                var itm = (NEASL_Page)NavigationHistory.Last();
-               NavigationHistory.Remove(itm);
+               if (!itm.SciptsLoaded)
+                   itm.LoadScripts();
                
-               if(App.GetMainWindow().Content != null)
-                   NavigationHistory.Add((ContentControl)App.GetMainWindow().Content);
+               if(App.NavigationControl.GetCurrentPage() != null)
+                   NavigationHistory.Add(App.NavigationControl.GetCurrentPage());
             
-               App.GetMainWindow().Content = itm;
+               App.NavigationControl.SetCurrentPage(itm);
+               NavigationHistory.Remove(itm);
             }
         });
         
         // Load the .axaml file
         EventCallFinished(nameof(NAVIGATE_BACK));
+    }
+    
+    [Signature(nameof(WAIT), LinkType.Method)]
+    public async void WAIT(string seconds)
+    {
+        try
+        {
+            int secondsParsed = -1;
+            int.TryParse(seconds, out secondsParsed);
+            if (secondsParsed > -1)
+            {
+                await Task.Run(() =>
+                {
+                    Thread.Sleep(secondsParsed * 1000);
+                });
+            }
+        }
+        catch (Exception)
+        {
+            
+        }
+        
+        // Load the .axaml file
+        EventCallFinished(nameof(WAIT), seconds);
     }
     
     List<object> NavigationHistory = new List<object>();

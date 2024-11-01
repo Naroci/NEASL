@@ -10,7 +10,18 @@
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
         <Border  BoxShadow="2 2 10 0 DarkGray" Margin="-1,-1,-1,0" Height="">
-            <Label Margin="10,0,0,0" Content="Page 2!" FontSize="18" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+            <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+                <testGui:NEASL_Button Script="/Users/mdmm/GitHub/TCBS/NEASL.TEST_GUI/backButton.neasl" Margin="10,0,0,0" CornerRadius="50" Background="Transparent" Padding="5" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" >
+                    <testGui:NEASL_Button.Content >
+                      <Image VerticalAlignment="Center" Height="24" Source="avares://NEASL.TEST_GUI/Assets/Backwards.png"/>
+                    </testGui:NEASL_Button.Content>
+                    </testGui:NEASL_Button>
+                <Label VerticalContentAlignment="Center" Grid.Column="1" Margin="5,0,0,0" Content="Page 2!" FontSize="18" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+            </Grid>
         </Border>
         <StackPanel Grid.Row="1">
             <Label Margin="10,0,0,0" Content="Hi I am Page 2!" FontSize="18" HorizontalAlignment="Left" VerticalAlignment="Center"/>

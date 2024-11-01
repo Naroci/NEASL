@@ -3,6 +3,7 @@
                            xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
                            xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
                            xmlns:testGui="clr-namespace:NEASL.TEST_GUI"
+                           xmlns:textLabel="clr-namespace:NEASL.TEST_GUI.Controls.NEASL.TextLabel"
                            mc:Ignorable="d" d:DesignWidth="400" d:DesignHeight="750"
                            x:Class="NEASL.TEST_GUI.NEASL_Page">
     <Grid>
@@ -16,6 +17,7 @@
         <StackPanel Grid.Row="1">
             <testGui:NEASL_Button  Script="/Users/mdmm/GitHub/TCBS/NEASL.TEST_GUI/BUTTON2.neasl" />
             <testGui:NEASL_Button Text="1123" Script="/Users/mdmm/GitHub/TCBS/NEASL.TEST_GUI/BUTTON.neasl" />
+            <textLabel:NEASL_TextLabel Content="asd" Script="/Users/mdmm/GitHub/TCBS/NEASL.TEST_GUI/label.neasl" />
         </StackPanel>
     </Grid>
 </testGui:NEASL_UserControl>

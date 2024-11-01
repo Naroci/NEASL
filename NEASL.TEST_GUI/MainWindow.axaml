@@ -29,8 +29,8 @@
             </Grid>
         </Grid>
         <StackPanel  VerticalAlignment="Center">
-            <testGui:NEASL_Button Margin="5" BorderBrush="Black" BorderThickness="1" CornerRadius="30" Background="White" TextSize="18" x:Name="NeaslButton" Grid.Column="0" Width="100" Height="60" Text="Execute" HorizontalAlignment="Center" VerticalAlignment="Center" />
-            <testGui:NEASL_Button Margin="5" BorderBrush="Black" BorderThickness="1" CornerRadius="30" Background="White" TextSize="18" x:Name="Button2" Grid.Column="0" Width="100" Height="60" Text="Button 2" HorizontalAlignment="Center" VerticalAlignment="Center" />
+            <testGui:NEASL_Button Margin="5" BorderBrush="Black" BorderThickness="1" CornerRadius="30" Background="White" FontSize="18" x:Name="NeaslButton" Grid.Column="0" Width="100" Height="60" Text="Execute" HorizontalAlignment="Center" VerticalAlignment="Center" />
+            <testGui:NEASL_Button Margin="5" BorderBrush="Black" BorderThickness="1" CornerRadius="30" Background="White" FontSize="18" x:Name="Button2" Grid.Column="0" Width="100" Height="60" Text="Button 2" HorizontalAlignment="Center" VerticalAlignment="Center" />
         </StackPanel>
     </Grid>
    

@@ -42,5 +42,44 @@
       <Content Include="test.axaml">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </Content>
+      <None Remove="label.neasl" />
+      <Content Include="label.neasl">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Content>
+      <None Remove="backButton.neasl" />
+      <Content Include="backButton.neasl">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Content>
     </ItemGroup>
+
+    <ItemGroup>
+      <Compile Update="Pages\NEASL_Page.axaml.cs">
+        <DependentUpon>NEASL_Page.axaml</DependentUpon>
+        <SubType>Code</SubType>
+      </Compile>
+      <Compile Update="Pages\SampleEditorPage.axaml.cs">
+        <DependentUpon>SampleEditorPage.axaml</DependentUpon>
+        <SubType>Code</SubType>
+      </Compile>
+      <Compile Update="Controls\PreviewView.axaml.cs">
+        <DependentUpon>PreviewView.axaml</DependentUpon>
+        <SubType>Code</SubType>
+      </Compile>
+      <Compile Update="Controls\NEASL\Button\NEASL_Button.axaml.cs">
+        <DependentUpon>NEASL_Button.axaml</DependentUpon>
+        <SubType>Code</SubType>
+      </Compile>
+      <Compile Update="Controls\NEASL\TextLabel\NEASL_Button.axaml.cs">
+        <DependentUpon>NEASL_Button.axaml</DependentUpon>
+        <SubType>Code</SubType>
+      </Compile>
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="Windows\" />
+    </ItemGroup>
+    <ItemGroup>
+        <AvaloniaResource Include="Assets\**" />
+    </ItemGroup>
+    
 </Project>

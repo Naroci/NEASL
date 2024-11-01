@@ -315,7 +315,7 @@ public class InstructionReader : IInstructionReader
             if (argsPart.IndexOf(Values.Keywords.Identifier.ARGUMENT_SEPARATOR_IDENTIFIER) > -1)
                 args = argsPart.Split(Values.Keywords.Identifier.ARGUMENT_SEPARATOR_IDENTIFIER);
             else
-                args = new[] { argsPart };
+                args = !string.IsNullOrEmpty(argsPart) ? new[] { argsPart } : new object[] {};
 
             if (args != null && args.Length > 0)
             {

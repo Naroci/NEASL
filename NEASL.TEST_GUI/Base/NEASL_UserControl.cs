@@ -16,11 +16,18 @@ public class NEASL_UserControl : UserControl, INEASL_UserControl
 {
     public static readonly StyledProperty<string> scriptPathProperty =
         AvaloniaProperty.Register<NEASL_UserControl, string>(nameof(Script), defaultValue: String.Empty);
+    
 
     public string Script
     {
-        get => GetValue(scriptPathProperty);
-        set => SetValue(scriptPathProperty, value);
+        get
+        {
+            return GetValue(scriptPathProperty);
+        }
+        set
+        {
+            SetValue(scriptPathProperty, value);
+        }
     }
 
     public virtual void AssignScript(string content)
@@ -36,6 +43,7 @@ public class NEASL_UserControl : UserControl, INEASL_UserControl
     
     public NEASL_UserControl() : base() 
     {
+        
     }
 
     public void LoadFromFile(string fileName)
