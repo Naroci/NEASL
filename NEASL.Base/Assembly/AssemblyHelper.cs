@@ -6,7 +6,7 @@ namespace NEASL.Base.Assembly;
 
 public static class AssemblyHelper
 {
-    private static List<Type> GetAssembliesOfSubclassType<T>()
+    public static List<Type> GetAssembliesOfSubclassType<T>()
     {
         List<Type> resultList = new List<Type>();
         

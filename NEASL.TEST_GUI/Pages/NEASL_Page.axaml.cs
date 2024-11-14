@@ -14,6 +14,7 @@ using NEASL.TEST_GUI;
 
 namespace NEASL.PAGES;
 
+
 public partial class NEASL_Page : NEASL_UserControl
 {
     public NEASL_Page()
@@ -62,5 +63,4 @@ public partial class NEASL_Page : NEASL_UserControl
         }
         return scripts;
     }
-
 }
