@@ -13,21 +13,30 @@ namespace NEASL.Base
     {
         public static int Main(string[] args)
         {
+            string pgrmFileName = null;
+            string fileName = @"script/PAGE/BUTTON/BUTTON.neasl";
+            if (args.Length > 0 && !string.IsNullOrEmpty(args[0]))
+                pgrmFileName = args[0];
+            else 
+                pgrmFileName = @"script/app.neasl";
+
             var app = BaseApplicationContext.Initialize<NEASL_App>();
       
             string path = Environment.CurrentDirectory;
-            string fileName = @"script/PAGE/BUTTON/BUTTON.neasl";
+         
        
            
            
-            app.AssignScript(path, "script/app.neasl");
+            app.AssignScript(path, pgrmFileName);
             app.START();
             
+            /*
             BUTTON btn = new BUTTON();
             btn.AssignScript(path, fileName);
             btn.PRESSED();
             
             BUTTON btn2 = new BUTTON();
+            */
             /*
             var result = PackageManager.SearchPackageFiles(path);
             string fileName = @"script/PAGE/BUTTON/BUTTON.neasl";

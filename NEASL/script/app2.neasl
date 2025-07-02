@@ -1,0 +1,19 @@
+APP:
+    NAME="Sample Script!"
+    START:
+        WRITE_LINE(Hello World!)
+        value = Test
+        IF ( value=Test ) :
+            WRITE_LINE(If 1)
+            IF( value =asd):
+                 WRITE_LINE(If 2)
+                     IF( value= Test ) :
+                        WRITE_LINE(If 3)
+                     :IF
+                WRITE_LINE(If 2-1)
+            :IF
+            WRITE_LINE(If 1-1)
+        :IF
+        WRITE_LINE(asdf)
+    :START
+:APP

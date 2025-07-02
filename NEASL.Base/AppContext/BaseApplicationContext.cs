@@ -15,6 +15,12 @@ public class BaseApplicationContext : BaseLinkedObject, IBaseApplicationContext
         return applicationContext;
     }
     
+    [Signature(nameof(START), LinkType.Event)]
+    public void START()
+    {
+        this.PerformScriptEvent(nameof(START));
+    }
+    
     public static T Initialize<T>() where T : BaseApplicationContext
     {
         object obj = null;

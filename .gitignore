@@ -9,3 +9,5 @@
 /NEASL.TEST_GUI/obj
 
 .DS_Store
+/NEASL.Test/bin
+/NEASL.Test/obj
