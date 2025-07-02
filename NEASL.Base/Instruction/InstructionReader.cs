@@ -186,10 +186,16 @@ public class InstructionReader : IInstructionReader
                 line = line.Remove(0, condStartIndex + Values.Keywords.Identifier.CONDITION_CONDITION_START_IDENTIFIER.Length);
                 line = line.TrimStart();
                 
-                int closingIndex = line.LastIndexOf(Values.Keywords.Identifier.METHOD_END_IDENTIFIER);
-                if (closingIndex > 0)
+                int closingIndexLog = line.LastIndexOf(Values.Keywords.Identifier.SECTION_END_IDENTIFIER);
+                if (closingIndexLog > 0)
                 {
-                    line = line.Substring(0, closingIndex);
+                    line = line.Substring(0, closingIndexLog);
+                    int closingIndex = line.LastIndexOf(Values.Keywords.Identifier.METHOD_END_IDENTIFIER);
+                    if (closingIndex > 0 && closingIndexLog > 0)
+                    {
+                    
+                        line = line.Substring(0, closingIndex);
+                    }
                 }
             }
         }

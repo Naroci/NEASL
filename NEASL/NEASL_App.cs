@@ -4,19 +4,14 @@ using NEASL.Base.Linking;
 namespace NEASL.Base;
 
 [Main("APP")]
-public class NEASL_App : BaseLinkedObject
+public class NEASL_App : BaseReceiver
 {
     public NEASL_App() : base()
     {
-       
+        base.SelfAssign();
     }
     
-    [Signature(nameof(START), LinkType.Event)]
-    public void START()
-    {
-        this.PerformScriptEvent(nameof(START));
-    }
-
+   
     [Signature(nameof(WRITE_LINE), LinkType.Method)]
     public void WRITE_LINE(string text)
     {
@@ -28,7 +23,7 @@ public class NEASL_App : BaseLinkedObject
     public void WRITE_LINE(string text, string keineAhnung)
     {
         Console.WriteLine(text + " " +keineAhnung);
-        EventCallFinished(nameof(WRITE_LINE), text, keineAhnung);
+        EventCallFinished(nameof(WRITE_LINE), text,keineAhnung);
     }
     
     [Signature(nameof(READ_LINE), LinkType.Method)]

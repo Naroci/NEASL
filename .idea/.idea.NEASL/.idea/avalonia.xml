@@ -9,6 +9,8 @@
         <entry key="NEASL.TEST_GUI/Controls/NEASL/TextLabel/NEASL_TextLabel.axaml" value="NEASL.TEST_GUI/NEASL.TEST_GUI.csproj" />
         <entry key="NEASL.TEST_GUI/Controls/PreviewView.axaml" value="NEASL.TEST_GUI/NEASL.TEST_GUI.csproj" />
         <entry key="NEASL.TEST_GUI/MainWindow.axaml" value="NEASL.TEST_GUI/NEASL.TEST_GUI.csproj" />
+        <entry key="NEASL.TEST_GUI/NEASL/Pages/page2.axaml" value="NEASL.TEST_GUI/NEASL.TEST_GUI.csproj" />
+        <entry key="NEASL.TEST_GUI/NEASL/Pages/test.axaml" value="NEASL.TEST_GUI/NEASL.TEST_GUI.csproj" />
         <entry key="NEASL.TEST_GUI/NEASL_Button.axaml" value="NEASL.TEST_GUI/NEASL.TEST_GUI.csproj" />
         <entry key="NEASL.TEST_GUI/NEASL_Page.axaml" value="NEASL.TEST_GUI/NEASL.TEST_GUI.csproj" />
         <entry key="NEASL.TEST_GUI/NEASL_TextInput.axaml" value="NEASL.TEST_GUI/NEASL.TEST_GUI.csproj" />

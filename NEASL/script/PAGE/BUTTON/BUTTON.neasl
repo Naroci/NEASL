@@ -1,19 +1,9 @@
-BUTTON:
-    NAME=Button1
+BUTTON(Button1):
     PRESSED:
         APP->WRITE_LINE(Hello World!)
         value = Test
-        value2 = APP->READ_LINE()
-        IF ( value=Test ) :
+        IF (value=Test) :
             APP->WRITE_LINE(If 1)
-            IF( value =asd):
-                 APP->WRITE_LINE(If 2)
-                     IF( value= Test ) :
-                        APP->WRITE_LINE(If 3)
-                     :IF
-                 APP->WRITE_LINE(If 2-1)
-            :IF
-            APP->WRITE_LINE(If 1-1)
         :IF
         APP->WRITE_LINE(asdf)
     :PRESSED
