@@ -5,6 +5,11 @@ namespace NEASL.Base.Global.Definitions;
 // each parts.
 public struct Values
 {
+    public struct Application
+    {
+        public const string APPLICATION_CONTEXT_KEYWORD_IDENTIFIER = "APP";
+    }
+
     public struct Keywords
     {
         public struct Booleans

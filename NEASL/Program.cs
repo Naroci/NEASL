@@ -3,6 +3,7 @@
 using System;
 using System.Diagnostics;
 using System.Reflection;
+using NEASL.Base.AppContext;
 using NEASL.Base.Package;
 
 namespace NEASL.Base
@@ -12,15 +13,15 @@ namespace NEASL.Base
     {
         public static int Main(string[] args)
         {
-            NEASL_App app = new NEASL_App();
-            
+            var app = BaseApplicationContext.Initialize<NEASL_App>();
+      
             string path = Environment.CurrentDirectory;
             string fileName = @"script/PAGE/BUTTON/BUTTON.neasl";
        
            
            
-            //main.AssignScript(path, "script/app.neasl");
-            //main.START();
+            app.AssignScript(path, "script/app.neasl");
+            app.START();
             
             BUTTON btn = new BUTTON();
             btn.AssignScript(path, fileName);

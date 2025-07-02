@@ -9,6 +9,7 @@ using Avalonia.Layout;
 using Avalonia.Markup.Xaml;
 using Avalonia.Media;
 using Avalonia.Threading;
+using NEASL.Base.AppContext;
 using NEASL.Base.Linking;
 using NEASL.PAGES;
 using NEASL.TEST_GUI;
@@ -16,7 +17,7 @@ using NEASL.TEST_GUI;
 namespace NEASL.Base;
 
 [Main("APP")]
-public class NEASL_App : BaseReceiver
+public class NEASL_App : BaseApplicationContext
 {
     public NEASL_App() : base()
     {
@@ -25,14 +26,14 @@ public class NEASL_App : BaseReceiver
     }
 
     [Signature(nameof(WRITE_LINE), LinkType.Method)]
-    public void WRITE_LINE(string text)
+    public override void WRITE_LINE(string text)
     {
         Console.WriteLine(text);
         EventCallFinished(nameof(WRITE_LINE), text);
     }
     
     [Signature(nameof(WRITE_LINE), LinkType.Method)]
-    public void WRITE_LINE(string text, string keineAhnung)
+    public override void WRITE_LINE(string text, string keineAhnung)
     {
         Console.WriteLine(text + " " +keineAhnung);
         EventCallFinished(nameof(WRITE_LINE), text,keineAhnung);
@@ -134,7 +135,7 @@ public class NEASL_App : BaseReceiver
     }
     
     [Signature(nameof(WAIT), LinkType.Method)]
-    public async void WAIT(string seconds)
+    public  async void WAIT(string seconds)
     {
         try
         {
