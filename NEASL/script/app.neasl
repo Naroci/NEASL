@@ -1,6 +1,15 @@
 APP:
     NAME="Sample Script!"
     START:
-       WRITE_LINE(Hello World!)
+       WRITE_LINE(1)
+       WRITE_LINE(2)
+       WRITE_LINE(3)
     :START
+    
+    lel:
+        WRITE_LINE(lel)
+    :lel
 :APP
+
+OPTIONS:
+:OPTIONS
