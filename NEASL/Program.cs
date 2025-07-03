@@ -43,7 +43,7 @@ namespace NEASL.Base
             
             app.AssignScript(path, pgrmFileName);
             app.START();
-            app.PerformScriptEvent("lel");
+            //app.PerformScriptEvent("lel");
             return 0;
         }
     }

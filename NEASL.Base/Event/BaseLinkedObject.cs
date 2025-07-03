@@ -14,6 +14,8 @@ public class BaseLinkedObject : BaseReceiver, IBaseLinkedObject
     private string filePath = string.Empty;
     private string fileName = string.Empty;
 
+    public Dictionary<string, string> GetScriptSections() => scriptSections;
+
     public BaseLinkedObject() : base()
     {
         //Context.GetInstance().GetEventManager().Register(this);

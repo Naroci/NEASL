@@ -73,6 +73,32 @@ public class BaseReceiver : NEASL_Object, IBaseEventReceiver
                 Console.WriteLine(ex.Message);
             }
         }
+        else if (this is BaseLinkedObject obj && obj.GetScriptSections() != null && obj.GetScriptSections().Any() &&
+                 obj.GetScriptSections().ContainsKey(method))
+        {
+
+            string methodContent = string.Empty;
+            Dictionary<string, string> sections = obj.GetScriptSections();
+            sections.TryGetValue(method, out methodContent);
+            if (methodContent != string.Empty)
+            {
+                InstructionRunner.GetInstance().Execute(this,methodContent);
+                EventCallFinished(method, args);
+                return;
+            }
+
+            /*
+            foreach (var section in  sections)
+            {
+                string text = section.Value;
+                if (!string.IsNullOrEmpty(text))
+                {
+                   // string[] lines = text.Split('\n');
+                   // var liness = lines.ToList();
+                    InstructionRunner.GetInstance().Execute(this,text);
+                }
+            }*/
+        }
         else
         {
             Console.WriteLine($"Method {method} not found!");

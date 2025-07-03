@@ -1,14 +1,28 @@
 APP:
     NAME="Sample Script!"
+    
+    PREVIOUS:
+        WRITE_LINE(PREVIOUS)  
+          
+    :PREVIOUS
+    
     START:
        WRITE_LINE(1)
        WRITE_LINE(2)
        WRITE_LINE(3)
+       value=test
+       IF(value=22):
+            WRITE_LINE(jo)
+       :IF
+       TEST()
     :START
     
-    lel:
+    TEST:
         WRITE_LINE(lel)
-    :lel
+        WRITE_LINE(lel2)
+        WRITE_LINE(lel3)
+        PREVIOUS()
+    :TEST
 :APP
 
 OPTIONS:
