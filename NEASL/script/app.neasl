@@ -2,8 +2,9 @@ APP:
     NAME="Sample Script!"
     
     PREVIOUS:
-        WRITE_LINE(PREVIOUS)  
-          
+        val = lol
+        WRITE_LINE(PREVIOUS)   
+        WRITE_LINE(val)  
     :PREVIOUS
     
     START:
