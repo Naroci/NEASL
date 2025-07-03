@@ -7,13 +7,7 @@ namespace NEASL.Base.AppContext;
 [Main(Values.Application.APPLICATION_CONTEXT_KEYWORD_IDENTIFIER)] 
 public class BaseApplicationContext : BaseLinkedObject, IBaseApplicationContext
 {
-    private static IBaseApplicationContext applicationContext;
-    public static IBaseApplicationContext Initialize()
-    {
-        if (applicationContext == null)
-            applicationContext = new BaseApplicationContext();
-        return applicationContext;
-    }
+ 
     
     [Signature(nameof(START), LinkType.Event)]
     public void START()
@@ -21,19 +15,7 @@ public class BaseApplicationContext : BaseLinkedObject, IBaseApplicationContext
         this.PerformScriptEvent(nameof(START));
     }
     
-    public static T Initialize<T>() where T : BaseApplicationContext
-    {
-        object obj = null;
-        obj = Activator.CreateInstance(typeof(T));
-        if (obj == null || obj != null &&  obj is not IBaseApplicationContext)
-        {
-            applicationContext = null;
-            return null;
-        }
-   
-        applicationContext = obj as IBaseApplicationContext;
-        return applicationContext as T;
-    }
+  
 
     public BaseApplicationContext() : base()
     {

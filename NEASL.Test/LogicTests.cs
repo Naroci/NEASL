@@ -9,8 +9,7 @@ public sealed class LogicTests
     [TestMethod]
     public void ConditionTest()
     {
-        var app = BaseApplicationContext.Initialize();
-      
+        var app = Base.NEASL.Initialize();
         string path = Environment.CurrentDirectory;
         string fileName = @"script/PAGE/BUTTON/BUTTON.neasl";
         app.AssignScript(path, "script/app.neasl");

@@ -1,29 +1,17 @@
 APP:
     NAME="Sample Script!"
     
-    PREVIOUS:
-        val = lol
-        WRITE_LINE(PREVIOUS)   
-        WRITE_LINE(val)  
-    :PREVIOUS
-    
+    MARCMUFFT:
+        marc = mufft
+        IF(marc=mufft):
+              WRITE_LINE(ja marc mufft!)
+        :IF
+    :MARCMUFFT
+
     START:
-       WRITE_LINE(1)
-       WRITE_LINE(2)
-       WRITE_LINE(3)
-       value=test
-       IF(value=22):
-            WRITE_LINE(jo)
-       :IF
-       TEST()
+        MARCMUFFT()
     :START
     
-    TEST:
-        WRITE_LINE(lel)
-        WRITE_LINE(lel2)
-        WRITE_LINE(lel3)
-        PREVIOUS()
-    :TEST
 :APP
 
 OPTIONS:

@@ -20,7 +20,7 @@ public partial class App : Application
     public override void Initialize()
     {
         AvaloniaXamlLoader.Load(this);
-        NEASL_App app = BaseApplicationContext.Initialize<NEASL_App>();
+        NEASL_App app = NEASL.Base.NEASL.Initialize<NEASL_App>();
     }
 
     public override void OnFrameworkInitializationCompleted()

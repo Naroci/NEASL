@@ -13,6 +13,8 @@ public partial class MainWindow : Window
     {
         InitializeComponent();
         setTextInput();
+        Height = 500;
+        Width = 600;
     }
     
     public string FetchScript(string scriptFilePath)

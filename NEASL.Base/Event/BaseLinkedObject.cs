@@ -23,6 +23,8 @@ public class BaseLinkedObject : BaseReceiver, IBaseLinkedObject
 
     public BaseLinkedObject(string scriptContent)
     {
+        if (string.IsNullOrEmpty(scriptContent))
+            return;
         scriptRawContent = scriptContent;
         LinkToScript();
         base.SelfAssign();
@@ -38,6 +40,8 @@ public class BaseLinkedObject : BaseReceiver, IBaseLinkedObject
     public void AssignScript(string FilePath, string FileName)
     {
         scriptRawContent = FetchScript(System.IO.Path.Combine(FilePath, FileName));
+        if (string.IsNullOrEmpty(scriptRawContent))
+            return;
         LinkToScript();
         base.SelfAssign();
     }

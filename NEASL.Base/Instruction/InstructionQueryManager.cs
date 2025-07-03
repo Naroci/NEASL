@@ -252,7 +252,7 @@ public class InstructionQueryManager
                                 var exitPoint = m_currentInstruction.EntryLeavePoint;
                                 var itemsToSkip = this.InstructionQuery.ToList().Where(x=>x.Id > m_currentInstruction.Id && x.Id < exitPoint.Id).ToList();
                                 int ExitPointIndex = this.InstructionQuery.ToList().IndexOf(exitPoint);
-                                if (ExitPointIndex > -1)
+                                if (itemsToSkip  != null && itemsToSkip.Any() && itemsToSkip.Count >= 0)
                                 {
                                     for (int i = 0; i < itemsToSkip.Count; i++)
                                     {
