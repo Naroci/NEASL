@@ -34,8 +34,12 @@ public class InstructionReader : IInstructionReader
             returnValue.IsSubSectionEntry = isConditionEntry;
             returnValue.IsCondition = isConditionEntry; 
             returnValue.Arguments = GetConditionValues(line);
-            line = GetComparisonCommand(source, returnValue.Arguments[0], (string)returnValue.Arguments[1],
-                returnValue.Arguments[2]);
+            if (returnValue.Arguments != null && returnValue.Arguments.Length > 1)
+            {
+                line = GetComparisonCommand(source, returnValue.Arguments[0], (string)returnValue.Arguments[1],
+                    returnValue.Arguments[2]);
+            }
+
         }
         
         bool isConditionLeaveEntry = IsConditionLeavePoint(line);
@@ -173,6 +177,8 @@ public class InstructionReader : IInstructionReader
         // TODO:
         // Super ugly... but honestly too lazy to loop through it and for what it does it should be fine
         // at least for first.... 
+
+        bool isElse = line.Contains(Values.Keywords.Conditions.ELSE_KEYWORD);
         line = line.TrimStart();
         int IFKeywordIndex = line.IndexOf(Values.Keywords.Conditions.IF_KEYWORD);
         if (IFKeywordIndex == 0)
@@ -200,13 +206,18 @@ public class InstructionReader : IInstructionReader
             }
         }
 
-        string comparisonValue = Comparer.FindComparisonKeyword(line);
-        string[] result = Regex.Split(line, $"({comparisonValue})");
-        for (int i = 0; i < result.Length - 1; i++)
+        if (!isElse)
         {
-            result[i] = result[i].Trim();
+            string comparisonValue = Comparer.FindComparisonKeyword(line);
+            string[] result = Regex.Split(line, $"({comparisonValue})");
+            for (int i = 0; i < result.Length - 1; i++)
+            {
+                result[i] = result[i].Trim();
+            }
+            return result;
         }
-        return result;
+
+        return new string[0];
     }
     
     

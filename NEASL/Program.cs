@@ -24,7 +24,7 @@ namespace NEASL.Base
 #if DEBUG
                 try
                 {
-                    if (Environment.GetCommandLineArgs().Length > 1)
+                    if (Environment.GetEnvironmentVariables() != null )
                     {
                         pgrmFileName = Environment.GetEnvironmentVariable("ScriptPath");
                         if (string.IsNullOrEmpty(pgrmFileName) == false && !File.Exists(pgrmFileName))
