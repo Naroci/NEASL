@@ -11,30 +11,33 @@ namespace NEASL.Base
     // NEASL - Not Even A Scripting Language.
     public class Program
     {
-        private const string defaultMessage = "Usage: neasl [options]\nUsage: neasl [path-to-application]\n\npath-to-application:\n  The path to an application file to execute.\n";
+        private const string defaultMessage =
+            "Usage: neasl [options]\nUsage: neasl [path-to-application]\n\npath-to-application:\n  The path to an application file to execute.\n";
+
         public static int Main(string[] args)
         {
-            Console.Clear();
             string pgrmFileName = null;
             if (args.Length > 0 && !string.IsNullOrEmpty(args[0]))
                 pgrmFileName = args[0];
-           else
+            else
             {
 #if DEBUG
                 try
                 {
-                    pgrmFileName = Environment.GetEnvironmentVariable("ScriptPath");
-                    if (string.IsNullOrEmpty(pgrmFileName) == false && !File.Exists(pgrmFileName))
+                    if (Environment.GetCommandLineArgs().Length > 1)
                     {
-                        Console.WriteLine($"Script {pgrmFileName} was not found");
-                        return 1;
+                        pgrmFileName = Environment.GetEnvironmentVariable("ScriptPath");
+                        if (string.IsNullOrEmpty(pgrmFileName) == false && !File.Exists(pgrmFileName))
+                        {
+                            Console.WriteLine($"Script {pgrmFileName} was not found");
+                            return 1;
+                        }
+
+                        string asd = File.ReadAllText(pgrmFileName);
                     }
-                    string asd = File.ReadAllText(pgrmFileName);
-                    //Linker.GetSections(asd);
                 }
                 catch (Exception e)
                 {
-                    
                 }
 #endif
             }
@@ -48,10 +51,11 @@ namespace NEASL.Base
 
             var app = NEASL.Initialize<NEASL_App>();
             string path = Environment.CurrentDirectory;
-            
+
             app.AssignScript(path, pgrmFileName);
             app.START();
             //app.PerformScriptEvent("lel");
+            Console.Title = string.Empty;
             return 0;
         }
     }
