@@ -45,10 +45,16 @@ public class BaseApplicationContext : BaseLinkedObject, IBaseApplicationContext
             int.TryParse(seconds, out secondsParsed);
             if (secondsParsed > -1)
             {
+                Thread.Sleep(secondsParsed * 1000);
+                // Load the .axaml file
+                EventCallFinished(nameof(WAIT), seconds);
+                /*
                 await Task.Run(() =>
                 {
                     Thread.Sleep(secondsParsed * 1000);
-                });
+                    // Load the .axaml file
+                    EventCallFinished(nameof(WAIT), seconds);
+                });*/
             }
         }
         catch (Exception)
@@ -56,8 +62,7 @@ public class BaseApplicationContext : BaseLinkedObject, IBaseApplicationContext
             
         }
         
-        // Load the .axaml file
-        EventCallFinished(nameof(WAIT), seconds);
+       
     }
 
     [Signature(nameof(READ_LINE), LinkType.Method)]
