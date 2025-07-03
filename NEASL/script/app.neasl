@@ -4,9 +4,7 @@ APP(Sample Script!):
         IF(marc=mufft):
             WRITE_LINE(ja marc mufft!)
         :IF
-        ELSE:
-            WRITE_LINE(trotzdem!)
-        :ELSE
+  
         WAIT(1)
         WRITE_LINE(hmm)
         IF(marc=mufft):

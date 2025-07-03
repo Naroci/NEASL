@@ -1,6 +1,7 @@
 using System;
 using Avalonia.Controls;
 using Avalonia.Media;
+using Avalonia.Threading;
 using NEASL.Base.Linking;
 using NEASL.CONTROLS;
 using NEASL.TEST_GUI;
@@ -28,6 +29,20 @@ public class btn : BaseLinkedObject
         
         this.controlBtn = control;
     }
+    
+    [Signature(nameof(GET_TEXT), LinkType.Event)]
+    public string GET_TEXT()
+    {
+        string result = Dispatcher.UIThread.InvokeAsync(() =>
+        {
+            if (this.controlBtn == null)
+                return null;
+
+            return this.controlBtn.Text;
+        }).Result;
+
+        return result;
+    }
 
     [Signature(nameof(BACKGROUND_COLOR), LinkType.Method)]
     public void BACKGROUND_COLOR(string ColorStringValue)
@@ -54,6 +69,7 @@ public class btn : BaseLinkedObject
     public void PRESSED()
     {
         this.PerformScriptEvent(nameof(PRESSED));
+        EventCallFinished(nameof(PRESSED));
     }
     
     [Signature(nameof(HOVER), LinkType.Event)]
