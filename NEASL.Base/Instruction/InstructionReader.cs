@@ -22,33 +22,37 @@ public class InstructionReader : IInstructionReader
     {
         if (line == null)
             return null;
-        
+
+        string orignLine = new string(line);
         line = line.TrimStart();
         if (string.IsNullOrEmpty(line))
             return null;
-        
+
         Instruction returnValue = new Instruction();
         bool isConditionEntry = IsConditionEntryPoint(line);
         if (isConditionEntry)
         {
             returnValue.IsSubSectionEntry = isConditionEntry;
-            returnValue.IsCondition = isConditionEntry; 
+
+            returnValue.IsCondition = isConditionEntry;
             returnValue.Arguments = GetConditionValues(line);
             if (returnValue.Arguments != null && returnValue.Arguments.Length > 1)
             {
                 line = GetComparisonCommand(source, returnValue.Arguments[0], (string)returnValue.Arguments[1],
                     returnValue.Arguments[2]);
             }
-
         }
-        
+
         bool isConditionLeaveEntry = IsConditionLeavePoint(line);
         if (isConditionLeaveEntry)
         {
-            returnValue.IsCondition = isConditionLeaveEntry; 
+            returnValue.IsCondition = isConditionLeaveEntry;
             returnValue.IsSubSectionLeave = isConditionLeaveEntry;
         }
-        
+
+        if (returnValue.IsCondition)
+            returnValue.ConditionMethod = GetConditionMethodName(orignLine);
+
         returnValue.IsAssignment = IsAssignment(line) && !returnValue.IsCondition;
         returnValue.Sender = source;
         if (returnValue.IsAssignment)
@@ -56,30 +60,32 @@ public class InstructionReader : IInstructionReader
             var avalues = GetAssignmentValues(line);
             if (IsMethod(avalues[0]))
                 throw new ArithmeticException($"The Method {avalues[0]} cannot be assigned to another value.");
-            
+
             if (avalues.Length > 2)
                 throw new ArithmeticException($"Assignment found in line {line}");
-            
-            line = GetAssignmentCommand(source,avalues[0],avalues[1]);
+
+            line = GetAssignmentCommand(source, avalues[0], avalues[1]);
         }
-        
-        if (IsLocalMethod(line)) {
+
+        if (IsLocalMethod(line))
+        {
             line = ResolveSelfRefencedMethod(source, line);
         }
-        
+
         // check if the identifier "->" Exists.
         if (line.IndexOf(Values.Keywords.Identifier.CLASS_SUBMETHOD_IDENTIFIER) > -1)
         {
             var assignPos = line.IndexOf(Values.Keywords.Identifier.CLASS_SUBMETHOD_IDENTIFIER);
-            var splittedParts = line.Substring(assignPos + Values.Keywords.Identifier.CLASS_SUBMETHOD_IDENTIFIER.Length,line.Length - (assignPos + Values.Keywords.Identifier.CLASS_SUBMETHOD_IDENTIFIER.Length)); 
-           
+            var splittedParts = line.Substring(assignPos + Values.Keywords.Identifier.CLASS_SUBMETHOD_IDENTIFIER.Length,
+                line.Length - (assignPos + Values.Keywords.Identifier.CLASS_SUBMETHOD_IDENTIFIER.Length));
+
             // Value / Object that is refered to.
             // Make sure to differ between Type and references.
-            var refName = line.Substring(0,assignPos) ;
+            var refName = line.Substring(0, assignPos);
             if (splittedParts.Length > 0 && !string.IsNullOrEmpty(refName))
             {
                 returnValue.ObjectName = refName;
-                
+
                 if (splittedParts.Length > 1)
                 {
                     var methodResult = tryParseMethod(splittedParts);
@@ -100,7 +106,6 @@ public class InstructionReader : IInstructionReader
     }
 
 
-
     public async Task<object> ResolveReference(string line)
     {
         INEASL_Object source = null;
@@ -118,10 +123,7 @@ public class InstructionReader : IInstructionReader
             MethodInfo methodInfo = source.FindMethod(returnValue.MethodName, returnValue.Arguments);
             if (methodInfo != null)
             {
-                object result = await Task.Run(() =>
-                {
-                    return methodInfo.Invoke(source,returnValue.Arguments);
-                });
+                object result = await Task.Run(() => { return methodInfo.Invoke(source, returnValue.Arguments); });
 
                 return result;
             }
@@ -138,12 +140,13 @@ public class InstructionReader : IInstructionReader
     /// <returns></returns> 
     public bool IsAssignment(string line)
     {
-        return line.IndexOf(Values.Keywords.Comparisons.EQUALS_KEYWORD) > -1 
+        return line.IndexOf(Values.Keywords.Comparisons.EQUALS_KEYWORD) > -1
                && line.IndexOf(Values.Keywords.Identifier.METHOD_END_IDENTIFIER) == -1
                && line.IndexOf(Values.Keywords.Identifier.SECTION_END_IDENTIFIER) == -1
-               || line.IndexOf(Values.Keywords.Comparisons.EQUALS_KEYWORD) > -1 
+               || line.IndexOf(Values.Keywords.Comparisons.EQUALS_KEYWORD) > -1
                && line.IndexOf(Values.Keywords.Identifier.METHOD_END_IDENTIFIER) > -1
-               && line.IndexOf(Values.Keywords.Comparisons.EQUALS_KEYWORD) < line.IndexOf(Values.Keywords.Identifier.METHOD_END_IDENTIFIER)
+               && line.IndexOf(Values.Keywords.Comparisons.EQUALS_KEYWORD) <
+               line.IndexOf(Values.Keywords.Identifier.METHOD_END_IDENTIFIER)
                && line.IndexOf(Values.Keywords.Identifier.SECTION_END_IDENTIFIER) == -1;
     }
 
@@ -159,14 +162,28 @@ public class InstructionReader : IInstructionReader
         {
             vals[i] = vals[i].Trim();
         }
+
         return vals;
     }
-    
-    
+
+
+    public string GetConditionMethodName(string line)
+    {
+        if (string.IsNullOrEmpty(line))
+            return null;
+
+        if (line.Contains(Values.Keywords.Conditions.IF_KEYWORD))
+            return Values.Keywords.Conditions.IF_KEYWORD;
+        else if (line.Contains(Values.Keywords.Conditions.ELSE_KEYWORD))
+            return Values.Keywords.Conditions.ELSE_KEYWORD;
+
+        return null;
+    }
+
     /*
      * TODO: Change the method later to take in the arguments for what it should parse loop OR condition
      */
-    
+
     /// <summary>
     /// Gets the value from the right side of a "="
     /// </summary>
@@ -185,13 +202,14 @@ public class InstructionReader : IInstructionReader
         {
             line = line.Remove(0, IFKeywordIndex + Values.Keywords.Conditions.IF_KEYWORD.Length);
             line = line.TrimStart();
-            
+
             int condStartIndex = line.IndexOf(Values.Keywords.Identifier.CONDITION_CONDITION_START_IDENTIFIER);
             if (condStartIndex == 0)
             {
-                line = line.Remove(0, condStartIndex + Values.Keywords.Identifier.CONDITION_CONDITION_START_IDENTIFIER.Length);
+                line = line.Remove(0,
+                    condStartIndex + Values.Keywords.Identifier.CONDITION_CONDITION_START_IDENTIFIER.Length);
                 line = line.TrimStart();
-                
+
                 int closingIndexLog = line.LastIndexOf(Values.Keywords.Identifier.SECTION_END_IDENTIFIER);
                 if (closingIndexLog > 0)
                 {
@@ -199,7 +217,6 @@ public class InstructionReader : IInstructionReader
                     int closingIndex = line.LastIndexOf(Values.Keywords.Identifier.METHOD_END_IDENTIFIER);
                     if (closingIndex > 0 && closingIndexLog > 0)
                     {
-                    
                         line = line.Substring(0, closingIndex);
                     }
                 }
@@ -214,17 +231,19 @@ public class InstructionReader : IInstructionReader
             {
                 result[i] = result[i].Trim();
             }
+
             return result;
         }
 
         return new string[0];
     }
-    
-    
+
+
     // Creates a comparison method that can be executed.
-    public string GetComparisonCommand(INEASL_Object sender,object valueL, string comparisonString, object valueR)
+    public string GetComparisonCommand(INEASL_Object sender, object valueL, string comparisonString, object valueR)
     {
-        string line = $"{sender.GetFullName()}{Values.Keywords.Identifier.CLASS_SUBMETHOD_IDENTIFIER}{nameof(sender.CompareValues)} ({valueL},{comparisonString},{valueR})";
+        string line =
+            $"{sender.GetFullName()}{Values.Keywords.Identifier.CLASS_SUBMETHOD_IDENTIFIER}{nameof(sender.CompareValues)} ({valueL},{comparisonString},{valueR})";
         return line.Trim();
     }
 
@@ -236,21 +255,22 @@ public class InstructionReader : IInstructionReader
     /// <param name="varName"></param>
     /// <param name="value"></param>
     /// <returns></returns>
-    public string GetAssignmentCommand(INEASL_Object sender,string varName, object value)
+    public string GetAssignmentCommand(INEASL_Object sender, string varName, object value)
     {
-        string line = $"{sender.GetFullName()}{Values.Keywords.Identifier.CLASS_SUBMETHOD_IDENTIFIER}{nameof(sender.SetVariableValue)} ({varName},{value})";
+        string line =
+            $"{sender.GetFullName()}{Values.Keywords.Identifier.CLASS_SUBMETHOD_IDENTIFIER}{nameof(sender.SetVariableValue)} ({varName},{value})";
         return line.Trim();
     }
-    
+
     /*
      * NOTE!!! :
      * Instruction / Line specific Checks should rather be moved to the Instruction itself.
      * Therefore, the class can check its own content and give feedback to the InstructionReader when requested.
      * (ex. Instruction.IsMethod() or Instruction.IsLocalMethod() etc.)
-     * 
+     *
      * Because the Instruction has already the context of the current line.
      */
-    
+
     /// <summary>
     /// Checks the current line for the case of () inside of it.
     /// Also checks that there are no (): values in line which would cause
@@ -260,8 +280,8 @@ public class InstructionReader : IInstructionReader
     /// <returns>FALSE || TRUE</returns>
     public bool IsMethod(string line)
     {
-        bool isMethod = line.IndexOf(Values.Keywords.Identifier.METHOD_START_IDENTIFIER) > 0 
-                        && line.IndexOf(Values.Keywords.Identifier.METHOD_END_IDENTIFIER) > 0 
+        bool isMethod = line.IndexOf(Values.Keywords.Identifier.METHOD_START_IDENTIFIER) > 0
+                        && line.IndexOf(Values.Keywords.Identifier.METHOD_END_IDENTIFIER) > 0
                         && line.IndexOf(Values.Keywords.Identifier.SECTION_END_IDENTIFIER) == -1;
         return isMethod;
     }
@@ -269,18 +289,22 @@ public class InstructionReader : IInstructionReader
     public bool IsConditionEntryPoint(string line)
     {
         line = line.Trim();
-        bool isCondition = line.IndexOf(Values.Keywords.Identifier.CONDITION_CONDITION_START_IDENTIFIER) > 0 
-                        && line.IndexOf(Values.Keywords.Identifier.METHOD_END_IDENTIFIER) > 1
-                        && line.IndexOf(Values.Keywords.Identifier.SECTION_END_IDENTIFIER) >  1
-                        && line.IndexOf(Values.Keywords.Conditions.IF_KEYWORD) > -1 ||line.IndexOf(Values.Keywords.Conditions.ELSE_KEYWORD) > -1 ;
+        bool isCondition = line.IndexOf(Values.Keywords.Identifier.CONDITION_CONDITION_START_IDENTIFIER) > 0
+                           && line.IndexOf(Values.Keywords.Identifier.METHOD_START_IDENTIFIER) > 1
+                           && line.IndexOf(Values.Keywords.Identifier.METHOD_END_IDENTIFIER) > 1
+                           && line.IndexOf(Values.Keywords.Identifier.SECTION_END_IDENTIFIER) > 1
+                           && line.IndexOf(Values.Keywords.Conditions.IF_KEYWORD) > -1 ||
+                           (line.IndexOf(Values.Keywords.Conditions.ELSE_KEYWORD) > -1
+                            && line.IndexOf(Values.Keywords.Identifier.SECTION_START_IDENTIFIER) > line.IndexOf(Values.Keywords.Conditions.ELSE_KEYWORD));
         return isCondition;
     }
-    
+
     public bool IsConditionLeavePoint(string line)
     {
         line = line.Trim();
-        bool isCondition = line.IndexOf(Values.Keywords.Identifier.SECTION_END_IDENTIFIER) == 0 
-            && (line.IndexOf(Values.Keywords.Conditions.IF_KEYWORD) > 0 ||line.IndexOf(Values.Keywords.Conditions.ELSE_KEYWORD) > 0) ;
+        bool isCondition = line.IndexOf(Values.Keywords.Identifier.SECTION_END_IDENTIFIER) == 0
+                           && (line.IndexOf(Values.Keywords.Conditions.IF_KEYWORD) > 0 ||
+                               line.IndexOf(Values.Keywords.Conditions.ELSE_KEYWORD) > 0);
         return isCondition;
     }
 
@@ -329,12 +353,12 @@ public class InstructionReader : IInstructionReader
             MethodName = methodPart.Substring(0, argsStart);
             if (string.IsNullOrEmpty(MethodName))
                 throw new FormatException("Invalid method name");
-            
+
             string argsPart = methodPart.Substring(argsStart + 1, argsEnd - argsStart - 1);
             if (argsPart.IndexOf(Values.Keywords.Identifier.ARGUMENT_SEPARATOR_IDENTIFIER) > -1)
                 args = argsPart.Split(Values.Keywords.Identifier.ARGUMENT_SEPARATOR_IDENTIFIER);
             else
-                args = !string.IsNullOrEmpty(argsPart) ? new[] { argsPart } : new object[] {};
+                args = !string.IsNullOrEmpty(argsPart) ? new[] { argsPart } : new object[] { };
 
             if (args != null && args.Length > 0)
             {
@@ -344,6 +368,7 @@ public class InstructionReader : IInstructionReader
                 }
             }
         }
+
         return new Tuple<string, object[]>(MethodName, args);
     }
 }

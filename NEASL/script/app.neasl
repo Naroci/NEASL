@@ -1,25 +1,11 @@
 APP(Sample Script!):
-    MARCMUFFT:
-        marc = mufft
-        IF(marc=mufft):
-            WRITE_LINE(ja marc mufft!)
-        :IF
-  
-        WAIT(1)
-        WRITE_LINE(hmm)
-        IF(marc=mufft):
-            WAIT(1)
-            WRITE_LINE(ja immer noch!)
-        :IF
-       
-        WRITE_LINE(hmm)
-        WRITE_LINE(hmm)
-    :MARCMUFFT
-
     START:
-        MARCMUFFT()
+        asd = sad
+        IF(asd=lol):
+            WRITE_LINE(ja)
+        :IF
+        ELSE:
+             WRITE_LINE(nein)
+        :ELSE
     :START
 :APP
-
-OPTIONS:
-:OPTIONS

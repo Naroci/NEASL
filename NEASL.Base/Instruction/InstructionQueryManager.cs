@@ -153,7 +153,7 @@ public class InstructionQueryManager
                     {
                         foreach (var instruction in instructions)
                         {
-                            if (instruction != null && !string.IsNullOrEmpty(instruction.ObjectName))
+                            if (instruction != null )
                                 this.InstructionQuery.Add(instruction);
                         }
                     }
@@ -243,22 +243,44 @@ public class InstructionQueryManager
                     {
                         if (m_currentInstruction.IsCondition && result != null && result.GetType() == typeof(bool))
                         {
+                            Instruction exitPoint = null;
                             if (((bool)result))
                             {
-                                
+                                if (m_currentInstruction.AlterPoint != null)
+                                {
+                                    exitPoint = m_currentInstruction.AlterPoint;
+                                    var AlterStartPoint = m_currentInstruction.EntryLeavePoint;
+                                    if (AlterStartPoint != null && exitPoint != null)
+                                    {
+                                        var itemsToSkip = this.InstructionQuery.ToList()
+                                            .Where(x => x.Id > AlterStartPoint.Id && x.Id < exitPoint.Id).ToList();
+                                        if (itemsToSkip != null && itemsToSkip.Any() && itemsToSkip.Count >= 0)
+                                        {
+                                            for (int i = 0; i < itemsToSkip.Count; i++)
+                                            {
+                                                RemoveItemFromList(itemsToSkip[i]);
+                                            }
+
+                                            RemoveItemFromList(exitPoint);
+                                        }
+                                    }
+                                }
                             }
                             else
                             {
-                                var exitPoint = m_currentInstruction.EntryLeavePoint;
-                                var itemsToSkip = this.InstructionQuery.ToList().Where(x=>x.Id > m_currentInstruction.Id && x.Id < exitPoint.Id).ToList();
-                                int ExitPointIndex = this.InstructionQuery.ToList().IndexOf(exitPoint);
-                                if (itemsToSkip  != null && itemsToSkip.Any() && itemsToSkip.Count >= 0)
-                                {
-                                    for (int i = 0; i < itemsToSkip.Count; i++)
+                                exitPoint = m_currentInstruction.EntryLeavePoint;
+                                if (exitPoint != null)
+                                {  
+                                    var itemsToSkip = this.InstructionQuery.ToList().Where(x=>x.Id > m_currentInstruction.Id &&x.Id < exitPoint.Id).ToList();
+                                    if (itemsToSkip != null && itemsToSkip.Any() && itemsToSkip.Count >= 0)
                                     {
-                                        RemoveItemFromList(itemsToSkip[i]);
+                                        for (int i = 0; i < itemsToSkip.Count; i++)
+                                        {
+                                            RemoveItemFromList(itemsToSkip[i]);
+                                        }
+
+                                        RemoveItemFromList(exitPoint);
                                     }
-                                    RemoveItemFromList(exitPoint);
                                 }
                             }
                         }

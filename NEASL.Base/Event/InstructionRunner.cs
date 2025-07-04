@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using NEASL.Base.Global.Definitions;
 using NEASL.Base.Object;
 
 namespace NEASL.Base;
@@ -79,6 +80,9 @@ public class InstructionRunner
             }
         }
         
+        EntryPoints = EntryPoints.OrderByDescending(x=>x.Id).ToList();
+        ExitPoints = ExitPoints.OrderBy(x=>x.Id).ToList();
+        
         // Set each Entry / Exit points for the Sub Sections (for example for IF(): ... :IF, subssections
         // so that when they are executed the InstructionQueryManager knows which elements to skip if
         // a statement is false.
@@ -93,6 +97,15 @@ public class InstructionRunner
                 int exitPointIndex = ExitPoints.Count -1 - i;
                 EntryPoints[i].EntryLeavePoint = ExitPoints[exitPointIndex];
                 ExitPoints[exitPointIndex].EntryLeavePoint = EntryPoints[i];
+                
+                if (ExitPoints.Count > i + 1 && ExitPoints[i + 1].IsCondition && ExitPoints[i + 1].ConditionMethod
+                        .Equals(Values.Keywords.Conditions.ELSE_KEYWORD))
+                {
+                    ExitPoints[exitPointIndex].EntryLeavePoint.AlterPoint = ExitPoints[i + 1];
+                }
+                
+                
+                //EntryPoints[i].EntryEnterPoint = EntryPoints[exitPointIndex];
             }
         }
 

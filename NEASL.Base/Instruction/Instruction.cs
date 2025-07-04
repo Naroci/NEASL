@@ -19,6 +19,8 @@ public class Instruction
     // Defines the point of where the other part of the SubSection Ends or Starts 
     // depending on what the current role of the curren Instruction is.
     public Instruction EntryLeavePoint { get; set; }
+    
+    public Instruction AlterPoint { get; set; }
 
     // Identifier / Name of the Target Class name (prob. Identifying via a class attribute might be the best)
     public string ObjectName;
@@ -33,7 +35,9 @@ public class Instruction
     public bool IsAssignment { get; set; }
 
     public bool IsCondition { get; set; }
-    
+
+    public string ConditionMethod { get; set; }
+
     public bool IsLoop { get; set; }
 
     // Is the current Instruction the start of a sub Section Entry (ex. IF():, UNTIL(): etc)
