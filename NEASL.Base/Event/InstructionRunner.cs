@@ -80,7 +80,7 @@ public class InstructionRunner
             }
         }
         
-        EntryPoints = EntryPoints.OrderByDescending(x=>x.Id).ToList();
+        //EntryPoints = EntryPoints.OrderBy(x=>x.Id).ToList();
         ExitPoints = ExitPoints.OrderBy(x=>x.Id).ToList();
         
         // Set each Entry / Exit points for the Sub Sections (for example for IF(): ... :IF, subssections
