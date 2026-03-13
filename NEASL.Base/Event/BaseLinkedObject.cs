@@ -65,10 +65,10 @@ public class BaseLinkedObject : BaseReceiver, IBaseLinkedObject
             Console.WriteLine("No Object name given! Skipping...");
 
         base.SetName(name);
-        if (this.ObjectType == IdentifierType.Root && !string.IsNullOrEmpty(name))
-            Console.Title = name;
-        else
-            Console.Title = "NEASL";
+       // if (this.ObjectType == IdentifierType.Root && !string.IsNullOrEmpty(name))
+      //      Console.Title = name;
+       // else
+      //      Console.Title = "NEASL";
         
 
 

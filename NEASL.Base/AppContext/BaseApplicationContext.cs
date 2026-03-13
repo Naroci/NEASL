@@ -7,16 +7,12 @@ namespace NEASL.Base.AppContext;
 [Main(Values.Application.APPLICATION_CONTEXT_KEYWORD_IDENTIFIER)] 
 public class BaseApplicationContext : BaseLinkedObject, IBaseApplicationContext
 {
- 
-    
     [Signature(nameof(START), LinkType.Event)]
     public void START()
     {
         this.PerformScriptEvent(nameof(START));
     }
     
-  
-
     public BaseApplicationContext() : base()
     {
         base.SelfAssign();
@@ -61,8 +57,6 @@ public class BaseApplicationContext : BaseLinkedObject, IBaseApplicationContext
         {
             
         }
-        
-       
     }
 
     [Signature(nameof(READ_LINE), LinkType.Method)]
